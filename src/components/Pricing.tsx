@@ -309,7 +309,7 @@ export const Pricing = () => {
                 {/* CTAs */}
                 <div className="flex flex-wrap gap-3">
                   <motion.a
-                    href="mailto:contacto@ejemplo.com"
+                    href="mailto:info@ideatec.com.pe"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent text-bg-primary font-bold text-sm"
@@ -317,7 +317,7 @@ export const Pricing = () => {
                     <Mail className="w-4 h-4" /> Envíanos un Mensaje
                   </motion.a>
                   <motion.a
-                    href="https://wa.me/51999999999"
+                    href="https://wa.me/51912903330"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.03 }}
