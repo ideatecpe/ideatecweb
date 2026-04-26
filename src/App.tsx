@@ -25,7 +25,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen selection:bg-accent selection:text-white">
+    <div className="min-h-screen">
       <Navbar />
       <main>
         <Hero />

@@ -100,22 +100,22 @@ const seoFeatures = [
 // ─── SPEEDOMETER ─────────────────────────────────────────────────────────────
 const SpeedometerVisual = () => (
   <svg viewBox="0 0 200 130" className="w-full max-w-[180px]" xmlns="http://www.w3.org/2000/svg">
-    <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="#1F2937" strokeWidth="14" strokeLinecap="round" />
+    <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="currentColor" strokeWidth="14" strokeLinecap="round" className="text-bg-secondary" />
     <path d="M 20 110 A 80 80 0 0 1 80 35"  fill="none" stroke="#10B981" strokeWidth="14" strokeLinecap="round" opacity="0.85" />
     <path d="M 80 35 A 80 80 0 0 1 145 42"  fill="none" stroke="#F97316" strokeWidth="14" strokeLinecap="round" opacity="0.7" />
     <path d="M 145 42 A 80 80 0 0 1 180 110" fill="none" stroke="#EF4444" strokeWidth="14" strokeLinecap="round" opacity="0.6" />
-    <line x1="100" y1="110" x2="48" y2="48" stroke="white" strokeWidth="3" strokeLinecap="round" />
-    <circle cx="100" cy="110" r="8" fill="white" opacity="0.08" />
-    <circle cx="100" cy="110" r="4" fill="white" />
-    <text x="100" y="82" textAnchor="middle" fill="white" fontSize="22" fontWeight="bold">95</text>
-    <text x="100" y="97" textAnchor="middle" fill="white" fontSize="9" opacity="0.45">Performance</text>
+    <line x1="100" y1="110" x2="48" y2="48" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-text-primary" />
+    <circle cx="100" cy="110" r="8" fill="currentColor" opacity="0.08" className="text-text-primary" />
+    <circle cx="100" cy="110" r="4" fill="currentColor" className="text-text-primary" />
+    <text x="100" y="82" textAnchor="middle" fill="currentColor" fontSize="22" fontWeight="bold" className="text-text-primary">95</text>
+    <text x="100" y="97" textAnchor="middle" fill="currentColor" fontSize="9" opacity="0.45" className="text-text-primary">Performance</text>
     <circle cx="74" cy="120" r="3" fill="#4285F4" />
     <circle cx="84" cy="120" r="3" fill="#EA4335" />
     <circle cx="94" cy="120" r="3" fill="#FBBC05" />
     <circle cx="104" cy="120" r="3" fill="#4285F4" />
     <circle cx="114" cy="120" r="3" fill="#34A853" />
     <circle cx="124" cy="120" r="3" fill="#EA4335" />
-    <text x="100" y="130" textAnchor="middle" fill="white" fontSize="8" opacity="0.3">Google PageSpeed</text>
+    <text x="100" y="130" textAnchor="middle" fill="currentColor" fontSize="8" opacity="0.3" className="text-text-primary">Google PageSpeed</text>
   </svg>
 );
 
@@ -141,7 +141,7 @@ export const Pricing = () => {
               Proceso de trabajo
             </span>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
-              <h2 className="text-3xl md:text-4xl font-syne font-bold leading-tight max-w-lg">
+              <h2 className="text-3xl md:text-4xl font-sans font-bold leading-tight max-w-lg">
                 ¿Cómo diseñamos{' '}
                 <span className="text-accent">tu sitio web?</span>
               </h2>
@@ -167,7 +167,7 @@ export const Pricing = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.35, delay: i * 0.06 }}
-                    className={`group relative flex items-start gap-4 p-5 rounded-2xl border border-bg-secondary bg-bg-secondary/10 hover:bg-bg-secondary/22 transition-all duration-300 ${
+                    className={`group relative flex items-start gap-4 p-5 rounded-2xl border border-bg-secondary bg-bg-secondary/40 dark:bg-bg-secondary/10 hover:bg-bg-secondary/60 dark:hover:bg-bg-secondary/22 transition-all duration-300 ${
                       isLeft ? 'lg:pr-10' : 'lg:pl-10'
                     }`}
                   >
@@ -190,7 +190,7 @@ export const Pricing = () => {
                     {/* Text */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <h4 className="font-syne font-bold text-sm">{step.title}</h4>
+                        <h4 className="font-sans font-bold text-sm">{step.title}</h4>
                         <span
                           className="text-[10px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full"
                           style={{ backgroundColor: `${step.accent}15`, color: step.accent }}
@@ -203,7 +203,7 @@ export const Pricing = () => {
 
                     {/* Step watermark */}
                     <span
-                      className="absolute bottom-2 right-4 text-4xl font-syne font-black opacity-[0.035] select-none pointer-events-none"
+                      className="absolute bottom-2 right-4 text-4xl font-sans font-black opacity-[0.035] select-none pointer-events-none"
                       style={{ color: step.accent }}
                     >
                       {step.step}
@@ -220,10 +220,10 @@ export const Pricing = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-5 rounded-2xl border border-bg-secondary bg-bg-secondary/10 px-8 py-6"
+            className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-5 rounded-2xl border border-bg-secondary bg-bg-secondary/40 dark:bg-bg-secondary/10 px-8 py-6"
           >
             <div>
-              <p className="font-syne font-bold text-sm mb-0.5">¿Cuánto tiempo toma tu proyecto?</p>
+              <p className="font-sans font-bold text-sm mb-0.5">¿Cuánto tiempo toma tu proyecto?</p>
               <p className="text-text-primary/40 text-xs">
                 Proyectos simples listos en 7 días. Los más complejos en 4–6 semanas. Lo definimos juntos.
               </p>
@@ -255,7 +255,7 @@ export const Pricing = () => {
               <SearchCheck className="w-3.5 h-3.5" />
               Incluido en todos los planes
             </span>
-            <h2 className="text-3xl md:text-4xl font-syne font-bold mb-3 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-sans font-bold mb-3 leading-tight">
               Tu web, <span className="text-accent">veloz</span> y visible en Google
             </h2>
             <p className="text-text-primary/50 max-w-md mx-auto text-sm leading-relaxed">
@@ -278,7 +278,7 @@ export const Pricing = () => {
             <div className="flex flex-col lg:flex-row items-stretch">
               {/* Text */}
               <div className="flex-1 p-10 md:p-12">
-                <h3 className="text-xl md:text-2xl font-syne font-bold mb-2 leading-snug">
+                <h3 className="text-xl md:text-2xl font-sans font-bold mb-2 leading-snug">
                   Optimizada para{' '}
                   <span className="text-accent">Google PageSpeed</span>{' '}
                   desde el día uno
@@ -298,9 +298,9 @@ export const Pricing = () => {
                   ].map((s) => (
                     <div
                       key={s.label}
-                      className="rounded-xl border border-bg-secondary bg-bg-primary/30 p-3.5 text-center"
+                      className="rounded-xl border border-bg-secondary bg-bg-primary/50 dark:bg-bg-primary/30 p-3.5 text-center"
                     >
-                      <p className="text-xl font-syne font-extrabold text-text-primary">{s.value}</p>
+                      <p className="text-xl font-sans font-extrabold text-text-primary">{s.value}</p>
                       <p className="text-[10px] text-text-primary/40 mt-0.5">{s.label}</p>
                     </div>
                   ))}
@@ -322,7 +322,7 @@ export const Pricing = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-bg-secondary bg-bg-primary/30 text-text-primary font-bold text-sm hover:bg-bg-secondary transition-colors"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-bg-secondary bg-bg-primary/50 dark:bg-bg-primary/30 text-text-primary font-bold text-sm hover:bg-bg-secondary transition-colors"
                   >
                     <MessageCircle className="w-4 h-4 text-green-400" /> Chat WhatsApp
                   </motion.a>
@@ -330,7 +330,7 @@ export const Pricing = () => {
               </div>
 
               {/* Speedometer */}
-              <div className="lg:w-56 w-full flex flex-col items-center justify-center p-8 gap-3 border-t lg:border-t-0 lg:border-l border-bg-secondary bg-[#0b0e14]/60">
+              <div className="lg:w-56 w-full flex flex-col items-center justify-center p-8 gap-3 border-t lg:border-t-0 lg:border-l border-bg-secondary bg-bg-secondary/50 dark:bg-bg-secondary/30">
                 <SpeedometerVisual />
                 <p className="text-text-primary/30 text-[10px] text-center leading-relaxed">
                   Resultado real en<br />PageSpeed Insights
@@ -351,7 +351,7 @@ export const Pricing = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: i * 0.06 }}
                   whileHover={{ y: -3 }}
-                  className="group p-6 rounded-2xl border border-bg-secondary bg-bg-secondary/10 hover:bg-bg-secondary/25 transition-all duration-300 cursor-default"
+                  className="group p-6 rounded-2xl border border-bg-secondary bg-bg-secondary/40 dark:bg-bg-secondary/10 hover:bg-bg-secondary/60 dark:hover:bg-bg-secondary/25 transition-all duration-300 cursor-default"
                 >
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
@@ -359,7 +359,7 @@ export const Pricing = () => {
                   >
                     <Icon className="w-4 h-4" style={{ color: item.accent }} />
                   </div>
-                  <h4 className="font-syne font-bold text-sm mb-1.5 leading-snug">{item.title}</h4>
+                  <h4 className="font-sans font-bold text-sm mb-1.5 leading-snug">{item.title}</h4>
                   <p className="text-text-primary/45 text-xs leading-relaxed">{item.desc}</p>
                   <div
                     className="mt-4 flex items-center gap-1 text-xs font-semibold opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-300"

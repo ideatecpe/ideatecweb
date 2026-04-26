@@ -13,7 +13,7 @@ const Section = ({ icon: Icon, title, children }: { icon: any; title: string; ch
       <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
         <Icon className="w-4 h-4 text-accent" />
       </div>
-      <h3 className="font-syne font-bold text-text-primary text-base">{title}</h3>
+      <h3 className="font-sans font-bold text-text-primary text-base">{title}</h3>
     </div>
     <div className="text-sm text-text-primary/60 leading-relaxed pl-11 space-y-2">{children}</div>
   </div>

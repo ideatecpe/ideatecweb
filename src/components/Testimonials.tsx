@@ -9,10 +9,10 @@ export const Testimonials = () => {
   ];
 
   return (
-    <section className="py-24 bg-bg-secondary/20">
+    <section className="py-24 bg-bg-secondary/40 dark:bg-bg-secondary/20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-syne font-bold mb-4">Lo que dicen nuestros clientes</h2>
+          <h2 className="text-4xl md:text-5xl font-sans font-bold mb-4">Lo que dicen nuestros clientes</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reviews.map((r, i) => (
@@ -24,7 +24,7 @@ export const Testimonials = () => {
               <div className="flex items-center gap-4">
                 <img src={r.avatar} alt={r.name} className="w-12 h-12 rounded-full border-2 border-accent" referrerPolicy="no-referrer" />
                 <div>
-                  <h5 className="font-syne font-bold text-text-primary">{r.name}</h5>
+                  <h5 className="font-sans font-bold text-text-primary">{r.name}</h5>
                   <p className="text-xs text-text-primary/40 uppercase tracking-wider">{r.role}</p>
                 </div>
               </div>

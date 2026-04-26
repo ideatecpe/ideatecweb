@@ -31,13 +31,10 @@ const HeroVisual = () => {
       </svg>
 
       {/* Animated Lines */}
-    
 
       {/* Floating Particles */}
- 
 
       {/* Glow Orbs */}
-  
     </div>
   );
 };
@@ -85,12 +82,12 @@ export const Hero = () => {
             </motion.div>
 
             {/* Heading */}
-<h1 className="text-5xl md:text-5xl xl:text-7xl leading-[0.95] mb-8 font-sans tracking-tight">
-  <span className="text-text-primary block mb-2">
-    Hacemos realidad
-  </span>
-  <span className="text-gradient ">tu idea digital.</span>
-</h1>
+            <h1 className="text-5xl md:text-5xl xl:text-7xl leading-[0.95] mb-8 font-sans tracking-tight">
+              <span className="text-text-primary block mb-2">
+                Hacemos realidad
+              </span>
+              <span className="text-gradient ">tu idea digital.</span>
+            </h1>
 
             <p className="text-lg md:text-xl text-text-primary/60 max-w-xl mb-10 leading-relaxed font-medium">
               Desarrollamos plataformas web y aplicaciones móviles a medida para
@@ -122,11 +119,13 @@ export const Hero = () => {
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                className="group w-full sm:w-auto flex items-center justify-center gap-2.5 px-7 py-4 rounded-full bg-[#25D366]/15 text-[#25D366] font-semibold text-base hover:bg-[#25D366]/25 transition-all duration-200"
+                className="group w-full sm:w-auto flex items-center justify-center gap-2.5 px-7 py-4 rounded-full bg-[#25D366]/40 dark:bg-[#25D366]/15 text-[#075E54] dark:text-[#25D366] font-bold text-base hover:bg-[#25D366]/50 dark:hover:bg-[#25D366]/25 transition-all duration-200"
               >
-                <WhatsAppIcon className="text-[#25D366]" />
+                <WhatsAppIcon />
                 Escríbenos
               </motion.a>
+
+              
             </div>
 
             {/* Stats */}
@@ -148,76 +147,84 @@ export const Hero = () => {
             </div>
           </motion.div>
 
-{/* Right Column: Mascota */}
-<motion.div
-  initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-  transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-  className="hidden lg:block relative items-center justify-center"
->
-  {/* Orbe de luz detrás */}
-  <motion.div
-    animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.6, 0.3] }}
-    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-    className="absolute w-80 h-80 rounded-full bg-accent/20 blur-[80px]"
-  />
+          {/* Right Column: Mascota */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:block relative items-center justify-center"
+          >
+            {/* Orbe de luz detrás */}
+            <motion.div
+              animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.6, 0.3] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute w-80 h-80 rounded-full bg-accent/20 blur-[80px]"
+            />
 
-  {/* Anillo giratorio exterior */}
-  <motion.div
-    animate={{ rotate: 360 }}
-    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-    className="absolute w-105 h-105 rounded-full border border-accent/10 border-dashed"
-  />
+            {/* Anillo giratorio exterior */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="absolute w-105 h-105 rounded-full border border-accent/10 border-dashed"
+            />
 
-  {/* Anillo giratorio interior */}
-  <motion.div
-    animate={{ rotate: -360 }}
-    transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-    className="absolute w-[320px] h-80 rounded-full border border-accent/20"
-  />
+            {/* Anillo giratorio interior */}
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+              className="absolute w-[320px] h-80 rounded-full border border-accent/20"
+            />
 
-  {/* Partículas orbitando */}
-  {[0, 60, 120, 180, 240, 300].map((deg, i) => (
-    <motion.div
-      key={i}
-      animate={{ rotate: 360 }}
-      transition={{ duration: 10 + i, repeat: Infinity, ease: "linear" }}
-      className="absolute w-90 h-90"
-      style={{ transformOrigin: "center" }}
-    >
-      <motion.div
-        animate={{ scale: [1, 1.5, 1], opacity: [0.4, 1, 0.4] }}
-        transition={{ duration: 2 + i * 0.3, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute w-2 h-2 bg-accent rounded-full"
-        style={{
-          top: "0%",
-          left: "50%",
-          transform: `rotate(${deg}deg) translateY(-180px)`,
-        }}
-      />
-    </motion.div>
-  ))}
+            {/* Partículas orbitando */}
+            {[0, 60, 120, 180, 240, 300].map((deg, i) => (
+              <motion.div
+                key={i}
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 10 + i,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                className="absolute w-90 h-90"
+                style={{ transformOrigin: "center" }}
+              >
+                <motion.div
+                  animate={{ scale: [1, 1.5, 1], opacity: [0.4, 1, 0.4] }}
+                  transition={{
+                    duration: 2 + i * 0.3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute w-2 h-2 bg-accent rounded-full"
+                  style={{
+                    top: "0%",
+                    left: "50%",
+                    transform: `rotate(${deg}deg) translateY(-180px)`,
+                  }}
+                />
+              </motion.div>
+            ))}
 
-  {/* Sombra del suelo */}
-  <motion.div
-    animate={{ scaleX: [1, 0.85, 1], opacity: [0.3, 0.15, 0.3] }}
-    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-    className="absolute bottom-0 w-64 h-6 bg-accent/30 rounded-full blur-xl"
-  />
+            {/* Sombra del suelo */}
+            <motion.div
+              animate={{ scaleX: [1, 0.85, 1], opacity: [0.3, 0.15, 0.3] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute bottom-0 w-64 h-6 bg-accent/30 rounded-full blur-xl"
+            />
 
-  {/* Mascota flotando */}
-  <motion.img
-    src="./assets/mascota.png"
-    alt="Mascota Ideatec"
-    animate={{ y: [0, -18, 0] }}
-    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-    className="relative z-10 w-full max-w-md mx-auto"
-    style={{
-      filter: "drop-shadow(0 0 15px rgba(249,115,22,0.25)) drop-shadow(0 10px 20px rgba(0,0,0,0.25))",
-    }}
-  />
-</motion.div>
-
+            {/* Mascota flotando */}
+            <motion.img
+              src="./assets/mascota.png"
+              alt="Mascota Ideatec"
+              animate={{ y: [0, -18, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="relative z-10 w-full max-w-md mx-auto"
+              style={{
+                filter:
+                  "drop-shadow(0 0 15px rgba(249,115,22,0.25)) drop-shadow(0 10px 20px rgba(0,0,0,0.25))",
+              }}
+            />
+          </motion.div>
         </div>
       </div>
 

@@ -1,20 +1,43 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# IDEATEC - Soluciones Digitales a Medida
 
-# Run and deploy your AI Studio app
+¡Bienvenido al repositorio oficial de **IDEATEC SAC**! Somos una empresa peruana dedicada al desarrollo de software de alta calidad, especializada en plataformas web, aplicaciones móviles y sistemas de gestión empresarial.
 
-This contains everything you need to run your app locally.
+## 🚀 Sobre el Proyecto
 
-View your app in AI Studio: https://ai.studio/apps/6e350fe0-be8a-4d5c-935e-7ad8772e6a3c
+Este es el sitio web corporativo de IDEATEC, diseñado para mostrar nuestros servicios, portafolio y permitir el contacto directo con clientes potenciales.
 
-## Run Locally
+### Características Principales:
+- **Diseño Premium**: Interfaz moderna con soporte para Modo Oscuro y Modo Claro.
+- **Portafolio Dinámico**: Exhibición de casos de éxito como FactuNet.
+- **Formulario Inteligente**: Integración con EmailJS y WhatsApp para una comunicación fluida.
+- **Arquitectura Robusta**: Construido con React, Vite, Tailwind CSS y Motion para animaciones fluidas.
 
-**Prerequisites:**  Node.js
+## 🛠️ Stack Tecnológico
 
+- **Frontend**: React.js
+- **Estilos**: Tailwind CSS
+- **Animaciones**: Motion (framer-motion)
+- **Iconografía**: Lucide React
+- **Build Tool**: Vite
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 💻 Configuración Local
+
+**Requisitos previos:** Node.js (v18+)
+
+1.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
+2.  **Configurar variables de entorno:**
+    Crea un archivo `.env` basado en `.env.example` y añade tu clave de Gemini.
+3.  **Iniciar servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+
+## 📄 Licencia
+
+Este proyecto es propiedad privada de **IDEATEC SAC**. Todos los derechos reservados.
+
+---
+Desarrollado con ❤️ en Lima, Perú.

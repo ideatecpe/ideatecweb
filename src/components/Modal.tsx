@@ -55,7 +55,7 @@ export const Modal = ({ isOpen, onClose, title, children, size = 'md' }: ModalPr
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 20 }}
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-            className={`relative w-full ${sizeClasses[size]} bg-[#0F1120] border border-bg-secondary rounded-3xl shadow-2xl overflow-hidden`}
+            className={`relative w-full ${sizeClasses[size]} bg-bg-primary border border-bg-secondary rounded-3xl shadow-2xl overflow-hidden`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Top accent line */}
@@ -64,7 +64,7 @@ export const Modal = ({ isOpen, onClose, title, children, size = 'md' }: ModalPr
             {/* Header */}
             {title && (
               <div className="flex items-center justify-between px-8 pt-6 pb-4 border-b border-bg-secondary/50">
-                <h2 className="text-xl font-syne font-bold text-text-primary">{title}</h2>
+                <h2 className="text-xl font-sans font-bold text-text-primary">{title}</h2>
                 <button
                   onClick={onClose}
                   className="w-8 h-8 rounded-full bg-bg-secondary/50 flex items-center justify-center text-text-primary/40 hover:text-accent hover:bg-accent/10 transition-all duration-200"

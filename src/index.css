@@ -1,29 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-bg-primary: #0B0D17;
-  --color-bg-secondary: #1A1D2E;
-  --color-text-primary: #E8F0FE;
-  --color-accent: #F97316;
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-accent: var(--accent);
 
-  --font-syne: "Syne", sans-serif;
-  --font-dm-sans: "DM Sans", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
 }
+
+@variant dark (&:where(.dark, .dark *));
+@variant light (&:where(.light, .light *));
+
+:root {
+  --bg-primary: #0B0D17;
+  --bg-secondary: #1A1D2E;
+  --text-primary: #E8F0FE;
+  --accent: #F97316;
+  --dot-color: #1A1D2E;
+}
+
+.light {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F1F5F9;
+  --text-primary: #0F172A;
+  --accent: #F97316;
+  --dot-color: #E2E8F0;
+}
+
 
 @layer base {
   body {
-    @apply bg-bg-primary text-text-primary font-dm-sans selection:bg-accent selection:text-white;
+    @apply bg-bg-primary text-text-primary font-sans;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-syne font-bold;
+    @apply font-sans font-bold;
   }
 }
 
 @layer utilities {
   .glass {
     @apply bg-bg-secondary/40 backdrop-blur-md border border-bg-secondary/50;
+  }
+
+  .light .glass {
+    @apply bg-bg-secondary/60 border-bg-secondary/80 shadow-sm;
   }
 
   .text-gradient {
@@ -39,21 +62,24 @@
   }
 
   .dot-pattern {
-    background-image: radial-gradient(#1A1D2E 1px, transparent 1px);
+    background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
     background-size: 30px 30px;
   }
 
-  .custom-scroll::-webkit-scrollbar {
-    width: 4px;
+  /* Scrollbar personalizado adaptable y estético */
+  ::-webkit-scrollbar {
+    width: 14px;
   }
-  .custom-scroll::-webkit-scrollbar-track {
+  ::-webkit-scrollbar-track {
     background: transparent;
   }
-  .custom-scroll::-webkit-scrollbar-thumb {
-    background: rgba(249, 115, 22, 0.3);
-    border-radius: 99px;
+  ::-webkit-scrollbar-thumb {
+    @apply bg-text-primary/30 rounded-full border-4 border-transparent bg-clip-padding hover:bg-text-primary/50 transition-colors;
   }
-  .custom-scroll::-webkit-scrollbar-thumb:hover {
-    background: rgba(249, 115, 22, 0.6);
+
+  /* Para Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-primary) transparent;
   }
 }

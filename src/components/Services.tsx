@@ -122,6 +122,7 @@ const ServiceDetailModal = ({ service, onClose, onRequestProject }: {
       <div className="px-8 py-6">
         {/* Header */}
         <div className="flex items-start gap-5 mb-6">
+          
           <div
             className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0"
             style={{ backgroundColor: `${service.color}15` }}
@@ -129,9 +130,9 @@ const ServiceDetailModal = ({ service, onClose, onRequestProject }: {
             <Icon className="w-7 h-7" style={{ color: service.color }} />
           </div>
           <div>
-            <h2 className="text-2xl font-syne font-bold text-text-primary mb-1">{service.title}</h2>
+            <h2 className="text-2xl font-sans font-medium text-text-primary mb-1">{service.title}</h2>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style={{ color: service.color, backgroundColor: `${service.color}15` }}>
+              <span className="text-xs font-bold uppercase tracking-widest px-0 py-1 rounded-full" style={{ color: service.color }}>
                 Tiempo estimado: {service.time}
               </span>
             </div>
@@ -142,7 +143,7 @@ const ServiceDetailModal = ({ service, onClose, onRequestProject }: {
 
         {/* Features */}
         <div className="mb-8">
-          <h4 className="text-xs font-black uppercase tracking-widest text-text-primary/40 mb-4">¿Qué incluye?</h4>
+          <h4 className="text-xs font-sans uppercase tracking-widest text-text-primary/70 mb-4">¿Qué incluye?</h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {service.features.map((f) => (
               <div key={f} className="flex items-start gap-3">
@@ -157,12 +158,12 @@ const ServiceDetailModal = ({ service, onClose, onRequestProject }: {
 
         {/* Tech Stack */}
         <div className="mb-8">
-          <h4 className="text-xs font-black uppercase tracking-widest text-text-primary/40 mb-4">Tecnologías / Herramientas</h4>
+          <h4 className="text-xs font-sans uppercase tracking-widest text-text-primary/70 mb-4">Tecnologías / Herramientas</h4>
           <div className="flex flex-wrap gap-2">
             {service.stack.map((tech) => (
               <span
                 key={tech}
-                className="text-xs px-3 py-1.5 rounded-full bg-bg-secondary/60 text-text-primary/60 border border-bg-secondary font-medium"
+                className="text-xs px-3 py-1.5 rounded-full bg-bg-secondary/80 dark:bg-bg-secondary/60 text-text-primary/60 border border-bg-secondary font-medium"
               >
                 {tech}
               </span>
@@ -200,7 +201,7 @@ const ServiceCard = ({ icon: Icon, title, description, index, color, onClick }: 
     <div className="w-14 h-14 bg-bg-primary rounded-2xl flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-500">
       <Icon className="w-7 h-7 text-accent group-hover:text-bg-primary transition-colors duration-500" />
     </div>
-    <h3 className="text-2xl font-syne font-bold mb-4 group-hover:text-accent transition-colors">{title}</h3>
+    <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-accent transition-colors">{title}</h3>
     <p className="text-text-primary/60 leading-relaxed mb-4">{description}</p>
     <span className="text-accent text-sm font-semibold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
       Ver más <ArrowRight className="w-4 h-4" />
@@ -225,7 +226,7 @@ export const Services = () => {
     <section id="servicios" className="py-24 bg-bg-primary relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-syne font-bold mb-4">Nuestros Servicios</h2>
+          <h2 className="text-4xl md:text-5xl font-sans font-bold mb-4">Nuestros Servicios</h2>
           <p className="text-text-primary/60 max-w-xl mx-auto">Ofrecemos un abanico completo de soluciones digitales para llevar tu empresa al siguiente nivel.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

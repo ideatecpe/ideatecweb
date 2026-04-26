@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from './Modal';
-import { Send, User, Mail, Phone, Briefcase, MessageSquare, ChevronDown } from 'lucide-react';
+import { Send, User, Mail, Phone, Briefcase, MessageSquare, ChevronDown, Rocket } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface ProjectModalProps {
@@ -48,7 +48,7 @@ export const ProjectModal = ({ isOpen, onClose, defaultPlan }: ProjectModalProps
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const msg = encodeURIComponent(
-      `¡Hola IDEATEC! 👋 Quiero solicitar un proyecto.\n\n` +
+      `¡Hola IDEATEC! Quiero solicitar un proyecto.\n\n` +
       `*Nombre:* ${form.name}\n` +
       `*Email:* ${form.email}\n` +
       `*Teléfono:* ${form.phone || 'No especificado'}\n` +
@@ -56,7 +56,7 @@ export const ProjectModal = ({ isOpen, onClose, defaultPlan }: ProjectModalProps
       `*Servicio:* ${form.service || 'Sin especificar'}\n` +
       `*Presupuesto:* ${form.budget || 'Sin especificar'}\n` +
       `*Mensaje:* ${form.message}\n\n` +
-      `¿Podemos hablar? 🚀`
+      `¿Podemos hablar?`
     );
     window.open(`https://wa.me/51912903330?text=${msg}`, '_blank');
     setSubmitted(true);
@@ -184,8 +184,8 @@ export const ProjectModal = ({ isOpen, onClose, defaultPlan }: ProjectModalProps
                 whileTap={{ scale: 0.98 }}
                 className="w-full py-4 rounded-xl bg-accent text-bg-primary font-bold text-base flex items-center justify-center gap-2 hover:glow-orange-hover transition-all duration-300"
               >
-                <Send className="w-4 h-4" />
-                Enviar por WhatsApp 🚀
+                <Rocket className="w-4 h-4" />
+                Enviar por WhatsApp
               </motion.button>
 
               <p className="text-center text-xs text-text-primary/30">
@@ -200,9 +200,9 @@ export const ProjectModal = ({ isOpen, onClose, defaultPlan }: ProjectModalProps
             className="py-12 text-center"
           >
             <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
-              <span className="text-4xl">🚀</span>
+              <Rocket className="w-10 h-10 text-accent" />
             </div>
-            <h3 className="text-2xl font-syne font-bold mb-3">¡Mensaje enviado!</h3>
+            <h3 className="text-2xl font-sans font-bold mb-3">¡Mensaje enviado!</h3>
             <p className="text-text-primary/60 mb-8">WhatsApp se abrió con tu solicitud. Te respondemos en menos de 24 horas.</p>
             <motion.button
               whileHover={{ scale: 1.05 }}

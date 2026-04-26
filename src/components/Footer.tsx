@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Twitter, Linkedin, Github, MapPin, Mail, Phone } from "lucide-react";
+import { MapPin, Mail, Phone } from "lucide-react";
+import { useTheme } from "./ThemeContext";
 import { PrivacyModal } from "./PrivacyModal";
 import { TermsModal } from "./TermsModal";
 
 export const Footer = () => {
+  const { theme } = useTheme();
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [termsOpen, setTermsOpen] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -14,13 +16,16 @@ export const Footer = () => {
     const wrap = wrapRef.current;
     if (!canvas || !wrap) return;
 
+    const isLight = theme === "light";
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     // ── Configura tu color accent aquí (R, G, B) ──
-    const ACCENT_R = 0;
-    const ACCENT_G = 191;
-    const ACCENT_B = 255;
+    // Usar naranja (#F97316 -> 249, 115, 22) si es light para mejor contraste con el blanco
+    const ACCENT_R = isLight ? 249 : 50; 
+    const ACCENT_G = isLight ? 115 : 50;
+    const ACCENT_B = isLight ? 22 : 80;
 
     const FONT_SIZE = 11;
     const CHARS = "01";
@@ -129,7 +134,7 @@ export const Footer = () => {
       cancelAnimationFrame(animId);
       ro.disconnect();
     };
-  }, []);
+  }, [theme]);
 
   return (
     <>
@@ -174,7 +179,7 @@ export const Footer = () => {
                   className="w-11 h-11"
               
                 />
-                <span className="text-2xl tracking-tight leading-none">
+                <span className="text-2xl tracking-tight leading-none -ml-4">
                   <span
                     className="font-black text-accent"
                     style={{
@@ -182,7 +187,7 @@ export const Footer = () => {
                       letterSpacing: "0.05em",
                     }}
                   >
-                    IDEA
+                    DEA
                   </span>
                   <span
                     className="font-black text-text-primary"
@@ -201,26 +206,6 @@ export const Footer = () => {
               Transformamos ideas en soluciones digitales de alto impacto para
               empresas que quieren crecer.
             </p>
-            <div className="flex gap-5 mt-2">
-              <a
-                href="#"
-                className="text-text-primary/60 hover:text-accent transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="text-text-primary/60 hover:text-accent transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="text-text-primary/60 hover:text-accent transition-colors"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-            </div>
           </div>
 
           {/* Col 2: Navegación */}
