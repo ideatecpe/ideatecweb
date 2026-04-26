@@ -38,7 +38,7 @@ export const WhyUs = () => {
           <div className="lg:w-1/2 relative">
             <div className="relative z-10 rounded-3xl overflow-hidden border border-bg-secondary shadow-2xl">
               <img
-                src="./assets/elegir.png"
+                src="./assets/elegir.jpeg"
                 alt="¿Por qué elegir a IDEATEC?"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
