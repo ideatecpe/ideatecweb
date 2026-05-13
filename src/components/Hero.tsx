@@ -153,12 +153,12 @@ export const Hero = () => {
               {/* Título con split text */}
               <h1 className="mb-8 leading-[1.1] tracking-tighter">
                 <div className="font-black text-6xl lg:text-7xl xl:text-8xl">
-                  <SplitText text="Diseñamos" className="text-white dark:text-white text-gray-900 block" />
+                  <SplitText text="Diseñamos" className="text-black dark:text-white block" />
                   <motion.div
-                    className="relative inline-block mt-2"
-                    initial={{ width: 0 }}
-                    animate={{ width: "auto" }}
-                    transition={{ delay: 0.6, duration: 0.6 }}
+                    className="relative inline-block mt-2 whitespace-nowrap overflow-hidden"
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: "auto", opacity: 1 }}
+                    transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
                   >
                     <span
                       className="bg-clip-text text-transparent font-black"
@@ -285,38 +285,38 @@ export const Hero = () => {
                 </div>
 
                 {/* Tarjetas flotantes reposicionadas - más alejadas de la imagen */}
-                <FloatingCard delay={0.1} className="top-[-10%] right-[-15%] translate-x-0 translate-y-0">
+                <FloatingCard delay={0.1} className="top-[-10%] right-[-15%] translate-x-0 translate-y-0 light:bg-accent light:border-accent/20 dark:bg-black/40">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-accent/30 flex items-center justify-center text-accent">
-                      <Zap className="w-5 h-5 fill-accent/20" />
+                    <div className="w-10 h-10 rounded-full bg-accent/20 light:bg-white/20 dark:bg-accent/20 flex items-center justify-center text-accent light:text-white dark:text-accent">
+                      <Zap className="w-5 h-5 fill-accent/20 light:fill-white/20 dark:fill-accent/20" />
                     </div>
                     <div>
-                      <div className="text-[9px] text-text-secondary uppercase font-bold tracking-wider">Performance</div>
-                      <div className="text-xl font-black text-text-primary leading-none">+99%</div>
+                      <div className="text-[9px] text-text-secondary light:text-white/80 dark:text-text-secondary uppercase font-bold tracking-wider">Performance</div>
+                      <div className="text-xl font-black text-text-primary light:text-white dark:text-text-primary leading-none">+99%</div>
                     </div>
                   </div>
                 </FloatingCard>
 
-                <FloatingCard delay={0.4} className="bottom-[-15%] left-[-20%] -translate-x-0 translate-y-0">
+                <FloatingCard delay={0.4} className="bottom-[-15%] left-[-20%] -translate-x-0 translate-y-0 light:bg-accent light:border-accent/20 dark:bg-black/40">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-accent/30 flex items-center justify-center text-accent">
+                    <div className="w-10 h-10 rounded-full bg-accent/20 light:bg-white/20 dark:bg-accent/20 flex items-center justify-center text-accent light:text-white dark:text-accent">
                       <Code2 className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-[9px] text-text-secondary uppercase font-bold tracking-wider">Tech Stack</div>
-                      <div className="text-xl font-black text-text-primary leading-none">Moderno</div>
+                      <div className="text-[9px] text-text-secondary light:text-white/80 dark:text-text-secondary uppercase font-bold tracking-wider">Tech Stack</div>
+                      <div className="text-xl font-black text-text-primary light:text-white dark:text-text-primary leading-none">Moderno</div>
                     </div>
                   </div>
                 </FloatingCard>
 
-                <FloatingCard delay={0.7} className="top-[20%] left-[-25%] hidden xl:flex">
+                <FloatingCard delay={0.7} className="top-[20%] left-[-25%] hidden xl:flex light:bg-accent light:border-accent/20 dark:bg-black/40">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-accent/30 flex items-center justify-center text-accent">
+                    <div className="w-10 h-10 rounded-full bg-accent/20 light:bg-white/20 dark:bg-accent/20 flex items-center justify-center text-accent light:text-white dark:text-accent">
                       <Award className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-[9px] text-text-secondary uppercase font-bold tracking-wider">Experiencia</div>
-                      <div className="text-xl font-black text-text-primary leading-none">+5 años</div>
+                      <div className="text-[9px] text-text-secondary light:text-white/80 dark:text-text-secondary uppercase font-bold tracking-wider">Experiencia</div>
+                      <div className="text-xl font-black text-text-primary light:text-white dark:text-text-primary leading-none">+5 años</div>
                     </div>
                   </div>
                 </FloatingCard>
