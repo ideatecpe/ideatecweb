@@ -32,7 +32,7 @@ const processSteps = [
     step: '02',
     title: 'Dominio y privacidad',
     desc: 'Registro de dominio .com con gestión completa de DNS, protección de privacidad y seguridad.',
-    accent: '#3B82F6',
+    accent: '#8B5CF6',
     time: 'Día 2–3',
   },
   {
@@ -40,7 +40,7 @@ const processSteps = [
     step: '03',
     title: 'Hosting y configuración',
     desc: 'Plan de hosting con cPanel: correos corporativos, FTP, bases de datos y más.',
-    accent: '#10B981',
+    accent: '#F97316',
     time: 'Día 3–4',
   },
   {
@@ -56,7 +56,7 @@ const processSteps = [
     step: '05',
     title: 'Garantía de programación',
     desc: 'Código estructurado que admite mejoras y nuevas funcionalidades sin límite.',
-    accent: '#EC4899',
+    accent: '#F97316',
     time: 'Permanente',
   },
   {
@@ -64,7 +64,7 @@ const processSteps = [
     step: '06',
     title: 'Entrega y lanzamiento',
     desc: 'Sitio publicado, revisado y con accesos completos. Acompañamiento post-lanzamiento.',
-    accent: '#F97316',
+    accent: '#8B5CF6',
     time: 'Día 14–21',
   },
 ];
@@ -81,13 +81,13 @@ const seoFeatures = [
     icon: SearchCheck,
     title: 'SEO técnico completo',
     desc: 'Meta tags, estructura semántica, sitemap XML y robots.txt desde el inicio.',
-    accent: '#3B82F6',
+    accent: '#8B5CF6',
   },
   {
     icon: TrendingUp,
     title: 'Mejor posición en Google',
     desc: 'Google premia las páginas rápidas con mejores rankings en buscadores.',
-    accent: '#10B981',
+    accent: '#F97316',
   },
   {
     icon: MousePointerClick,
@@ -140,12 +140,12 @@ export const Pricing = () => {
               <Code2 className="w-3.5 h-3.5" />
               Proceso de trabajo
             </span>
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
-              <h2 className="text-3xl md:text-4xl font-sans font-bold leading-tight max-w-lg">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight max-w-lg">
                 ¿Cómo diseñamos{' '}
                 <span className="text-accent">tu sitio web?</span>
               </h2>
-              <p className="text-text-primary/45 text-sm max-w-xs md:text-right">
+              <p className="text-text-primary/65 text-base max-w-sm md:text-right leading-relaxed">
                 Desde que nos envías tu contenido hasta el lanzamiento. El plazo exacto lo definimos juntos.
               </p>
             </div>
@@ -189,16 +189,16 @@ export const Pricing = () => {
 
                     {/* Text */}
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <h4 className="font-sans font-bold text-sm">{step.title}</h4>
+                      <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                        <h4 className="font-bold text-base">{step.title}</h4>
                         <span
-                          className="text-[10px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full"
+                          className="text-xs font-semibold uppercase tracking-wide px-2.5 py-0.5 rounded-full"
                           style={{ backgroundColor: `${step.accent}15`, color: step.accent }}
                         >
                           {step.time}
                         </span>
                       </div>
-                      <p className="text-text-primary/45 text-xs leading-relaxed">{step.desc}</p>
+                      <p className="text-text-primary/65 text-sm leading-relaxed">{step.desc}</p>
                     </div>
 
                     {/* Step watermark */}
@@ -223,8 +223,8 @@ export const Pricing = () => {
             className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-5 rounded-2xl border border-bg-secondary bg-bg-secondary/40 dark:bg-bg-secondary/10 px-8 py-6"
           >
             <div>
-              <p className="font-sans font-bold text-sm mb-0.5">¿Cuánto tiempo toma tu proyecto?</p>
-              <p className="text-text-primary/40 text-xs">
+              <p className="font-bold text-base mb-1">¿Cuánto tiempo toma tu proyecto?</p>
+              <p className="text-text-primary/60 text-sm leading-relaxed">
                 Proyectos simples listos en 7 días. Los más complejos en 4–6 semanas. Lo definimos juntos.
               </p>
             </div>
@@ -255,10 +255,10 @@ export const Pricing = () => {
               <SearchCheck className="w-3.5 h-3.5" />
               Incluido en todos los planes
             </span>
-            <h2 className="text-3xl md:text-4xl font-sans font-bold mb-3 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold mb-3 leading-tight">
               Tu web, <span className="text-accent">veloz</span> y visible en Google
             </h2>
-            <p className="text-text-primary/50 max-w-md mx-auto text-sm leading-relaxed">
+            <p className="text-text-primary/65 max-w-md mx-auto text-base leading-relaxed">
               SEO técnico y rendimiento optimizado no son extras — son el estándar en cada proyecto.
             </p>
           </motion.div>
@@ -278,12 +278,12 @@ export const Pricing = () => {
             <div className="flex flex-col lg:flex-row items-stretch">
               {/* Text */}
               <div className="flex-1 p-10 md:p-12">
-                <h3 className="text-xl md:text-2xl font-sans font-bold mb-2 leading-snug">
+                <h3 className="text-2xl md:text-3xl font-bold mb-3 leading-snug">
                   Optimizada para{' '}
                   <span className="text-accent">Google PageSpeed</span>{' '}
                   desde el día uno
                 </h3>
-                <p className="text-text-primary/50 text-sm leading-relaxed mb-7 max-w-md">
+                <p className="text-text-primary/65 text-base leading-relaxed mb-7 max-w-md">
                   Cada página supera los 90 puntos en PageSpeed Insights — carga rápida,
                   mejor posicionamiento y mayor conversión garantizados.
                 </p>
@@ -300,8 +300,8 @@ export const Pricing = () => {
                       key={s.label}
                       className="rounded-xl border border-bg-secondary bg-bg-primary/50 dark:bg-bg-primary/30 p-3.5 text-center"
                     >
-                      <p className="text-xl font-sans font-extrabold text-text-primary">{s.value}</p>
-                      <p className="text-[10px] text-text-primary/40 mt-0.5">{s.label}</p>
+                      <p className="text-xl font-extrabold text-text-primary">{s.value}</p>
+                      <p className="text-xs text-text-primary/60 mt-0.5">{s.label}</p>
                     </div>
                   ))}
                 </div>
@@ -332,7 +332,7 @@ export const Pricing = () => {
               {/* Speedometer */}
               <div className="lg:w-56 w-full flex flex-col items-center justify-center p-8 gap-3 border-t lg:border-t-0 lg:border-l border-bg-secondary bg-bg-secondary/50 dark:bg-bg-secondary/30">
                 <SpeedometerVisual />
-                <p className="text-text-primary/30 text-[10px] text-center leading-relaxed">
+                <p className="text-text-primary/55 text-xs text-center leading-relaxed">
                   Resultado real en<br />PageSpeed Insights
                 </p>
               </div>
@@ -359,10 +359,10 @@ export const Pricing = () => {
                   >
                     <Icon className="w-4 h-4" style={{ color: item.accent }} />
                   </div>
-                  <h4 className="font-sans font-bold text-sm mb-1.5 leading-snug">{item.title}</h4>
-                  <p className="text-text-primary/45 text-xs leading-relaxed">{item.desc}</p>
+                  <h4 className="font-bold text-base mb-2 leading-snug">{item.title}</h4>
+                  <p className="text-text-primary/65 text-sm leading-relaxed">{item.desc}</p>
                   <div
-                    className="mt-4 flex items-center gap-1 text-xs font-semibold opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-300"
+                    className="mt-4 flex items-center gap-1 text-sm font-semibold opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-300"
                     style={{ color: item.accent }}
                   >
                     Incluido en tu plan <ArrowRight className="w-3 h-3" />

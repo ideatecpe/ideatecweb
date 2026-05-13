@@ -1,40 +1,29 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, Zap, Code2 } from "lucide-react";
-import { TechIllustration } from "./TechIllustration";
+import { ArrowRight, Zap, Code2, Globe, Cpu, Smartphone } from "lucide-react";
 import { ProjectModal } from "./ProjectModal";
 
 const HeroVisual = () => {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      {/* Grid Pattern */}
-      <svg
-        className="absolute inset-0 w-full h-full opacity-[0.03]"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern
-            id="grid"
-            width="40"
-            height="40"
-            patternUnits="userSpaceOnUse"
-          >
-            <path
-              d="M 40 0 L 0 0 0 40"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-            />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-      </svg>
+      {/* Background Mesh/Glow */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-accent/20 blur-[120px] rounded-full animate-pulse" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-accent-secondary/10 blur-[150px] rounded-full" />
+      
+      {/* Grid Pattern with Fade */}
+      <div className="absolute inset-0 dot-pattern opacity-[0.15] [mask-image:radial-gradient(ellipse_at_center,black_70%,transparent_100%)]" />
 
-      {/* Animated Lines */}
-
-      {/* Floating Particles */}
-
-      {/* Glow Orbs */}
+      {/* Floating Glass Elements */}
+      <motion.div 
+        animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[20%] right-[15%] w-32 h-32 glass rounded-2xl hidden lg:block opacity-20"
+      />
+      <motion.div 
+        animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-[25%] left-[10%] w-24 h-24 glass rounded-full hidden lg:block opacity-10"
+      />
     </div>
   );
 };
@@ -59,15 +48,15 @@ export const Hero = () => {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-bg-primary">
+    <section className="relative min-h-[90vh] lg:min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-bg-primary">
       <HeroVisual />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Column: Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-left"
           >
@@ -76,34 +65,34 @@ export const Hero = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center gap-2 py-1.5 px-0 rounded text-accent text-[12px] font-sans tracking-[0.2em] uppercase mb-6 font-bold"
+              className="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-bold tracking-wider uppercase mb-8"
             >
-              Desarrollo Web & Mobile
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+              </span>
+              Estudio de Desarrollo Digital
             </motion.div>
 
             {/* Heading */}
-            <h1 className="text-5xl md:text-5xl xl:text-7xl leading-[0.95] mb-8 font-sans tracking-tight">
-              <span className="text-text-primary block mb-2">
-                Hacemos realidad
-              </span>
-              <span className="text-gradient ">tu idea digital.</span>
+            <h1 className="mb-8">
+              <span className="text-text-primary block mb-2 font-light">Transformamos ideas en</span>
+              <span className="text-gradient font-black">Experiencias Increíbles.</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-text-primary/60 max-w-xl mb-10 leading-relaxed font-medium">
-              Desarrollamos plataformas web y aplicaciones móviles a medida para
-              empresas que quieren crecer en serio. Desde el diseño hasta el
-              lanzamiento, somos tu equipo técnico.
+            <p className="text-lg md:text-xl text-text-secondary max-w-xl mb-12 leading-relaxed">
+              En <span className="text-text-primary font-semibold">IDEATEC</span> diseñamos y construimos productos digitales de alto impacto. 
+              Software a medida que impulsa el crecimiento de tu negocio.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center gap-4">
-              {/* CTA principal */}
+            <div className="flex flex-col sm:flex-row items-center gap-5">
               <motion.button
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.97 }}
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => setProjectOpen(true)}
                 id="btn-empezar-proyecto"
-                className="group relative w-full sm:w-auto px-10 py-4 rounded-full bg-accent text-bg-primary font-black text-lg overflow-hidden transition-all duration-300 hover:glow-orange-hover"
+                className="group relative w-full sm:w-auto px-10 py-4 rounded-full bg-accent text-bg-primary font-black text-lg overflow-hidden transition-all duration-300 glow-accent-hover"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   Empezar proyecto
@@ -111,130 +100,103 @@ export const Hero = () => {
                 </span>
               </motion.button>
 
-              {/* CTA WhatsApp — llamativo con fondo verde */}
               <motion.a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                className="group w-full sm:w-auto flex items-center justify-center gap-2.5 px-7 py-4 rounded-full bg-[#25D366]/40 dark:bg-[#25D366]/15 text-[#075E54] dark:text-[#25D366] font-bold text-base hover:bg-[#25D366]/50 dark:hover:bg-[#25D366]/25 transition-all duration-200"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="group w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-bg-secondary border border-white/5 text-text-primary font-bold text-base hover:bg-white/10 transition-all duration-200"
               >
-                <WhatsAppIcon />
+                <WhatsAppIcon className="text-[#25D366]" />
                 Escríbenos
               </motion.a>
-
-              
             </div>
 
-            {/* Stats */}
-            <div className="mt-16 pt-8 border-t border-text-primary/5 flex flex-wrap gap-10">
+            {/* Features/Stats Mini */}
+            <div className="mt-16 pt-10 border-t border-white/5 flex flex-wrap gap-12">
               {[
-                { value: "Diseño", label: "que enamora" },
-                { value: "Código", label: "limpio y escalable" },
-                { value: "Entrega", label: "sin demoras" },
-              ].map((stat) => (
-                <div key={stat.label} className="flex flex-col gap-1">
-                  <span className="text-2xl font-black text-accent">
-                    {stat.value}
-                  </span>
-                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-text-primary/40">
-                    {stat.label}
-                  </span>
+                { icon: <Globe className="w-5 h-5" />, label: "Web Apps" },
+                { icon: <Smartphone className="w-5 h-5" />, label: "Mobile" },
+                { icon: <Cpu className="w-5 h-5" />, label: "Cloud" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3 text-text-secondary">
+                  <div className="p-2 rounded-lg bg-white/5 text-accent">
+                    {item.icon}
+                  </div>
+                  <span className="text-sm font-bold tracking-wide uppercase">{item.label}</span>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Right Column: Mascota */}
+          {/* Right Column: Mascota & Visuals */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden lg:block relative items-center justify-center"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:flex relative items-center justify-center"
           >
-            {/* Orbe de luz detrás */}
-            <motion.div
-              animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-80 h-80 rounded-full bg-accent/20 blur-[80px]"
-            />
-
-            {/* Anillo giratorio exterior */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute w-105 h-105 rounded-full border border-accent/10 border-dashed"
-            />
-
-            {/* Anillo giratorio interior */}
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-              className="absolute w-[320px] h-80 rounded-full border border-accent/20"
-            />
-
-            {/* Partículas orbitando */}
-            {[0, 60, 120, 180, 240, 300].map((deg, i) => (
-              <motion.div
-                key={i}
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 10 + i,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="absolute w-90 h-90"
-                style={{ transformOrigin: "center" }}
+            {/* Main Mascota Image with Floating Effect */}
+            <div className="relative z-20 w-full max-w-lg">
+              <motion.img
+                src="./assets/mascota.png"
+                alt="Mascota Ideatec"
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="w-full h-auto drop-shadow-[0_20px_50px_rgba(249,115,22,0.3)]"
+              />
+              
+              {/* Decorative Floating Cards */}
+              <motion.div 
+                animate={{ y: [0, 15, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute -top-10 -right-10 glass p-5 rounded-2xl border-white/10 flex items-center gap-4"
               >
-                <motion.div
-                  animate={{ scale: [1, 1.5, 1], opacity: [0.4, 1, 0.4] }}
-                  transition={{
-                    duration: 2 + i * 0.3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute w-2 h-2 bg-accent rounded-full"
-                  style={{
-                    top: "0%",
-                    left: "50%",
-                    transform: `rotate(${deg}deg) translateY(-180px)`,
-                  }}
-                />
+                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent">
+                  <Zap className="w-6 h-6 fill-current" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-text-secondary uppercase font-bold tracking-widest">Performance</div>
+                  <div className="text-lg font-black text-text-primary leading-none">100%</div>
+                </div>
               </motion.div>
-            ))}
 
-            {/* Sombra del suelo */}
-            <motion.div
-              animate={{ scaleX: [1, 0.85, 1], opacity: [0.3, 0.15, 0.3] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-0 w-64 h-6 bg-accent/30 rounded-full blur-xl"
-            />
+              <motion.div 
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute -bottom-5 -left-10 glass p-5 rounded-2xl border-white/10 flex items-center gap-4"
+              >
+                <div className="w-10 h-10 rounded-full bg-accent-secondary/20 flex items-center justify-center text-accent-secondary">
+                  <Code2 className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-text-secondary uppercase font-bold tracking-widest">Tech Stack</div>
+                  <div className="text-lg font-black text-text-primary leading-none">Modern</div>
+                </div>
+              </motion.div>
+            </div>
 
-            {/* Mascota flotando */}
-            <motion.img
-              src="./assets/mascota.png"
-              alt="Mascota Ideatec"
-              animate={{ y: [0, -18, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="relative z-10 w-full max-w-md mx-auto"
-              style={{
-                filter:
-                  "drop-shadow(0 0 15px rgba(249,115,22,0.25)) drop-shadow(0 10px 20px rgba(0,0,0,0.25))",
-              }}
-            />
+            {/* Circular Orbits in Background */}
+            <div className="absolute inset-0 flex items-center justify-center -z-10">
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="absolute w-[120%] aspect-square border border-white/5 rounded-full"
+              />
+              <motion.div 
+                animate={{ rotate: -360 }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                className="absolute w-[140%] aspect-square border border-white/5 rounded-full border-dashed"
+              />
+            </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Bottom Gradient Fade */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-bg-primary to-transparent z-10" />
-
-      <ProjectModal
-        isOpen={projectOpen}
-        onClose={() => setProjectOpen(false)}
-      />
+      {/* Bottom Fade */}
+      <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-bg-primary to-transparent pointer-events-none" />
     </section>
   );
 };
+

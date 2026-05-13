@@ -1,85 +1,119 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);
   --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
   --color-accent: var(--accent);
+  --color-accent-secondary: var(--accent-secondary);
 
-  --font-sans: "DM Sans", sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, Arial, sans-serif;
+  --font-display: "Outfit", var(--font-sans);
+  --font-accent: "Bebas Neue", sans-serif;
 }
 
 @variant dark (&:where(.dark, .dark *));
 @variant light (&:where(.light, .light *));
 
 :root {
-  --bg-primary: #0B0D17;
-  --bg-secondary: #1A1D2E;
-  --text-primary: #E8F0FE;
-  --accent: #F97316;
-  --dot-color: #1A1D2E;
+  --bg-primary: #030712;
+  --bg-secondary: #0f172a;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent: #f97316;
+  --accent-secondary: #8b5cf6;
+  --dot-color: #1e293b;
 }
 
 .light {
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F1F5F9;
-  --text-primary: #0F172A;
-  --accent: #F97316;
-  --dot-color: #E2E8F0;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent: #f97316;
+  --accent-secondary: #7c3aed;
+  --dot-color: #e2e8f0;
 }
 
 
 @layer base {
   body {
     @apply bg-bg-primary text-text-primary font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-bold;
+    @apply font-display tracking-tight font-bold;
   }
+
+  /* Escala tipográfica fluida */
+  h1 { font-size: clamp(2.75rem, 6vw, 5rem); line-height: 1.05; letter-spacing: -0.04em; }
+  h2 { font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.1; letter-spacing: -0.03em; }
+  h3 { font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2; letter-spacing: -0.02em; }
+  h4 { font-size: 1.25rem; line-height: 1.4; }
+  
+  p { @apply text-text-secondary; }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-bg-secondary/40 backdrop-blur-md border border-bg-secondary/50;
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
   }
 
   .light .glass {
-    @apply bg-bg-secondary/60 border-bg-secondary/80 shadow-sm;
+    @apply bg-white/70 backdrop-blur-xl border-slate-200/60 shadow-xl shadow-slate-200/50;
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-text-primary to-accent;
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-accent;
+  }
+  
+  .light .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-slate-800 to-accent;
   }
 
-  .glow-orange {
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent-secondary;
   }
 
-  .glow-orange-hover:hover {
-    box-shadow: 0 0 30px rgba(249, 115, 22, 0.5);
+  .glow-accent {
+    box-shadow: 0 0 30px -5px rgba(249, 115, 22, 0.4);
+  }
+
+  .glow-accent-hover:hover {
+    box-shadow: 0 0 40px -2px rgba(249, 115, 22, 0.6);
   }
 
   .dot-pattern {
-    background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
-    background-size: 30px 30px;
+    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+    background-size: 32px 32px;
   }
 
-  /* Scrollbar personalizado adaptable y estético */
-  ::-webkit-scrollbar {
-    width: 14px;
+  .mask-radial {
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
   }
-  ::-webkit-scrollbar-track {
-    background: transparent;
+
+  /* Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
+
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { @apply bg-bg-primary; }
   ::-webkit-scrollbar-thumb {
-    @apply bg-text-primary/30 rounded-full border-4 border-transparent bg-clip-padding hover:bg-text-primary/50 transition-colors;
-  }
-
-  /* Para Firefox */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--text-primary) transparent;
+    @apply bg-slate-700 rounded-full border-3 border-bg-primary hover:bg-accent transition-colors;
   }
 }
+

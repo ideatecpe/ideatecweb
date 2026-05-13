@@ -21,15 +21,15 @@ export const WhyUs = () => {
             <p className="text-lg text-text-primary/60 mb-10 leading-relaxed">
               No somos solo programadores, somos tus socios tecnológicos. Entendemos tu negocio y construimos herramientas que generan valor real.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {features.map((f) => (
-                <div key={f.title} className="flex gap-4">
-                  <div className="shrink-0 w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                <div key={f.title} className="flex gap-4 p-4 rounded-2xl border border-bg-secondary/50 bg-bg-secondary/20 hover:bg-bg-secondary/40 transition-colors duration-300">
+                  <div className="shrink-0 w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
                     <f.icon className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <h4 className="font-sans font-bold mb-2">{f.title}</h4>
-                    <p className="text-sm text-text-primary/50">{f.description}</p>
+                    <h4 className="font-bold text-sm mb-1">{f.title}</h4>
+                    <p className="text-sm text-text-primary/50 leading-relaxed">{f.description}</p>
                   </div>
                 </div>
               ))}
@@ -56,8 +56,10 @@ export const WhyUs = () => {
 
           {/* Header */}
           <div className="text-center mb-16">
-            <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-3">Nuestra empresa</p>
-            <h2 className="text-4xl md:text-5xl font-sans font-bold leading-tight">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-accent mb-4 px-4 py-2 rounded-full border border-accent/20 bg-accent/5">
+              Nuestra empresa
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight mt-4">
               ¿Quiénes <span className="text-accent">somos?</span>
             </h2>
           </div>
@@ -98,7 +100,7 @@ export const WhyUs = () => {
                 </div>
                 <div>
                   <p className="text-xs text-text-primary/70 uppercase tracking-widest mb-0.5">RUC</p>
-                  <p className="font-semibold text-text-primary text-sm">20544832019</p>
+                  <p className="font-semibold text-text-primary text-sm">20601841038</p>
                 </div>
               </div>
 

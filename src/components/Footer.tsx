@@ -202,7 +202,7 @@ export const Footer = () => {
               </div>
             </a>
 
-            <p className="text-sm text-text-primary/50 leading-relaxed max-w-xs">
+            <p className="text-sm text-text-primary/65 leading-relaxed max-w-xs">
               Transformamos ideas en soluciones digitales de alto impacto para
               empresas que quieren crecer.
             </p>
@@ -210,37 +210,37 @@ export const Footer = () => {
 
           {/* Col 2: Navegación */}
           <div className="flex flex-col gap-4">
-            <p className="text-xs font-bold uppercase tracking-widest text-text-primary/40">
+            <p className="text-xs font-bold uppercase tracking-widest text-text-primary/55">
               Navegación
             </p>
             <div className="flex flex-col gap-3">
               <a
                 href="#servicios"
-                className="text-sm text-text-primary/60 hover:text-accent transition-colors w-fit"
+                className="text-sm text-text-primary/70 hover:text-accent transition-colors w-fit"
               >
                 Servicios
               </a>
               <a
                 href="#nosotros"
-                className="text-sm text-text-primary/60 hover:text-accent transition-colors w-fit"
+                className="text-sm text-text-primary/70 hover:text-accent transition-colors w-fit"
               >
                 Nosotros
               </a>
               <a
                 href="#portafolio"
-                className="text-sm text-text-primary/60 hover:text-accent transition-colors w-fit"
+                className="text-sm text-text-primary/70 hover:text-accent transition-colors w-fit"
               >
                 Portafolio
               </a>
               <a
                 href="#precios"
-                className="text-sm text-text-primary/60 hover:text-accent transition-colors w-fit"
+                className="text-sm text-text-primary/70 hover:text-accent transition-colors w-fit"
               >
                 Precios
               </a>
               <a
                 href="#contacto"
-                className="text-sm text-text-primary/60 hover:text-accent transition-colors w-fit"
+                className="text-sm text-text-primary/70 hover:text-accent transition-colors w-fit"
               >
                 Contacto
               </a>
@@ -249,23 +249,23 @@ export const Footer = () => {
 
           {/* Col 3: Contacto */}
           <div className="flex flex-col gap-4">
-            <p className="text-xs font-bold uppercase tracking-widest text-text-primary/40">
+            <p className="text-xs font-bold uppercase tracking-widest text-text-primary/55">
               Contacto
             </p>
             <div className="flex items-start gap-3">
               <MapPin className="w-4 h-4 text-accent mt-0.5 shrink-0" />
-              <p className="text-sm text-text-primary/60 leading-relaxed">
-                Cal. Don Pompeyo Nro. 188 Urb. Santa Rosa (Altura Real Plaza de
-                Guardia Civil)
+              <p className="text-sm text-text-primary/70 leading-relaxed">
+                AV. PETIT THOURAS NRO. 1775 INT. 501 (ALTURA DE CUADRA 17 DE
+                AVENIDA AREQUIPA.)
                 <br />
-                Lima - Lima - Santiago de Surco
+                Lima - Lima - Lince
               </p>
             </div>
             <div className="flex items-center gap-3">
               <Mail className="w-4 h-4 text-accent shrink-0" />
               <a
                 href="mailto:info@ideatec.com.pe"
-                className="text-sm text-text-primary/60 hover:text-accent transition-colors"
+                className="text-sm text-text-primary/70 hover:text-accent transition-colors"
               >
                 info@ideatec.com.pe
               </a>
@@ -274,7 +274,7 @@ export const Footer = () => {
               <Phone className="w-4 h-4 text-accent shrink-0" />
               <a
                 href="tel:+51912903330"
-                className="text-sm text-text-primary/60 hover:text-accent transition-colors"
+                className="text-sm text-text-primary/70 hover:text-accent transition-colors"
               >
                 912 903 330
               </a>
@@ -282,11 +282,11 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-bg-secondary/30">
-          <p className="text-sm text-text-primary/40">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-bg-secondary/50">
+          <p className="text-sm text-text-primary/55">
             © 2026 IDEATEC. Todos los derechos reservados.
           </p>
-          <div className="flex gap-6 text-xs text-text-primary/40 font-bold uppercase tracking-widest">
+          <div className="flex gap-6 text-xs text-text-primary/55 font-bold uppercase tracking-widest">
             <button onClick={() => setPrivacyOpen(true)} className="hover:text-accent transition-colors cursor-pointer">
               Privacidad
             </button>

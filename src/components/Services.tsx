@@ -37,7 +37,7 @@ const servicesData = [
     ],
     stack: ['Flutter', 'React Native', 'Firebase', 'REST APIs', 'SQLite'],
     time: '4 – 12 semanas',
-    color: '#8B5CF6',
+    color: '#F97316',
   },
   {
     icon: Palette,
@@ -54,7 +54,7 @@ const servicesData = [
     ],
     stack: ['Figma', 'Adobe XD', 'Protopie', 'Principle', 'Maze'],
     time: '1 – 4 semanas',
-    color: '#EC4899',
+    color: '#F97316',
   },
   {
     icon: ShoppingCart,
@@ -71,7 +71,7 @@ const servicesData = [
     ],
     stack: ['WooCommerce', 'Shopify', 'Next.js Commerce', 'Stripe', 'Culqi'],
     time: '3 – 8 semanas',
-    color: '#10B981',
+    color: '#F97316',
   },
   {
     icon: Cpu,
@@ -88,7 +88,7 @@ const servicesData = [
     ],
     stack: ['Node.js', 'Python', 'PostgreSQL', 'Docker', 'Redis', 'AWS'],
     time: '6 – 24 semanas',
-    color: '#F59E0B',
+    color: '#F97316',
   },
   {
     icon: BarChart3,
@@ -105,9 +105,10 @@ const servicesData = [
     ],
     stack: ['Reuniones', 'Talleres', 'Documentación', 'Roadmaps', 'KPIs'],
     time: '1 – 4 semanas',
-    color: '#06B6D4',
+    color: '#F97316',
   },
 ];
+
 
 const ServiceDetailModal = ({ service, onClose, onRequestProject }: {
   service: typeof servicesData[0] | null;
@@ -119,55 +120,55 @@ const ServiceDetailModal = ({ service, onClose, onRequestProject }: {
 
   return (
     <Modal isOpen={!!service} onClose={onClose} size="lg">
-      <div className="px-8 py-6">
+      <div className="px-8 py-10 bg-bg-primary">
         {/* Header */}
-        <div className="flex items-start gap-5 mb-6">
-          
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 mb-10">
           <div
-            className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0"
-            style={{ backgroundColor: `${service.color}15` }}
+            className="w-20 h-20 rounded-3xl flex items-center justify-center shrink-0 shadow-2xl"
+            style={{ backgroundColor: `${service.color}20`, border: `1px solid ${service.color}40` }}
           >
-            <Icon className="w-7 h-7" style={{ color: service.color }} />
+            <Icon className="w-10 h-10" style={{ color: service.color }} />
           </div>
-          <div>
-            <h2 className="text-2xl font-sans font-medium text-text-primary mb-1">{service.title}</h2>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-widest px-0 py-1 rounded-full" style={{ color: service.color }}>
-                Tiempo estimado: {service.time}
+          <div className="text-center sm:text-left">
+            <h2 className="text-3xl font-black mb-2 text-text-primary">{service.title}</h2>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: service.color }} />
+              <span className="text-[10px] font-black uppercase tracking-widest text-text-secondary">
+                Tiempo: {service.time}
               </span>
             </div>
           </div>
         </div>
 
-        <p className="text-text-primary/70 leading-relaxed mb-8 text-sm">{service.fullDescription}</p>
+        <p className="text-lg text-text-secondary leading-relaxed mb-10">{service.fullDescription}</p>
 
-        {/* Features */}
-        <div className="mb-8">
-          <h4 className="text-xs font-sans uppercase tracking-widest text-text-primary/70 mb-4">¿Qué incluye?</h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {service.features.map((f) => (
-              <div key={f} className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ backgroundColor: `${service.color}15` }}>
-                  <Check className="w-3 h-3" style={{ color: service.color }} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+          {/* Features */}
+          <div>
+            <h4 className="text-xs uppercase tracking-widest text-text-primary/40 font-black mb-6">¿Qué incluye?</h4>
+            <div className="space-y-4">
+              {service.features.map((f) => (
+                <div key={f} className="flex items-start gap-3">
+                  <Check className="w-5 h-5 mt-0.5 shrink-0" style={{ color: service.color }} />
+                  <span className="text-sm font-medium text-text-secondary">{f}</span>
                 </div>
-                <span className="text-sm text-text-primary/70">{f}</span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Tech Stack */}
-        <div className="mb-8">
-          <h4 className="text-xs font-sans uppercase tracking-widest text-text-primary/70 mb-4">Tecnologías / Herramientas</h4>
-          <div className="flex flex-wrap gap-2">
-            {service.stack.map((tech) => (
-              <span
-                key={tech}
-                className="text-xs px-3 py-1.5 rounded-full bg-bg-secondary/80 dark:bg-bg-secondary/60 text-text-primary/60 border border-bg-secondary font-medium"
-              >
-                {tech}
-              </span>
-            ))}
+          {/* Tech Stack */}
+          <div>
+            <h4 className="text-xs uppercase tracking-widest text-text-primary/40 font-black mb-6">Tech Stack</h4>
+            <div className="flex flex-wrap gap-2">
+              {service.stack.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-xs font-bold text-text-primary hover:border-white/20 transition-colors"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -176,13 +177,13 @@ const ServiceDetailModal = ({ service, onClose, onRequestProject }: {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => onRequestProject(service.title)}
-          className="w-full py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2 transition-all duration-300"
+          className="w-full py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-xl"
           style={{
             backgroundColor: service.color,
-            color: '#0B0D17',
+            color: '#030712',
           }}
         >
-          Solicitar este servicio <ArrowRight className="w-4 h-4" />
+          Solicitar este servicio <ArrowRight className="w-5 h-5" />
         </motion.button>
       </div>
     </Modal>
@@ -194,18 +195,38 @@ const ServiceCard = ({ icon: Icon, title, description, index, color, onClick }: 
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    transition={{ delay: index * 0.1 }}
+    transition={{ delay: index * 0.1, duration: 0.6 }}
     onClick={onClick}
-    className="glass p-8 rounded-3xl group hover:border-accent/30 transition-all duration-500 cursor-pointer"
+    className="glass p-10 rounded-[2.5rem] group hover:border-accent/30 transition-all duration-500 cursor-pointer relative overflow-hidden flex flex-col h-full"
   >
-    <div className="w-14 h-14 bg-bg-primary rounded-2xl flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-500">
-      <Icon className="w-7 h-7 text-accent group-hover:text-bg-primary transition-colors duration-500" />
+    {/* Decorative Gradient Background */}
+    <div 
+      className="absolute -top-20 -right-20 w-40 h-40 blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 rounded-full"
+      style={{ backgroundColor: color }}
+    />
+
+    <div
+      className="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-all duration-500 group-hover:scale-110 shadow-lg"
+      style={{ backgroundColor: `${color}15`, border: `1px solid ${color}30` }}
+    >
+      <Icon className="w-8 h-8 transition-colors duration-500" style={{ color }} />
     </div>
-    <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-accent transition-colors">{title}</h3>
-    <p className="text-text-primary/60 leading-relaxed mb-4">{description}</p>
-    <span className="text-accent text-sm font-semibold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-      Ver más <ArrowRight className="w-4 h-4" />
-    </span>
+    
+    <h3 
+      className="text-2xl font-black mb-4 group-hover:text-accent transition-colors duration-300 leading-tight"
+      style={{ fontFamily: 'Arial, sans-serif' }}
+    >
+      {title}
+    </h3>
+    
+    <p className="text-text-secondary leading-relaxed mb-8 flex-grow">
+      {description}
+    </p>
+    
+    <div className="flex items-center gap-2 text-accent font-black text-sm uppercase tracking-widest group-hover:gap-4 transition-all duration-300">
+      Ver detalles
+      <ArrowRight className="w-5 h-5" />
+    </div>
   </motion.div>
 );
 
@@ -223,13 +244,29 @@ export const Services = () => {
   };
 
   return (
-    <section id="servicios" className="py-24 bg-bg-primary relative">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-sans font-bold mb-4">Nuestros Servicios</h2>
-          <p className="text-text-primary/60 max-w-xl mx-auto">Ofrecemos un abanico completo de soluciones digitales para llevar tu empresa al siguiente nivel.</p>
+    <section id="servicios" className="py-32 bg-bg-primary relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-3xl mb-20">
+          <motion.span 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-accent mb-6 px-4 py-2 rounded-full border border-accent/20 bg-accent/5"
+          >
+            Servicios Expertos
+          </motion.span>
+          <h2 className="mb-6 font-black leading-tight">
+            Elevamos tu negocio con <br />
+            <span className="text-gradient">Soluciones de Clase Mundial.</span>
+          </h2>
+          <p className="text-xl text-text-secondary leading-relaxed">
+            Combinamos estrategia, diseño y tecnología para crear productos digitales que realmente funcionan.
+          </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {servicesData.map((service, index) => (
             <ServiceCard
               key={service.title}
@@ -258,3 +295,4 @@ export const Services = () => {
     </section>
   );
 };
+
