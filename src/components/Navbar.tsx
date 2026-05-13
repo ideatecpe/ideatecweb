@@ -7,7 +7,7 @@ export const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(() => typeof window !== 'undefined' ? window.scrollY > 50 : false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState('inicio');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,7 +18,7 @@ export const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const sectionIds = ['servicios', 'nosotros', 'portafolio', 'como-lo-hacemos', 'contacto'];
+    const sectionIds = ['inicio', 'servicios', 'nosotros', 'portafolio', 'como-lo-hacemos', 'contacto'];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -37,6 +37,7 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
+    { name: 'Inicio', href: '#inicio', id: 'inicio' },
     { name: 'Servicios', href: '#servicios', id: 'servicios' },
     { name: 'Nosotros', href: '#nosotros', id: 'nosotros' },
     { name: 'Portafolio', href: '#portafolio', id: 'portafolio' },
@@ -64,7 +65,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${
         isScrolled
           ? 'py-4'
           : 'py-8'
@@ -72,12 +73,19 @@ export const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6">
         <div 
-          className={`flex justify-between items-center transition-all duration-500 px-6 py-3 rounded-full ${
+          className={`flex justify-between items-center transition-all duration-700 px-8 py-3 rounded-2xl relative overflow-hidden ${
             isScrolled 
-              ? 'glass shadow-lg shadow-black/20' 
+              ? 'glass-nav shadow-2xl shadow-black/40' 
               : 'bg-transparent'
           }`}
         >
+          {/* Fondo degradado sutil para el estado scrolled */}
+          {isScrolled && (
+            <div className="absolute inset-0 opacity-20 pointer-events-none">
+              <div className="absolute inset-0 bg-gradient-to-r from-accent/20 via-transparent to-accent/10" />
+              <div className="absolute -inset-[100%] animate-[spin_20s_linear_infinite] bg-[conic-gradient(from_0deg,transparent,rgba(249,115,22,0.1),transparent)]" />
+            </div>
+          )}
           <a 
             href="/" 
             onClick={(e) => {
@@ -105,7 +113,7 @@ export const Navbar = () => {
                   key={link.id}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.id)}
-                  className={`px-4 py-2 text-sm font-bold transition-all duration-300 rounded-full ${
+                  className={`px-4 py-2 text-sm font-bold transition-all duration-300 rounded-full relative group/link ${
                     activeSection === link.id
                       ? 'bg-accent text-bg-primary'
                       : 'text-text-primary/70 hover:text-text-primary hover:bg-white/5'
@@ -165,7 +173,7 @@ export const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-full left-0 w-full px-6 py-4 md:hidden"
           >
-            <div className="glass rounded-3xl p-6 flex flex-col gap-4 shadow-2xl">
+            <div className="glass-nav rounded-3xl p-8 flex flex-col gap-6 shadow-2xl border-none">
               {navLinks.map((link) => (
                 <a
                   key={link.id}

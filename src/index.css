@@ -23,7 +23,7 @@
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --accent: #f97316;
-  --accent-secondary: #8b5cf6;
+  --accent-secondary: #ff8c00;
   --dot-color: #1e293b;
 }
 
@@ -63,11 +63,19 @@
 
 @layer utilities {
   .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+    @apply bg-white/5 backdrop-blur-xl shadow-2xl;
   }
 
   .light .glass {
-    @apply bg-white/70 backdrop-blur-xl border-slate-200/60 shadow-xl shadow-slate-200/50;
+    @apply bg-white/70 backdrop-blur-xl shadow-xl shadow-slate-200/50;
+  }
+
+  .glass-nav {
+    @apply backdrop-blur-md bg-bg-primary/70;
+  }
+
+  .light .glass-nav {
+    @apply backdrop-blur-md bg-white/80;
   }
 
   .text-gradient {
