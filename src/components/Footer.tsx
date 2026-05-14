@@ -140,7 +140,7 @@ export const Footer = () => {
     <>
     <footer
       ref={wrapRef}
-      className="relative overflow-hidden py-12 bg-bg-primary border-t border-bg-secondary"
+     className="relative overflow-hidden py-12 bg-bg-primary border-t border-[#f7e4c7] dark:border-bg-secondary"
     >
       {/* Binary rain canvas */}
       <canvas
