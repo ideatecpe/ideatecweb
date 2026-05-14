@@ -86,7 +86,7 @@ export const Hero = () => {
     <section
       ref={containerRef}
       id="inicio"
-      className="relative min-h-screen lg:min-h-screen flex items-center overflow-hidden px-70"
+      className="relative min-h-screen lg:min-h-screen flex items-center overflow-hidden"
     >
       <AnimatedGradientOrbs />
       <TechBackground />
