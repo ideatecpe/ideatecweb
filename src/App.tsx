@@ -4,7 +4,7 @@ import { Hero } from './components/Hero';
 import { Services } from './components/Services';
 import { WhyUs } from './components/WhyUs';
 import { Portfolio } from './components/Portfolio';
-import { Testimonials } from './components/Testimonials';
+// import { Testimonials } from './components/Testimonials';
 import { Pricing } from './components/Pricing';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -32,7 +32,7 @@ export default function App() {
         <Services />
         <WhyUs />
         <Portfolio />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Pricing />
         <Contact />
       </main>
