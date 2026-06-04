@@ -8,7 +8,7 @@ Este es el sitio web corporativo de IDEATEC, diseñado para mostrar nuestros ser
 
 ### Características Principales:
 - **Diseño Premium**: Interfaz moderna con soporte para Modo Oscuro y Modo Claro.
-- **Portafolio Dinámico**: Exhibición de casos de éxito como FactuNet.
+- **Portafolio Dinámico**: Exhibición de casos de éxito como FactuFly.
 - **Formulario Inteligente**: Integración con EmailJS y WhatsApp para una comunicación fluida.
 - **Arquitectura Robusta**: Construido con React, Vite, Tailwind CSS y Motion para animaciones fluidas.
 

@@ -2,126 +2,47 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-primary: var(--bg-primary);
-  --color-bg-secondary: var(--bg-secondary);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-accent: var(--accent);
-  --color-accent-secondary: var(--accent-secondary);
-
   --font-sans: "Inter", system-ui, -apple-system, Arial, sans-serif;
   --font-display: "Outfit", var(--font-sans);
   --font-accent: "Bebas Neue", sans-serif;
 }
 
-@variant dark (&:where(.dark, .dark *));
-@variant light (&:where(.light, .light *));
-
-:root {
-  --bg-primary: #030712;
-  --bg-secondary: #0f172a;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --accent: #f97316;
-  --accent-secondary: #ff8c00;
-  --dot-color: #1e293b;
-}
-
-.light {
-  --bg-primary: #fffaf2;
-  --bg-secondary: #f8fafc;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --accent: #f97316;
-  --accent-secondary: #7c3aed;
-  --dot-color: #e2e8f0;
-}
-
-
 @layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
   body {
-    @apply bg-bg-primary text-text-primary font-sans;
+    @apply bg-white text-gray-900 font-sans;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     font-size: 16px;
     line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight font-bold;
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #111827;
   }
 
-  /* Escala tipográfica fluida */
-  h1 { font-size: clamp(2.75rem, 6vw, 5rem); line-height: 1.05; letter-spacing: -0.04em; }
-  h2 { font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.1; letter-spacing: -0.03em; }
-  h3 { font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2; letter-spacing: -0.02em; }
-  h4 { font-size: 1.25rem; line-height: 1.4; }
-  
-  p { @apply text-text-secondary; }
+  p { color: #6b7280; }
+
+  a { color: inherit; text-decoration: none; }
 }
 
 @layer utilities {
-  .glass {
-    @apply bg-white/5 backdrop-blur-xl shadow-2xl;
-  }
-
-  .light .glass {
-    @apply bg-white/70 backdrop-blur-xl shadow-xl shadow-slate-200/50;
-  }
-
-  .glass-nav {
-    @apply backdrop-blur-md bg-bg-primary/70;
-  }
-
-  .light .glass-nav {
-    @apply backdrop-blur-md bg-white/80;
-  }
-
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-accent;
-  }
-  
-  .light .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-slate-800 to-accent;
-  }
-
-  .text-gradient-accent {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent-secondary;
-  }
-
-  .glow-accent {
-    box-shadow: 0 0 30px -5px rgba(249, 115, 22, 0.4);
-  }
-
-  .glow-accent-hover:hover {
-    box-shadow: 0 0 40px -2px rgba(249, 115, 22, 0.6);
-  }
-
-  .dot-pattern {
-    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-    background-size: 32px 32px;
-  }
-
-  .mask-radial {
-    mask-image: radial-gradient(circle at center, black, transparent 80%);
-  }
-
-  /* Animations */
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-
-  .animate-float {
-    animation: float 5s ease-in-out infinite;
-  }
+  .accent { color: #ea580c; }
 
   /* Scrollbar */
-  ::-webkit-scrollbar { width: 10px; }
-  ::-webkit-scrollbar-track { @apply bg-bg-primary; }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-slate-700 rounded-full border-3 border-bg-primary hover:bg-accent transition-colors;
-  }
-}
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #f9fafb; }
+  ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #ea580c; }
 
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-float { animation: float 6s ease-in-out infinite; }
+}

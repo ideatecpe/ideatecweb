@@ -10,105 +10,97 @@ export const Contact = () => {
     e.preventDefault();
     setStatus('loading');
 
-    const SERVICE_ID = "service_2w3uxbc";
-    const TEMPLATE_ID = "template_2616ev4";
-    const PUBLIC_KEY = "d1v-EfEMSzeF17TP0";
+    const SERVICE_ID  = 'service_2w3uxbc';
+    const TEMPLATE_ID = 'template_2616ev4';
+    const PUBLIC_KEY  = 'd1v-EfEMSzeF17TP0';
 
     const form = e.currentTarget;
     const formData = new FormData(form);
 
     try {
       emailjs.init(PUBLIC_KEY);
-      
       const now = new Date();
-      const fullDateTime = now.toLocaleString('es-PE', {
-        dateStyle: 'full',
-        timeStyle: 'short'
-      });
+      const fullDateTime = now.toLocaleString('es-PE', { dateStyle: 'full', timeStyle: 'short' });
 
-      const templateParams = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        // Añadimos la fecha al final del mensaje por si el campo FECHA falla
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+        name:    formData.get('name'),
+        email:   formData.get('email'),
         message: `${formData.get('message')}\n\n(Enviado el: ${fullDateTime})`,
-        fecha: fullDateTime,
-        date: fullDateTime,
-        time: now.toLocaleTimeString('es-PE'),
-        FECHA: fullDateTime
-      };
+        fecha:   fullDateTime,
+        FECHA:   fullDateTime,
+      }, PUBLIC_KEY);
 
-      const result = await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        templateParams,
-        PUBLIC_KEY
-      );
-
-      console.log("EmailJS Success:", result);
       setStatus('success');
       form.reset();
-    } catch (error: any) {
-      console.error("Error detallado de EmailJS:", error);
-      // Si el error es un objeto con texto (ej: "The public key is invalid")
-      if (error?.text) console.error("Mensaje de error:", error.text);
+    } catch {
       setStatus('error');
     }
   };
 
   return (
-    <section id="contacto" className="py-24 bg-bg-primary relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="glass rounded-[40px] p-8 md:p-16 flex flex-col lg:flex-row gap-16">
-          
+    <section id="contacto" className="bg-gray-50 border-b border-gray-100 py-20 lg:py-28">
+      <div className="max-w-7xl mx-auto px-6">
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
           {/* LEFT */}
-          <div className="lg:w-1/2">
-            <h2 className="text-4xl md:text-6xl font-sans font-bold mb-8 leading-tight">
-              ¿Listo para <span className="text-accent">innovar</span>?
+          <div>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-orange-600 border-l-4 border-orange-500 pl-3 mb-4">
+              Contacto
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 leading-tight">
+              ¿Listo para <span className="text-orange-600">innovar</span>?
             </h2>
-            <p className="text-lg text-text-primary/60 mb-12">
-              Cuéntanos sobre tu proyecto. Nuestro equipo se pondrá en contacto contigo en menos de 24 horas para agendar una consultoría gratuita.
+            <p className="text-gray-500 leading-relaxed mb-10 max-w-md">
+              Cuéntanos sobre tu proyecto. Nuestro equipo se pondrá en contacto contigo en menos de 24 horas
+              para agendar una consultoría gratuita.
             </p>
-            <div className="space-y-6">
+
+            <div className="space-y-5">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-accent" />
+                <div className="w-11 h-11 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+                  <Mail className="w-5 h-5 text-orange-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-text-primary/40 uppercase font-bold tracking-widest">Email</p>
-                  <p className="text-lg font-medium text-text-primary">info@ideatec.com.pe</p>
+                  <p className="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-0.5">Email</p>
+                  <a href="mailto:info@ideatec.com.pe" className="text-gray-800 font-medium hover:text-orange-600 transition-colors">
+                    info@ideatec.com.pe
+                  </a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-accent" />
+                <div className="w-11 h-11 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+                  <Phone className="w-5 h-5 text-orange-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-text-primary/40 uppercase font-bold tracking-widest">Teléfono / WhatsApp</p>
-                  <p className="text-lg font-medium text-text-primary">912 903 330</p>
+                  <p className="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-0.5">Teléfono / WhatsApp</p>
+                  <a href="tel:+51912903330" className="text-gray-800 font-medium hover:text-orange-600 transition-colors">
+                    +51 912 903 330
+                  </a>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* RIGHT */}
-          <div className="lg:w-1/2">
+          {/* RIGHT: Form */}
+          <div className="bg-white rounded-2xl border border-gray-200 p-8">
             <AnimatePresence mode="wait">
               {status === 'success' ? (
                 <motion.div
                   key="success"
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  className="h-full flex flex-col items-center justify-center text-center py-12"
+                  exit={{ opacity: 0 }}
+                  className="flex flex-col items-center justify-center text-center py-14"
                 >
-                  <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center mb-6">
-                    <CheckCircle2 className="w-10 h-10 text-accent" />
+                  <div className="w-16 h-16 rounded-full bg-orange-50 border border-orange-100 flex items-center justify-center mb-5">
+                    <CheckCircle2 className="w-8 h-8 text-orange-600" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-2">¡Mensaje recibido!</h3>
-                  <p className="text-text-primary/60 mb-8">Gracias por escribirnos. Te contactaremos muy pronto.</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">¡Mensaje recibido!</h3>
+                  <p className="text-gray-500 mb-8 text-sm">Gracias por escribirnos. Te contactaremos muy pronto.</p>
                   <button
                     onClick={() => setStatus('idle')}
-                    className="px-8 py-3 rounded-xl bg-bg-secondary text-text-primary font-semibold hover:bg-bg-secondary/80 transition-all"
+                    className="px-6 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-gray-700 text-sm font-semibold hover:bg-gray-100 transition-colors"
                   >
                     Enviar otro mensaje
                   </button>
@@ -119,62 +111,49 @@ export const Contact = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="space-y-6"
+                  className="space-y-5"
                   onSubmit={handleSubmit}
                 >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-text-primary/60 ml-1">
-                        Nombre
-                      </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Nombre</label>
                       <input
                         name="name"
                         type="text"
                         required
-                        className="w-full bg-bg-primary border border-bg-secondary rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors text-text-primary"
                         placeholder="Tu nombre"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-50 transition-colors"
                       />
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-text-primary/60 ml-1">
-                        Email
-                      </label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Email</label>
                       <input
                         name="email"
                         type="email"
                         required
-                        className="w-full bg-bg-primary border border-bg-secondary rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors text-text-primary"
                         placeholder="tu@email.com"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-50 transition-colors"
                       />
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-text-primary/60 ml-1">
-                      Mensaje
-                    </label>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Mensaje</label>
                     <textarea
                       name="message"
                       rows={5}
                       required
-                      className="w-full bg-bg-primary border border-bg-secondary rounded-2xl px-6 py-4 focus:outline-none focus:border-accent transition-colors resize-none text-text-primary"
                       placeholder="Cuéntanos sobre tu idea..."
+                      className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-50 transition-colors resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="w-full bg-accent text-bg-primary font-bold py-5 rounded-2xl text-lg hover:glow-orange-hover transition-all duration-300 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full bg-orange-600 text-white font-semibold py-3.5 rounded-lg text-sm hover:bg-orange-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
-                    {status === 'loading' ? (
-                      'Enviando...'
-                    ) : (
-                      <>
-                        <Send className="w-5 h-5" />
-                        Enviar Mensaje
-                      </>
-                    )}
+                    {status === 'loading' ? 'Enviando...' : <><Send className="w-4 h-4" /> Enviar mensaje</>}
                   </button>
 
                   {status === 'error' && (
@@ -186,7 +165,6 @@ export const Contact = () => {
               )}
             </AnimatePresence>
           </div>
-
         </div>
       </div>
     </section>

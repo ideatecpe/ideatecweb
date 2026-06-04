@@ -20,7 +20,6 @@ const servicesData = [
     ],
     stack: ['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
     time: '2 – 8 semanas',
-    color: '#F97316',
   },
   {
     icon: Smartphone,
@@ -37,7 +36,6 @@ const servicesData = [
     ],
     stack: ['Flutter', 'React Native', 'Firebase', 'REST APIs', 'SQLite'],
     time: '4 – 12 semanas',
-    color: '#F97316',
   },
   {
     icon: Palette,
@@ -54,7 +52,6 @@ const servicesData = [
     ],
     stack: ['Figma', 'Adobe XD', 'Protopie', 'Principle', 'Maze'],
     time: '1 – 4 semanas',
-    color: '#F97316',
   },
   {
     icon: ShoppingCart,
@@ -71,24 +68,22 @@ const servicesData = [
     ],
     stack: ['WooCommerce', 'Shopify', 'Next.js Commerce', 'Stripe', 'Culqi'],
     time: '3 – 8 semanas',
-    color: '#F97316',
   },
   {
     icon: Cpu,
     title: 'Software a Medida',
     description: 'Soluciones de software personalizadas para resolver problemas específicos de tu flujo de trabajo.',
-    fullDescription: 'Cuando las soluciones genéricas no son suficientes, creamos software personalizado exactamente para lo que necesitas. ERPs, CRMs, sistemas de gestión, automatizaciones y más. Tu proceso, digitalizado a la perfección.',
+    fullDescription: 'Cuando las soluciones genéricas no son suficientes, creamos software personalizado exactamente para lo que necesitas. ERPs, CRMs, sistemas de gestión, automatizaciones y más.',
     features: [
       'ERPs y CRMs personalizados',
       'Automatización de procesos empresariales',
-      'Integraciones entre sistemas (ERP, contabilidad, etc.)',
+      'Integraciones entre sistemas',
       'Dashboards y reportes en tiempo real',
       'APIs y microservicios',
       'Migración y modernización de sistemas legacy',
     ],
     stack: ['Node.js', 'Python', 'PostgreSQL', 'Docker', 'Redis', 'AWS'],
     time: '6 – 24 semanas',
-    color: '#F97316',
   },
   {
     icon: BarChart3,
@@ -105,194 +100,139 @@ const servicesData = [
     ],
     stack: ['Reuniones', 'Talleres', 'Documentación', 'Roadmaps', 'KPIs'],
     time: '1 – 4 semanas',
-    color: '#F97316',
   },
 ];
 
-
-const ServiceDetailModal = ({ service, onClose, onRequestProject }: {
+const ServiceModal = ({ service, onClose, onRequest }: {
   service: typeof servicesData[0] | null;
   onClose: () => void;
-  onRequestProject: (title: string) => void;
+  onRequest: (title: string) => void;
 }) => {
   if (!service) return null;
   const Icon = service.icon;
 
   return (
     <Modal isOpen={!!service} onClose={onClose} size="lg">
-      <div className="px-8 py-10 bg-bg-primary">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 mb-10">
-          <div
-            className="w-20 h-20 rounded-3xl flex items-center justify-center shrink-0 shadow-2xl"
-            style={{ backgroundColor: `${service.color}20`, border: `1px solid ${service.color}40` }}
+      <div className="bg-white">
+        <div className="px-8 py-8 border-b border-gray-100 flex items-start gap-5">
+          <div className="w-14 h-14 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+            <Icon className="w-7 h-7 text-orange-600" />
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-1">{service.title}</h2>
+            <span className="text-xs font-semibold text-orange-600 uppercase tracking-widest">
+              Tiempo estimado: {service.time}
+            </span>
+          </div>
+        </div>
+
+        <div className="px-8 py-8">
+          <p className="text-gray-500 leading-relaxed mb-8">{service.fullDescription}</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h4 className="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-4">¿Qué incluye?</h4>
+              <div className="space-y-3">
+                {service.features.map((f) => (
+                  <div key={f} className="flex items-start gap-3">
+                    <Check className="w-4 h-4 mt-0.5 text-orange-600 shrink-0" />
+                    <span className="text-sm text-gray-600">{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4 className="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-4">Tech Stack</h4>
+              <div className="flex flex-wrap gap-2">
+                {service.stack.map((tech) => (
+                  <span key={tech} className="px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200 text-xs font-semibold text-gray-700">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <button
+            onClick={() => onRequest(service.title)}
+            className="w-full py-4 rounded-lg bg-orange-600 text-white font-semibold flex items-center justify-center gap-2 hover:bg-orange-700 transition-colors"
           >
-            <Icon className="w-10 h-10" style={{ color: service.color }} />
-          </div>
-          <div className="text-center sm:text-left">
-            <h2 className="text-3xl font-black mb-2 text-text-primary">{service.title}</h2>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: service.color }} />
-              <span className="text-[10px] font-black uppercase tracking-widest text-text-secondary">
-                Tiempo: {service.time}
-              </span>
-            </div>
-          </div>
+            Solicitar este servicio <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
-
-        <p className="text-lg text-text-secondary leading-relaxed mb-10">{service.fullDescription}</p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
-          {/* Features */}
-          <div>
-            <h4 className="text-xs uppercase tracking-widest text-text-primary/40 font-black mb-6">¿Qué incluye?</h4>
-            <div className="space-y-4">
-              {service.features.map((f) => (
-                <div key={f} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 mt-0.5 shrink-0" style={{ color: service.color }} />
-                  <span className="text-sm font-medium text-text-secondary">{f}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Tech Stack */}
-          <div>
-            <h4 className="text-xs uppercase tracking-widest text-text-primary/40 font-black mb-6">Tech Stack</h4>
-            <div className="flex flex-wrap gap-2">
-              {service.stack.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-xs font-bold text-text-primary hover:border-white/20 transition-colors"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => onRequestProject(service.title)}
-          className="w-full py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-xl"
-          style={{
-            backgroundColor: service.color,
-            color: '#030712',
-          }}
-        >
-          Solicitar este servicio <ArrowRight className="w-5 h-5" />
-        </motion.button>
       </div>
     </Modal>
   );
 };
 
-const ServiceCard = ({ icon: Icon, title, description, index, color, onClick }: any) => (
+const ServiceCard = ({ icon: Icon, title, description, index, onClick }: any) => (
   <motion.div
-    initial={{ opacity: 0, y: 30 }}
+    initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    transition={{ delay: index * 0.1, duration: 0.6 }}
+    transition={{ delay: index * 0.07, duration: 0.5 }}
     onClick={onClick}
-    className="glass p-10 rounded-[2.5rem] group hover:border-accent/30 transition-all duration-500 cursor-pointer relative overflow-hidden flex flex-col h-full"
+    className="bg-white border border-gray-200 rounded-xl p-7 cursor-pointer group hover:border-orange-200 transition-all duration-300 flex flex-col h-full"
   >
-    {/* Decorative Gradient Background */}
-    <div 
-      className="absolute -top-20 -right-20 w-40 h-40 blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 rounded-full"
-      style={{ backgroundColor: color }}
-    />
-
-    <div
-      className="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-all duration-500 group-hover:scale-110 shadow-lg"
-      style={{ backgroundColor: `${color}15`, border: `1px solid ${color}30` }}
-    >
-      <Icon className="w-8 h-8 transition-colors duration-500" style={{ color }} />
+    <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center mb-5 group-hover:bg-orange-100 transition-colors">
+      <Icon className="w-6 h-6 text-orange-600" />
     </div>
-    
-    <h3 
-      className="text-2xl font-black mb-4 group-hover:text-accent transition-colors duration-300 leading-tight"
-      style={{ fontFamily: 'Arial, sans-serif' }}
-    >
-      {title}
-    </h3>
-    
-    <p className="text-text-secondary leading-relaxed mb-8 flex-grow">
-      {description}
-    </p>
-    
-    <div className="flex items-center gap-2 text-accent font-black text-sm uppercase tracking-widest group-hover:gap-4 transition-all duration-300">
+
+    <h3 className="text-lg font-bold text-gray-900 mb-3 leading-tight">{title}</h3>
+
+    <p className="text-sm text-gray-500 leading-relaxed mb-6 flex-grow">{description}</p>
+
+    <div className="flex items-center gap-1.5 text-orange-600 text-sm font-semibold group-hover:gap-3 transition-all duration-300">
       Ver detalles
-      <ArrowRight className="w-5 h-5" />
+      <ArrowRight className="w-4 h-4" />
     </div>
   </motion.div>
 );
 
 export const Services = () => {
-  const [selectedService, setSelectedService] = useState<typeof servicesData[0] | null>(null);
-  const [projectModalOpen, setProjectModalOpen] = useState(false);
+  const [selected, setSelected] = useState<typeof servicesData[0] | null>(null);
+  const [projectOpen, setProjectOpen] = useState(false);
   const [defaultService, setDefaultService] = useState('');
 
-  const handleRequestProject = (serviceTitle: string) => {
-    setSelectedService(null);
-    setTimeout(() => {
-      setDefaultService(serviceTitle);
-      setProjectModalOpen(true);
-    }, 150);
+  const handleRequest = (title: string) => {
+    setSelected(null);
+    setTimeout(() => { setDefaultService(title); setProjectOpen(true); }, 150);
   };
 
   return (
-    <section id="servicios" className="py-32 bg-bg-primary relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="max-w-3xl mb-20">
-          <motion.span 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-accent mb-6 px-4 py-2 rounded-full border border-accent/20 bg-accent/5"
-          >
-            Servicios Expertos
-          </motion.span>
-          <h2 className="mb-6 font-black leading-tight">
-            Elevamos tu negocio con <br />
-            <span className="text-gradient">Soluciones de Clase Mundial.</span>
+    <section id="servicios" className="bg-gray-50 border-b border-gray-100 py-20 lg:py-28">
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* Header */}
+        <div className="mb-14 max-w-2xl">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-orange-600 border-l-4 border-orange-500 pl-3 mb-4">
+            Nuestros Servicios
+          </span>
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 leading-tight">
+            Elevamos tu negocio con<br />soluciones de clase mundial.
           </h2>
-          <p className="text-xl text-text-secondary leading-relaxed">
+          <p className="text-gray-500 text-lg leading-relaxed">
             Combinamos estrategia, diseño y tecnología para crear productos digitales que realmente funcionan.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-          {servicesData.map((service, index) => (
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {servicesData.map((s, i) => (
             <ServiceCard
-              key={service.title}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-              color={service.color}
-              index={index}
-              onClick={() => setSelectedService(service)}
+              key={s.title}
+              icon={s.icon}
+              title={s.title}
+              description={s.description}
+              index={i}
+              onClick={() => setSelected(s)}
             />
           ))}
         </div>
       </div>
 
-      <ServiceDetailModal
-        service={selectedService}
-        onClose={() => setSelectedService(null)}
-        onRequestProject={handleRequestProject}
-      />
-
-      <ProjectModal
-        isOpen={projectModalOpen}
-        onClose={() => setProjectModalOpen(false)}
-        defaultPlan={defaultService}
-      />
+      <ServiceModal service={selected} onClose={() => setSelected(null)} onRequest={handleRequest} />
+      <ProjectModal isOpen={projectOpen} onClose={() => setProjectOpen(false)} defaultPlan={defaultService} />
     </section>
   );
 };
-

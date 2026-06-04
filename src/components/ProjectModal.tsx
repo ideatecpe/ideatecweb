@@ -70,18 +70,18 @@ export const ProjectModal = ({ isOpen, onClose, defaultPlan }: ProjectModalProps
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose} title="Solicitar Proyecto" size="lg">
-      <div className="px-8 py-6">
+      <div className="px-8 py-6 bg-white">
         {!submitted ? (
           <>
-            <p className="text-text-primary/60 text-sm mb-6 leading-relaxed">
-              Cuéntanos sobre tu idea. Te contactamos en menos de <span className="text-accent font-bold">24 horas</span> con una propuesta personalizada.
+            <p className="text-gray-500 text-sm mb-6 leading-relaxed">
+              Cuéntanos sobre tu idea. Te contactamos en menos de <span className="text-orange-600 font-bold">24 horas</span> con una propuesta personalizada.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Row 1 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent/60" />
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-orange-500/60" />
                   <input
                     type="text"
                     name="name"
@@ -89,11 +89,11 @@ export const ProjectModal = ({ isOpen, onClose, defaultPlan }: ProjectModalProps
                     placeholder="Tu nombre *"
                     value={form.name}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-3 bg-bg-secondary/40 border border-bg-secondary rounded-xl text-sm text-text-primary placeholder-text-primary/30 focus:outline-none focus:border-accent/50 transition-colors"
+                    className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500/50 transition-colors"
                   />
                 </div>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent/60" />
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-orange-500/60" />
                   <input
                     type="email"
                     name="email"
@@ -101,7 +101,7 @@ export const ProjectModal = ({ isOpen, onClose, defaultPlan }: ProjectModalProps
                     placeholder="Correo electrónico *"
                     value={form.email}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-3 bg-bg-secondary/40 border border-bg-secondary rounded-xl text-sm text-text-primary placeholder-text-primary/30 focus:outline-none focus:border-accent/50 transition-colors"
+                    className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500/50 transition-colors"
                   />
                 </div>
               </div>
@@ -109,25 +109,25 @@ export const ProjectModal = ({ isOpen, onClose, defaultPlan }: ProjectModalProps
               {/* Row 2 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent/60" />
+                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-orange-500/60" />
                   <input
                     type="tel"
                     name="phone"
                     placeholder="Teléfono / WhatsApp"
                     value={form.phone}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-3 bg-bg-secondary/40 border border-bg-secondary rounded-xl text-sm text-text-primary placeholder-text-primary/30 focus:outline-none focus:border-accent/50 transition-colors"
+                    className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500/50 transition-colors"
                   />
                 </div>
                 <div className="relative">
-                  <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent/60" />
+                  <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-orange-500/60" />
                   <input
                     type="text"
                     name="company"
                     placeholder="Empresa / Negocio"
                     value={form.company}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-3 bg-bg-secondary/40 border border-bg-secondary rounded-xl text-sm text-text-primary placeholder-text-primary/30 focus:outline-none focus:border-accent/50 transition-colors"
+                    className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500/50 transition-colors"
                   />
                 </div>
               </div>
@@ -135,30 +135,30 @@ export const ProjectModal = ({ isOpen, onClose, defaultPlan }: ProjectModalProps
               {/* Row 3 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="relative">
-                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent/60 pointer-events-none" />
+                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-orange-500/60 pointer-events-none" />
                   <select
                     name="service"
                     value={form.service}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-bg-secondary/40 border border-bg-secondary rounded-xl text-sm text-text-primary focus:outline-none focus:border-accent/50 transition-colors appearance-none"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 focus:outline-none focus:border-orange-500/50 transition-colors appearance-none"
                   >
-                    <option value="" className="bg-bg-primary">Tipo de servicio</option>
+                    <option value="" className="bg-white">Tipo de servicio</option>
                     {serviceTypes.map((s) => (
-                      <option key={s} value={s} className="bg-bg-primary">{s}</option>
+                      <option key={s} value={s} className="bg-white">{s}</option>
                     ))}
                   </select>
                 </div>
                 <div className="relative">
-                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent/60 pointer-events-none" />
+                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-orange-500/60 pointer-events-none" />
                   <select
                     name="budget"
                     value={form.budget}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-bg-secondary/40 border border-bg-secondary rounded-xl text-sm text-text-primary focus:outline-none focus:border-accent/50 transition-colors appearance-none"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 focus:outline-none focus:border-orange-500/50 transition-colors appearance-none"
                   >
-                    <option value="" className="bg-bg-primary">Presupuesto estimado</option>
+                    <option value="" className="bg-white">Presupuesto estimado</option>
                     {budgetRanges.map((b) => (
-                      <option key={b} value={b} className="bg-bg-primary">{b}</option>
+                      <option key={b} value={b} className="bg-white">{b}</option>
                     ))}
                   </select>
                 </div>
@@ -166,7 +166,7 @@ export const ProjectModal = ({ isOpen, onClose, defaultPlan }: ProjectModalProps
 
               {/* Message */}
               <div className="relative">
-                <MessageSquare className="absolute left-3 top-3.5 w-4 h-4 text-accent/60" />
+                <MessageSquare className="absolute left-3 top-3.5 w-4 h-4 text-orange-500/60" />
                 <textarea
                   name="message"
                   required
@@ -174,7 +174,7 @@ export const ProjectModal = ({ isOpen, onClose, defaultPlan }: ProjectModalProps
                   placeholder="Cuéntanos sobre tu proyecto... ¿Qué quieres construir? *"
                   value={form.message}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 bg-bg-secondary/40 border border-bg-secondary rounded-xl text-sm text-text-primary placeholder-text-primary/30 focus:outline-none focus:border-accent/50 transition-colors resize-none"
+                  className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500/50 transition-colors resize-none"
                 />
               </div>
 
@@ -182,13 +182,13 @@ export const ProjectModal = ({ isOpen, onClose, defaultPlan }: ProjectModalProps
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-4 rounded-xl bg-accent text-bg-primary font-bold text-base flex items-center justify-center gap-2 hover:glow-orange-hover transition-all duration-300"
+                className="w-full py-4 rounded-xl bg-orange-600 text-white font-bold text-base flex items-center justify-center gap-2 hover:bg-orange-700 hover:shadow-lg transition-all duration-300 cursor-pointer"
               >
                 <Rocket className="w-4 h-4" />
                 Enviar por WhatsApp
               </motion.button>
 
-              <p className="text-center text-xs text-text-primary/30">
+              <p className="text-center text-xs text-gray-400">
                 Al enviar, serás redirigido a WhatsApp para continuar la conversación.
               </p>
             </form>
@@ -199,16 +199,16 @@ export const ProjectModal = ({ isOpen, onClose, defaultPlan }: ProjectModalProps
             animate={{ opacity: 1, scale: 1 }}
             className="py-12 text-center"
           >
-            <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
-              <Rocket className="w-10 h-10 text-accent" />
+            <div className="w-20 h-20 rounded-full bg-orange-50 flex items-center justify-center mx-auto mb-6">
+              <Rocket className="w-10 h-10 text-orange-600" />
             </div>
-            <h3 className="text-2xl font-sans font-bold mb-3">¡Mensaje enviado!</h3>
-            <p className="text-text-primary/60 mb-8">WhatsApp se abrió con tu solicitud. Te respondemos en menos de 24 horas.</p>
+            <h3 className="text-2xl font-sans font-bold mb-3 text-gray-900">¡Mensaje enviado!</h3>
+            <p className="text-gray-500 mb-8">WhatsApp se abrió con tu solicitud. Te respondemos en menos de 24 horas.</p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleClose}
-              className="px-8 py-3 rounded-xl bg-bg-secondary text-text-primary font-semibold hover:bg-bg-secondary/80 transition-all"
+              className="px-8 py-3 rounded-xl bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 transition-all cursor-pointer"
             >
               Cerrar
             </motion.button>

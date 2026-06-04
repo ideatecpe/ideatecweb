@@ -55,19 +55,19 @@ export const Modal = ({ isOpen, onClose, title, children, size = 'md' }: ModalPr
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 20 }}
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-            className={`relative w-full ${sizeClasses[size]} bg-bg-primary border border-bg-secondary rounded-3xl shadow-2xl overflow-hidden`}
+            className={`relative w-full ${sizeClasses[size]} bg-white border border-gray-200/80 rounded-3xl shadow-2xl overflow-hidden`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Top accent line */}
-            <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-accent to-transparent" />
+            <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-orange-600 to-transparent" />
 
             {/* Header */}
             {title && (
-              <div className="flex items-center justify-between px-8 pt-6 pb-4 border-b border-bg-secondary/50">
-                <h2 className="text-xl font-sans font-bold text-text-primary">{title}</h2>
+              <div className="flex items-center justify-between px-8 pt-6 pb-4 border-b border-gray-100">
+                <h2 className="text-xl font-sans font-bold text-gray-900">{title}</h2>
                 <button
                   onClick={onClose}
-                  className="w-8 h-8 rounded-full bg-bg-secondary/50 flex items-center justify-center text-text-primary/40 hover:text-accent hover:bg-accent/10 transition-all duration-200"
+                  className="w-8 h-8 rounded-full bg-gray-100/80 flex items-center justify-center text-gray-400 hover:text-orange-600 hover:bg-orange-50 transition-all duration-200 cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -78,14 +78,14 @@ export const Modal = ({ isOpen, onClose, title, children, size = 'md' }: ModalPr
             {!title && (
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-bg-secondary/50 flex items-center justify-center text-text-primary/40 hover:text-accent hover:bg-accent/10 transition-all duration-200"
+                className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-gray-100/80 flex items-center justify-center text-gray-400 hover:text-orange-600 hover:bg-orange-50 transition-all duration-200 cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
             )}
 
             {/* Content */}
-            <div className="max-h-[80vh] overflow-y-auto custom-scroll">
+            <div className="max-h-[80vh] overflow-y-auto custom-scroll bg-white">
               {children}
             </div>
           </motion.div>
