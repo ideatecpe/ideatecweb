@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 
 const navLinks = [
@@ -12,11 +12,22 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('inicio');
   const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const setHeaderVar = () => {
+      const h = headerRef.current?.offsetHeight ?? 104;
+      document.documentElement.style.setProperty('--header-h', `${h}px`);
+    };
+    setHeaderVar();
+    window.addEventListener('resize', setHeaderVar);
+    return () => window.removeEventListener('resize', setHeaderVar);
   }, []);
 
   useEffect(() => {
@@ -29,20 +40,19 @@ export const Navbar = () => {
     return () => obs.disconnect();
   }, []);
 
-  const HEADER_H = 104; // info bar ~36px + nav 68px
-
   const go = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
     const el = document.getElementById(id);
     if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - HEADER_H;
+      const headerH = headerRef.current?.offsetHeight ?? 104;
+      const top = el.getBoundingClientRect().top + window.scrollY - headerH;
       window.scrollTo({ top, behavior: 'smooth' });
     }
     setOpen(false);
   };
 
   return (
-    <header className="sticky top-0 z-50">
+    <header ref={headerRef} className="sticky top-0 z-50">
       {/* Top info bar */}
       <div className="hidden lg:block bg-gray-900 text-gray-300">
         <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
@@ -65,7 +75,7 @@ export const Navbar = () => {
 
       {/* Main nav */}
       <nav
-        className={`relative bg-white border-b transition-all duration-300 ${
+        className={`relative bg-[#f8f9fa] border-b transition-all duration-300 ${
           scrolled
             ? 'border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.08)]'
             : 'border-transparent'
@@ -73,10 +83,10 @@ export const Navbar = () => {
       >
         {/* Línea naranja inferior visible al scrollear */}
         {scrolled && (
-          <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-60" />
+          <div className="absolute bottom-0 left-0 w-full h-0.5 bg-linear-to-r from-orange-600 via-orange-400 to-orange-600 opacity-60" />
         )}
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-[68px]">
+          <div className="flex items-center justify-between h-[55px]">
 
             {/* Logo */}
             <a
@@ -128,7 +138,7 @@ export const Navbar = () => {
               <a
                 href="#contacto"
                 onClick={(e) => go(e, 'contacto')}
-                className="px-5 py-2.5 text-sm font-semibold text-white bg-orange-600 hover:bg-orange-700 rounded-lg transition-colors"
+                className="px-5 py-2 text-sm font-semibold text-white bg-orange-600 hover:bg-orange-700 rounded-lg transition-colors"
               >
                 Iniciar proyecto
               </a>

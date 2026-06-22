@@ -17,8 +17,14 @@ export const Footer = () => {
 
   return (
     <>
-      <footer className="bg-gray-900">
-        <div className="max-w-7xl mx-auto px-6 pt-14 pb-8">
+      <footer className="relative overflow-hidden" style={{
+        backgroundImage: 'url(./assets/bgfooter.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}>
+        {/* Overlay de color */}
+        <div className="absolute inset-0 bg-gray-900/88 pointer-events-none" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 pb-12 border-b border-gray-800">
 
@@ -38,10 +44,10 @@ export const Footer = () => {
                   <span className="text-white">TEC</span>
                 </span>
               </a>
-              <p className="text-sm text-gray-400 leading-relaxed mb-4 max-w-xs">
+              <p className="text-sm text-gray-200 leading-relaxed mb-4 max-w-xs">
                 Transformamos ideas en soluciones digitales de alto impacto para empresas que quieren crecer.
               </p>
-              <div className="flex flex-col gap-1 text-xs text-gray-500">
+              <div className="flex flex-col gap-1 text-xs text-gray-300">
                 <span>IDEATEC SAC · RUC 20601841038</span>
                 <span>Empresa 100% peruana · Desde 2016</span>
               </div>
@@ -49,10 +55,10 @@ export const Footer = () => {
 
             {/* Navigation */}
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-5">Navegación</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-gray-200 mb-5">Navegación</p>
               <div className="flex flex-col gap-3">
                 {navLinks.map((link) => (
-                  <a key={link.href} href={link.href} className="text-sm text-gray-400 hover:text-orange-400 transition-colors w-fit">
+                  <a key={link.href} href={link.href} className="text-sm text-gray-300 hover:text-orange-400 transition-colors w-fit">
                     {link.label}
                   </a>
                 ))}
@@ -61,24 +67,24 @@ export const Footer = () => {
 
             {/* Contact */}
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-5">Contacto</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-gray-200 mb-5">Contacto</p>
               <div className="flex flex-col gap-4">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-orange-500 mt-0.5 shrink-0" />
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <p className="text-sm text-gray-300 leading-relaxed">
                     Av. Petit Thouras 1775, Int. 501<br />
                     Lince, Lima — Perú
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-orange-500 shrink-0" />
-                  <a href="mailto:info@ideatec.com.pe" className="text-sm text-gray-400 hover:text-orange-400 transition-colors">
+                  <a href="mailto:info@ideatec.com.pe" className="text-sm text-gray-300 hover:text-orange-400 transition-colors">
                     info@ideatec.com.pe
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-orange-500 shrink-0" />
-                  <a href="tel:+51912903330" className="text-sm text-gray-400 hover:text-orange-400 transition-colors">
+                  <a href="tel:+51912903330" className="text-sm text-gray-300 hover:text-orange-400 transition-colors">
                     +51 912 903 330
                   </a>
                 </div>
@@ -87,10 +93,10 @@ export const Footer = () => {
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-400">
               © 2026 IDEATEC SAC · Todos los derechos reservados.
             </p>
-            <div className="flex gap-6 text-xs text-gray-600 font-semibold uppercase tracking-widest">
+            <div className="flex gap-6 text-xs text-gray-400 font-semibold uppercase tracking-widest">
               <button onClick={() => setPrivacyOpen(true)} className="hover:text-orange-400 transition-colors cursor-pointer">
                 Privacidad
               </button>

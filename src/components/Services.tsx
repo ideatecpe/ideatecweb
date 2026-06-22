@@ -172,7 +172,7 @@ const ServiceCard = ({ icon: Icon, title, description, index, onClick }: any) =>
     viewport={{ once: true }}
     transition={{ delay: index * 0.07, duration: 0.5 }}
     onClick={onClick}
-    className="bg-white border border-gray-200 rounded-xl p-7 cursor-pointer group hover:border-orange-200 transition-all duration-300 flex flex-col h-full"
+    className="bg-white border border-gray-200 rounded-xl p-5 cursor-pointer group hover:border-orange-200 transition-all duration-300 flex flex-col h-full"
   >
     <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center mb-5 group-hover:bg-orange-100 transition-colors">
       <Icon className="w-6 h-6 text-orange-600" />
@@ -180,7 +180,7 @@ const ServiceCard = ({ icon: Icon, title, description, index, onClick }: any) =>
 
     <h3 className="text-lg font-bold text-gray-900 mb-3 leading-tight">{title}</h3>
 
-    <p className="text-sm text-gray-500 leading-relaxed mb-6 flex-grow">{description}</p>
+    <p className="text-sm text-gray-500 leading-relaxed mb-6 grow">{description}</p>
 
     <div className="flex items-center gap-1.5 text-orange-600 text-sm font-semibold group-hover:gap-3 transition-all duration-300">
       Ver detalles
@@ -200,22 +200,46 @@ export const Services = () => {
   };
 
   return (
-    <section id="servicios" className="bg-gray-50 border-b border-gray-100 py-20 lg:py-28">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="servicios" className="bg-gray-50 border-b border-gray-100 pt-20 lg:pt-20">
 
-        {/* Header */}
-        <div className="mb-14 max-w-2xl">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-orange-600 border-l-4 border-orange-500 pl-3 mb-4">
-            Nuestros Servicios
-          </span>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 leading-tight">
-            Elevamos tu negocio con<br />soluciones de clase mundial.
-          </h2>
-          <p className="text-gray-500 text-lg leading-relaxed">
-            Combinamos estrategia, diseño y tecnología para crear productos digitales que realmente funcionan.
-          </p>
+      {/* Header — banner oscuro */}
+      <div className="max-w-7xl mx-auto px-6 ">
+        <div
+          className="relative overflow-hidden text-center py-10 lg:py-10 rounded-2xl"
+          style={{
+            backgroundImage: 'url(./assets/bgheader.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          {/* Capa de transparencia */}
+          <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: 'rgba(10,14,23,0.72)' }} />
+          {/* Trama de puntos */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-60"
+            style={{
+              backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)',
+              backgroundSize: '26px 26px',
+            }}
+          />
+          {/* Resplandor naranja */}
+          <div
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-175 h-95 pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse, rgba(234,88,12,0.12) 0%, transparent 70%)' }}
+          />
+          <div className="relative z-10 max-w-3xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-black mb-5 leading-tight tracking-wide">
+              <span className="text-white">Nuestros </span>
+              <span className="text-orange-500">Servicios</span>
+            </h2>
+            <p className="text-gray-300 text-[16px] leading-relaxed">
+              Combinamos estrategia, diseño y tecnología para crear productos digitales que realmente funcionan.
+            </p>
+          </div>
         </div>
+      </div>
 
+      <div className="max-w-7xl mx-auto px-6 mb-20 mt-10">
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {servicesData.map((s, i) => (

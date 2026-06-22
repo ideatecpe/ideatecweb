@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { ProjectModal } from "./ProjectModal";
 
 const WhatsApp = () => (
@@ -43,7 +43,9 @@ export const Hero = () => {
       id="inicio"
       className="relative flex items-center overflow-hidden"
       style={{
-        height: "calc(100vh - 104px)",
+        height: "100vh",
+        marginTop: "calc(-1 * var(--header-h, 104px))",
+        paddingTop: "var(--header-h, 104px)",
         backgroundImage: `url(${BG})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -204,23 +206,49 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* ── Scroll indicator ── */}
-      <motion.button
-        onClick={scrollDown}
-        aria-label="Scroll"
-        className="hidden lg:flex absolute bottom-15 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-1.5 text-white/40 hover:text-white/70 transition-colors cursor-pointer"
-        animate={{ y: [0, 6, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <span className="text-[10px] font-semibold tracking-[0.1em] uppercase">Explorar</span>
-        <ArrowDown className="w-4 h-4" />
-      </motion.button>
 
-      {/* ── Wave inferior ── */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
-        <svg viewBox="0 0 1440 60" className="w-full block" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#ffffff" />
-        </svg>
+      {/* ── Sponsors bar ── */}
+      <div
+        className="absolute bottom-0 left-0 w-full z-10 py-4 border-t border-white/10"
+        style={{
+          background: 'rgba(255,255,255,0.06)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6 overflow-hidden">
+          <div className="flex w-max items-center hero-marquee">
+            {[0, 1].map((group) => (
+              <div key={group} className="flex shrink-0" aria-hidden={group === 1}>
+                {Array(4).fill([
+                  "./assets/sponsors/sponsor01.png",
+                  "./assets/sponsors/sponsor02.png",
+                  "./assets/sponsors/sponsor03.png",
+                ]).flat().map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt="sponsor"
+                    className="h-7 w-auto object-contain shrink-0 mr-16"
+                    draggable={false}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+        <style>{`
+          @keyframes hero-marquee {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+          }
+          .hero-marquee {
+            animation: hero-marquee 55s linear infinite;
+            will-change: transform;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+          }
+        `}</style>
       </div>
 
       <ProjectModal isOpen={open} onClose={() => setOpen(false)} />
