@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, Code2, Smartphone, Cpu, Palette, ShoppingCart, BarChart3 } from "lucide-react";
 import { ProjectModal } from "./ProjectModal";
@@ -29,6 +29,16 @@ const tags = [
 
 export const Hero = () => {
   const [open, setOpen] = useState(false);
+  const sponsorsRef = useRef<HTMLDivElement>(null);
+  const [sponsorsH, setSponsorsH] = useState(52);
+
+  useEffect(() => {
+    const measure = () => setSponsorsH(sponsorsRef.current?.offsetHeight ?? 52);
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
   const waUrl = `https://wa.me/51912903330?text=${encodeURIComponent(
     "Hola IDEATEC, me interesa desarrollar un proyecto con ustedes. ¿Podemos hablar?"
   )}`;
@@ -46,6 +56,7 @@ export const Hero = () => {
         height: "100vh",
         marginTop: "calc(-1 * var(--header-h, 104px))",
         paddingTop: "var(--header-h, 104px)",
+        paddingBottom: `${sponsorsH}px`,
         backgroundImage: `url(${BG})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -89,7 +100,7 @@ export const Hero = () => {
       />
 
       {/* ── Contenido ── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 lg:py-10" style={{ marginBottom: '52px' }}>
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 lg:py-10">
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-16 items-center">
 
@@ -209,6 +220,7 @@ export const Hero = () => {
 
       {/* ── Sponsors bar ── */}
       <div
+        ref={sponsorsRef}
         className="absolute bottom-0 left-0 w-full z-10 py-4 border-t border-white/5"
         style={{
           backdropFilter: 'blur(12px)',
