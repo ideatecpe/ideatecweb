@@ -235,6 +235,7 @@ export const Hero = () => {
                   "./assets/sponsors/sponsor01.png",
                   "./assets/sponsors/sponsor02.png",
                   "./assets/sponsors/sponsor03.png",
+                  "./assets/sponsors/sponsor04.png",
                 ]).flat().map((src, i) => (
                   <img
                     key={i}
