@@ -36,8 +36,8 @@
 
   /* Scrollbar */
   ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: #f9fafb; }
-  ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 99px; }
+  ::-webkit-scrollbar-track { background: #111827; }
+  ::-webkit-scrollbar-thumb { background: #6b7280; border-radius: 99px; }
   ::-webkit-scrollbar-thumb:hover { background: #ea580c; }
 
   @keyframes float {

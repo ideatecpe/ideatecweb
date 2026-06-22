@@ -71,7 +71,7 @@ export const Hero = () => {
 
       {/* ── Línea naranja superior con glow ── */}
       <div
-        className="absolute top-0 left-0 w-full h-[3px]"
+        className="absolute top-0 left-0 w-full h-0.75"
         style={{
           background: "linear-gradient(90deg, #ea580c 0%, #fb923c 50%, #ea580c 100%)",
           boxShadow: "0 0 18px 2px rgba(234,88,12,0.6)",
@@ -88,7 +88,8 @@ export const Hero = () => {
 
       {/* ── Contenido ── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 lg:py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-16 items-center">
+
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-16 items-center  -mt-10.5">
 
           {/* LEFT */}
           <motion.div
@@ -97,11 +98,8 @@ export const Hero = () => {
             transition={{ duration: 0.7 }}
           >
             {/* Badge animado */}
-            <div className="inline-flex items-center gap-2.5 mb-5 px-4 py-2 rounded-full ">
-              <span className="relative flex h-2 w-2 shrink-0">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-70" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-orange-500" />
-              </span>
+            <div className="inline-flex items-center gap-2.5 mb-5 py-2 rounded-full ">
+         
               <span className="text-xs font-semibold text-orange-300 tracking-widest uppercase">
                 Empresa 100% Peruana 
               </span>
@@ -117,7 +115,7 @@ export const Hero = () => {
               <span className="relative inline-block">
                 <span className="text-orange-500">que crecen.</span>
                 <span
-                  className="absolute left-0 -bottom-2 h-[3px] w-full rounded-full"
+                  className="absolute left-0 -bottom-2 h-0.75 w-full rounded-full"
                   style={{
                     background: "linear-gradient(90deg, #ea580c, #fb923c, transparent)",
                   }}
@@ -196,7 +194,7 @@ export const Hero = () => {
             <motion.img
               src="./assets/mascota.png"
               alt="IDEATEC"
-              className="relative z-10 w-full max-w-[400px] h-auto select-none"
+              className="relative z-10 w-full max-w-100 h-auto select-none"
               style={{ filter: "drop-shadow(0 20px 50px rgba(234,88,12,0.25))" }}
               animate={{ y: [0, -16, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -210,11 +208,11 @@ export const Hero = () => {
       <motion.button
         onClick={scrollDown}
         aria-label="Scroll"
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-white/40 hover:text-white/70 transition-colors cursor-pointer"
+        className="hidden lg:flex absolute bottom-15 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-1.5 text-white/40 hover:text-white/70 transition-colors cursor-pointer"
         animate={{ y: [0, 6, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
-        <span className="text-[10px] font-semibold tracking-[0.2em] uppercase">Explorar</span>
+        <span className="text-[10px] font-semibold tracking-[0.1em] uppercase">Explorar</span>
         <ArrowDown className="w-4 h-4" />
       </motion.button>
 
