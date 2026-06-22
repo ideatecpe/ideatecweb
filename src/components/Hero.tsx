@@ -209,9 +209,8 @@ export const Hero = () => {
 
       {/* ── Sponsors bar ── */}
       <div
-        className="absolute bottom-0 left-0 w-full z-10 py-4 border-t border-white/10"
+        className="absolute bottom-0 left-0 w-full z-10 py-4 border-t border-white/5"
         style={{
-          background: 'rgba(255,255,255,0.06)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
         }}
