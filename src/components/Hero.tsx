@@ -89,9 +89,9 @@ export const Hero = () => {
       />
 
       {/* ── Contenido ── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 lg:py-10  -mt-10">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 lg:py-10" style={{ marginBottom: '52px' }}>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-16 items-center  -mt-10.5">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-16 items-center">
 
           {/* LEFT */}
           <motion.div
