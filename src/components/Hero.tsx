@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Code2, Smartphone, Cpu, Palette, ShoppingCart, BarChart3 } from "lucide-react";
 import { ProjectModal } from "./ProjectModal";
 
 const WhatsApp = () => (
@@ -19,12 +19,12 @@ const stats = [
 ];
 
 const tags = [
-  "Desarrollo Web",
-  "Apps Móviles",
-  "Software a Medida",
-  "UI/UX Design",
-  "E-commerce",
-  "Consultoría TI",
+  { label: "Desarrollo Web",    icon: Code2 },
+  { label: "Apps Móviles",      icon: Smartphone },
+  { label: "Software a Medida", icon: Cpu },
+  { label: "UI/UX Design",      icon: Palette },
+  { label: "E-commerce",        icon: ShoppingCart },
+  { label: "Consultoría TI",    icon: BarChart3 },
 ];
 
 export const Hero = () => {
@@ -129,19 +129,19 @@ export const Hero = () => {
             <p className="text-white/60 text-base leading-relaxed max-w-lg mb-5">
               En{" "}
               <strong className="text-white font-semibold">IDEATEC</strong>{" "}
-              diseñamos y construimos software a medida — plataformas web, apps
+              diseñamos y construimos software a medida, plataformas web, apps
               móviles y sistemas de gestión que impulsan el crecimiento real de tu empresa.
             </p>
 
             {/* Tags de servicios */}
             <div className="flex flex-wrap gap-2 mb-5">
-              {tags.map((t) => (
+              {tags.map(({ label, icon: Icon }) => (
                 <span
-                  key={t}
+                  key={label}
                   className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/6 text-xs text-white/65 backdrop-blur-sm hover:border-orange-500/40 hover:text-white/90 transition-colors cursor-default"
                 >
-                  <span className="w-1 h-1 rounded-full bg-orange-500 shrink-0" />
-                  {t}
+                  <Icon className="w-3.5 h-3.5 text-orange-500 shrink-0" />
+                  {label}
                 </span>
               ))}
             </div>
