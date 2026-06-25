@@ -199,7 +199,13 @@ export const Hero = () => {
           WebkitBackdropFilter: 'blur(12px)',
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 overflow-hidden">
+        <div
+          className="max-w-7xl mx-auto px-6 overflow-hidden"
+          style={{
+            maskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+          }}
+        >
           <div className="flex w-max items-center hero-marquee">
             {[0, 1].map((group) => (
               <div key={group} className="flex shrink-0" aria-hidden={group === 1}>
