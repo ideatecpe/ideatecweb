@@ -108,22 +108,17 @@ export const Hero = () => {
             transition={{ duration: 0.7 }}
           >
             {/* Badge animado */}
-            <div className="inline-flex items-center gap-2.5 mb-5 py-2 rounded-full ">
-         
-              <span className="text-xs font-semibold text-orange-300 tracking-widest uppercase">
-                Empresa 100% Peruana 
-              </span>
-            </div>
+           
 
             {/* Título */}
             <h1
               className="font-black leading-[1.04] tracking-[-0.04em] mb-4 text-white"
               style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.8rem)" }}
             >
-              Soluciones digitales<br />
+              Software a medida<br />
               para empresas<br />
               <span className="relative inline-block">
-                <span className="text-orange-500">que crecen.</span>
+                <span className="text-orange-500">que van en serio.</span>
                 <span
                   className="absolute left-0 -bottom-2 h-0.75 w-full rounded-full"
                   style={{
@@ -137,7 +132,7 @@ export const Hero = () => {
             <p className="text-white/60 text-base leading-relaxed max-w-lg mb-5">
               En{" "}
               <strong className="text-white font-semibold">IDEATEC</strong>{" "}
-              diseñamos y construimos software a medida, plataformas web, apps
+              diseñamos y desarrollamos plataformas web, apps
               móviles y sistemas de gestión que impulsan el crecimiento real de tu empresa.
             </p>
 
