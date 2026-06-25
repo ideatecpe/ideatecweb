@@ -8,7 +8,7 @@ import { Portfolio } from './components/Portfolio';
 import { Pricing } from './components/Pricing';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { ScrollToTop } from './components/ScrollToTop';
+import { WhatsAppFloat } from './components/WhatsAppFloat';
 
 export default function App() {
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <ScrollToTop />
+      <WhatsAppFloat />
     </div>
   );
 }

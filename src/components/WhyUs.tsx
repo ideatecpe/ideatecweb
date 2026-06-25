@@ -55,18 +55,26 @@ export const WhyUs = () => (
             </div>
           </motion.div>
 
-          {/* Image */}
+          {/* Mascota */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="rounded-2xl overflow-hidden border border-gray-200"
+            className="relative flex items-center justify-center"
           >
+            {/* Glow naranja */}
+            <div
+              className="absolute inset-0 rounded-full"
+              style={{
+                background: "radial-gradient(ellipse at center, rgba(234,88,12,0.30) 0%, rgba(251,146,60,0.15) 45%, transparent 75%)",
+                filter: "blur(32px)",
+              }}
+            />
             <img
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
-              alt="Equipo IDEATEC trabajando"
-              className="w-full h-full object-cover"
+              src="./assets/mascota.png"
+              alt="Mascota IDEATEC"
+              className="relative w-full max-w-sm object-contain drop-shadow-xl"
             />
           </motion.div>
         </div>
