@@ -9,8 +9,7 @@ const WhatsApp = () => (
   </svg>
 );
 
-const BG =
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80";
+const BG = "./assets/fondo.jpg";
 
 const stats = [
   { value: "+8",   suffix: " años", label: "en el mercado" },
@@ -67,8 +66,14 @@ export const Hero = () => {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(110deg, rgba(5,7,15,0.95) 0%, rgba(5,7,15,0.85) 45%, rgba(5,7,15,0.50) 100%)",
+            "linear-gradient(90deg, rgba(5,7,15,1) 0%, rgba(5,7,15,1) 30%, rgba(5,7,15,0.92) 48%, rgba(5,7,15,0.70) 65%, rgba(5,7,15,0.38) 82%, rgba(5,7,15,0.12) 100%)",
         }}
+      />
+
+      {/* ── Capa oscura extra solo en mobile ── */}
+      <div
+        className="absolute inset-0 lg:hidden"
+        style={{ backgroundColor: "rgba(5,7,15,0.72)" }}
       />
 
       {/* ── Trama de puntos sobre el lado derecho ── */}
@@ -91,18 +96,10 @@ export const Hero = () => {
         }}
       />
 
-      {/* ── Resplandor naranja lateral izquierdo ── */}
-      <div
-        className="absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(234,88,12,0.12) 0%, transparent 70%)",
-        }}
-      />
-
       {/* ── Contenido ── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 lg:py-10">
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-16 items-center">
+        <div className="max-w-2xl">
 
           {/* LEFT */}
           <motion.div
@@ -194,26 +191,6 @@ export const Hero = () => {
               ))}
             </div>
           </motion.div>
-
-          {/* RIGHT: mascot */}
-          <div className="hidden lg:flex flex-col items-center justify-center relative">
-            {/* Glow detrás de la mascota */}
-            <div
-              className="absolute w-80 h-80 rounded-full pointer-events-none"
-              style={{
-                background: "radial-gradient(circle, rgba(234,88,12,0.18) 0%, transparent 65%)",
-              }}
-            />
-            <motion.img
-              src="./assets/mascota.png"
-              alt="IDEATEC"
-              className="relative z-10 w-full max-w-100 h-auto select-none"
-              style={{ filter: "drop-shadow(0 20px 50px rgba(234,88,12,0.25))" }}
-              animate={{ y: [0, -16, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              draggable={false}
-            />
-          </div>
         </div>
       </div>
 

@@ -202,40 +202,18 @@ export const Services = () => {
   return (
     <section id="servicios" className="bg-gray-50 border-b border-gray-100 pt-20 lg:pt-20">
 
-      {/* Header — banner oscuro */}
-      <div className="max-w-7xl mx-auto px-6 ">
-        <div
-          className="relative overflow-hidden text-center py-10 lg:py-10 rounded-2xl"
-          style={{
-            backgroundImage: 'url(./assets/bgheader.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          {/* Capa de transparencia */}
-          <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: 'rgba(10,14,23,0.72)' }} />
-          {/* Trama de puntos */}
-          <div
-            className="absolute inset-0 pointer-events-none opacity-60"
-            style={{
-              backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)',
-              backgroundSize: '26px 26px',
-            }}
-          />
-          {/* Resplandor naranja */}
-          <div
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-175 h-95 pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse, rgba(234,88,12,0.12) 0%, transparent 70%)' }}
-          />
-          <div className="relative z-10 max-w-3xl mx-auto px-6">
-            <h2 className="text-2xl md:text-3xl font-black mb-5 leading-tight tracking-wide">
-              <span className="text-white">Nuestros </span>
-              <span className="text-orange-500">Servicios</span>
-            </h2>
-            <p className="text-gray-300 text-[16px] leading-relaxed">
-              Combinamos estrategia, diseño y tecnología para crear productos digitales que realmente funcionan.
-            </p>
-          </div>
+      {/* Header */}
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="mb-12 max-w-2xl">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-orange-600 border-l-4 border-orange-500 pl-3 mb-4">
+            Nuestros Servicios
+          </span>
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 leading-tight">
+            Nuestros <span className="text-orange-600">Servicios</span>
+          </h2>
+          <p className="text-gray-500 leading-relaxed max-w-lg">
+            Combinamos estrategia, diseño y tecnología para crear productos digitales que realmente funcionan.
+          </p>
         </div>
       </div>
 
