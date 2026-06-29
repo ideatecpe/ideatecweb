@@ -70,11 +70,7 @@ export const Hero = () => {
       />
 
       {/* ── Capa oscura extra solo en mobile ── */}
-      <div
-        className="absolute inset-0 lg:hidden"
-        style={{ backgroundColor: "rgba(5,7,15,0.72)" }}
-      />
-
+   
       {/* ── Trama de puntos sobre el lado derecho ── */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -83,15 +79,6 @@ export const Hero = () => {
           backgroundSize: "28px 28px",
           maskImage: "linear-gradient(to left, black 0%, transparent 55%)",
           WebkitMaskImage: "linear-gradient(to left, black 0%, transparent 55%)",
-        }}
-      />
-
-      {/* ── Línea naranja superior con glow ── */}
-      <div
-        className="absolute top-0 left-0 w-full h-0.75"
-        style={{
-          background: "linear-gradient(90deg, #ea580c 0%, #fb923c 50%, #ea580c 100%)",
-          boxShadow: "0 0 18px 2px rgba(234,88,12,0.6)",
         }}
       />
 
@@ -108,10 +95,23 @@ export const Hero = () => {
             className="flex flex-col items-center"
           >
             {/* Pill badge */}
-            <div className="inline-flex items-center gap-2 mb-7 pl-1.5 pr-4 py-1.5 rounded-full border border-white/15 bg-white/8 backdrop-blur-sm">
-              <span className="px-2.5 py-1 rounded-full bg-orange-600 text-white text-[10px] font-bold uppercase tracking-wider">
-                Perú
-              </span>
+            <div className="inline-flex items-center gap-2 mb-7 pl-1.5 pr-4 py-1.5  backdrop-blur-sm">
+        <span
+  className="relative overflow-hidden inline-flex items-center justify-center rounded-full ring-1 ring-white/10 shrink-0"
+  style={{
+    width: "42px",
+    height: "22px",
+    background:
+      "linear-gradient(to right, #D91023 0%, #D91023 33.33%, #ffffff 33.33%, #ffffff 66.66%, #D91023 66.66%, #D91023 100%)",
+  }}
+>
+  <span className="absolute inset-0 bg-black/15" />
+  <span
+    className="relative text-white text-[10px] font-bold uppercase tracking-wider"
+    style={{ textShadow: "0 1px 3px rgba(0,0,0,0.9)" }}
+  >
+  </span>
+</span>
               <span className="text-xs font-medium text-white/80">Empresa 100% Peruana · Desde 2016</span>
             </div>
 
@@ -122,7 +122,7 @@ export const Hero = () => {
             >
               Software a medida para<br />
               <span className="relative inline-block">
-                <span className="text-orange-500">empresas que van en serio.</span>
+                <span className="text-orange-500">empresas que van en serio</span>
                 <span
                   className="absolute left-0 -bottom-2 h-0.75 w-full rounded-full"
                   style={{
