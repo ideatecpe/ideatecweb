@@ -10,8 +10,12 @@
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
 
+  html {
+    background-color: #0a0c12;
+  }
+
   body {
-    @apply bg-white text-gray-900 font-sans;
+    @apply bg-[#0a0c12] text-gray-900 font-sans;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;

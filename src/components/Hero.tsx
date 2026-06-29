@@ -9,7 +9,7 @@ const WhatsApp = () => (
   </svg>
 );
 
-const BG = "./assets/fondoluna.jpeg";
+const BG = "./assets/fondoluna.jpg";
 
 const stats = [
   { value: "+8",   suffix: " años", label: "en el mercado" },
@@ -56,6 +56,7 @@ export const Hero = () => {
         marginTop: "calc(-1 * var(--header-h, 104px))",
         paddingTop: "var(--header-h, 104px)",
         paddingBottom: `${sponsorsH}px`,
+        backgroundColor: "#0a0c12",
         backgroundImage: `url(${BG})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -112,7 +113,7 @@ export const Hero = () => {
   >
   </span>
 </span>
-              <span className="text-xs font-medium text-white/80">Empresa 100% Peruana · Desde 2016</span>
+              <span className="text-xs font-medium text-white/80">Empresa 100% Peruana - Desde 2016</span>
             </div>
 
             {/* Título */}
@@ -175,7 +176,7 @@ export const Hero = () => {
             </div>
 
             {/* Stats cards */}
-            <div className="flex gap-4 pt-8 border-t border-white/10 w-full max-w-xl mx-auto">
+            <div className="hidden sm:flex gap-4 pt-8 border-t border-white/10 w-full max-w-xl mx-auto">
               {stats.map((s) => (
                 <div
                   key={s.label}
