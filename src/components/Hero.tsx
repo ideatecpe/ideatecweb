@@ -9,7 +9,7 @@ const WhatsApp = () => (
   </svg>
 );
 
-const BG = "./assets/fondo.jpg";
+const BG = "./assets/fondoideatec.jpg";
 
 const stats = [
   { value: "+8",   suffix: " años", label: "en el mercado" },

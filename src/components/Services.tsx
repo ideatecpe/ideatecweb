@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Code2, Smartphone, Palette, ShoppingCart, Cpu, BarChart3, X, Check, ArrowRight } from 'lucide-react';
+import { Code2, Smartphone, Palette, ShoppingCart, Cpu, Bot, X, Check, ArrowRight } from 'lucide-react';
 import { Modal } from './Modal';
 import { ProjectModal } from './ProjectModal';
 
@@ -86,20 +86,20 @@ const servicesData = [
     time: '6 – 24 semanas',
   },
   {
-    icon: BarChart3,
-    title: 'Consultoría',
-    description: 'Asesoramiento estratégico para digitalizar tu empresa y elegir el stack tecnológico adecuado.',
-    fullDescription: 'No siempre necesitas construir desde cero. A veces lo más valioso es la dirección correcta. Te asesoramos en estrategia tecnológica, elección de herramientas, arquitectura de sistemas y hoja de ruta de digitalización.',
+    icon: Bot,
+    title: 'Automatización e IA',
+    description: 'Integramos inteligencia artificial y automatización para optimizar tus procesos y liberar a tu equipo de tareas repetitivas.',
+    fullDescription: 'Llevamos la inteligencia artificial a tu operación diaria. Desde chatbots y asistentes virtuales hasta automatización de procesos y modelos a medida, construimos soluciones que ahorran tiempo, reducen errores y escalan con tu negocio.',
     features: [
-      'Auditoría tecnológica de tu empresa',
-      'Definición de arquitectura y stack',
-      'Hoja de ruta de transformación digital',
-      'Evaluación y selección de proveedores',
-      'Capacitación del equipo técnico',
-      'Mentoría y acompañamiento continuo',
+      'Chatbots y asistentes virtuales con IA',
+      'Automatización de procesos (RPA y workflows)',
+      'Integración de modelos de lenguaje (LLMs)',
+      'Análisis predictivo y procesamiento de datos',
+      'Agentes inteligentes a medida',
+      'Integración con tus herramientas actuales',
     ],
-    stack: ['Reuniones', 'Talleres', 'Documentación', 'Roadmaps', 'KPIs'],
-    time: '1 – 4 semanas',
+    stack: ['Python', 'OpenAI', 'LangChain', 'n8n', 'TensorFlow', 'APIs'],
+    time: '2 – 12 semanas',
   },
 ];
 
@@ -172,19 +172,52 @@ const ServiceCard = ({ icon: Icon, title, description, index, onClick }: any) =>
     viewport={{ once: true }}
     transition={{ delay: index * 0.07, duration: 0.5 }}
     onClick={onClick}
-    className="bg-white border border-gray-200 rounded-xl p-5 cursor-pointer group hover:border-orange-200 transition-all duration-300 flex flex-col h-full"
+    className="group relative overflow-hidden bg-white border border-gray-200 rounded-xl p-5 cursor-pointer flex flex-col h-full min-h-[300px] transition-all duration-500 hover:border-orange-600 hover:shadow-[0_20px_50px_-12px_rgba(234,88,12,0.45)]"
   >
-    <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center mb-5 group-hover:bg-orange-100 transition-colors">
-      <Icon className="w-6 h-6 text-orange-600" />
+    {/* Capa de gradiente naranja (hover) */}
+    <div className="absolute inset-0 bg-gradient-to-br from-orange-800 via-orange-600 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+    {/* Ondas concéntricas en perspectiva (piso) */}
+    <div
+      className="absolute bottom-2 right-6 pointer-events-none"
+      style={{ perspective: "500px" }}
+    >
+      {[230, 175, 125, 80].map((s) => (
+        <span
+          key={s}
+          className="absolute rounded-full border border-orange-200/70 group-hover:border-white/30 transition-colors duration-500"
+          style={{
+            width: s,
+            height: s,
+            right: -s / 2,
+            bottom: -s / 2,
+            transform: "rotateX(62deg)",
+          }}
+        />
+      ))}
     </div>
 
-    <h3 className="text-lg font-bold text-gray-900 mb-3 leading-tight">{title}</h3>
+    {/* Imagen en la esquina */}
+    <img
+      src="./assets/cards/mobile.png"
+      alt=""
+      className="absolute bottom-0 right-0 w-32 object-contain pointer-events-none drop-shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1"
+    />
 
-    <p className="text-sm text-gray-500 leading-relaxed mb-6 grow">{description}</p>
+    {/* Contenido */}
+    <div className="relative z-10 flex flex-col h-full">
+      <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center mb-5 transition-colors duration-500 group-hover:bg-white/15 group-hover:border-white/25">
+        <Icon className="w-6 h-6 text-orange-600 transition-colors duration-500 group-hover:text-white" />
+      </div>
 
-    <div className="flex items-center gap-1.5 text-orange-600 text-sm font-semibold group-hover:gap-3 transition-all duration-300">
-      Ver detalles
-      <ArrowRight className="w-4 h-4" />
+      <h3 className="text-lg font-bold text-gray-900 mb-3 leading-tight transition-colors duration-500 group-hover:text-white">{title}</h3>
+
+      <p className="text-sm text-gray-500 leading-relaxed mb-6 grow max-w-[78%] transition-colors duration-500 group-hover:text-white/85">{description}</p>
+
+      <div className="flex items-center gap-1.5 text-orange-600 text-sm font-semibold transition-all duration-300 group-hover:gap-3 group-hover:text-white">
+        Ver detalles
+        <ArrowRight className="w-4 h-4" />
+      </div>
     </div>
   </motion.div>
 );
