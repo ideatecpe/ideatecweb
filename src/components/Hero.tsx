@@ -9,7 +9,7 @@ const WhatsApp = () => (
   </svg>
 );
 
-const BG = "./assets/fondoideatec.jpg";
+const BG = "./assets/fondoluna.jpeg";
 
 const stats = [
   { value: "+8",   suffix: " años", label: "en el mercado" },
@@ -65,8 +65,7 @@ export const Hero = () => {
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "linear-gradient(90deg, rgba(5,7,15,1) 0%, rgba(5,7,15,1) 30%, rgba(5,7,15,0.92) 48%, rgba(5,7,15,0.70) 65%, rgba(5,7,15,0.38) 82%, rgba(5,7,15,0.12) 100%)",
+          background: "rgba(0, 0, 0, 0.78)",
         }}
       />
 
@@ -99,37 +98,42 @@ export const Hero = () => {
       {/* ── Contenido ── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 lg:py-10">
 
-        <div className="max-w-2xl">
+        <div className="max-w-3xl mx-auto text-center">
 
-          {/* LEFT */}
+          {/* CENTER */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
+            className="flex flex-col items-center"
           >
-            {/* Badge animado */}
-           
+            {/* Pill badge */}
+            <div className="inline-flex items-center gap-2 mb-7 pl-1.5 pr-4 py-1.5 rounded-full border border-white/15 bg-white/8 backdrop-blur-sm">
+              <span className="px-2.5 py-1 rounded-full bg-orange-600 text-white text-[10px] font-bold uppercase tracking-wider">
+                Perú
+              </span>
+              <span className="text-xs font-medium text-white/80">Empresa 100% Peruana · Desde 2016</span>
+            </div>
 
             {/* Título */}
             <h1
-              className="font-black leading-[1.04] tracking-[-0.04em] mb-4 text-white"
-              style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.8rem)" }}
+              className="font-black leading-[1.04] tracking-[-0.04em] mb-5 text-white"
+              style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}
             >
-              Software a medida<br />
-              para empresas<br />
+              Software a medida para<br />
               <span className="relative inline-block">
-                <span className="text-orange-500">que van en serio.</span>
+                <span className="text-orange-500">empresas que van en serio.</span>
                 <span
                   className="absolute left-0 -bottom-2 h-0.75 w-full rounded-full"
                   style={{
-                    background: "linear-gradient(90deg, #ea580c, #fb923c, transparent)",
+                    background: "linear-gradient(90deg, transparent, #ea580c, #fb923c, #ea580c, transparent)",
                   }}
                 />
               </span>
             </h1>
 
             {/* Descripción */}
-            <p className="text-white/60 text-base leading-relaxed max-w-lg mb-5">
+            <p className="text-white/60 text-base leading-relaxed max-w-xl mx-auto mb-7">
               En{" "}
               <strong className="text-white font-semibold">IDEATEC</strong>{" "}
               diseñamos y desarrollamos plataformas web, apps
@@ -137,7 +141,7 @@ export const Hero = () => {
             </p>
 
             {/* Tags de servicios */}
-            <div className="flex flex-wrap gap-2 mb-5">
+            <div className="flex flex-wrap gap-2 mb-8 justify-center">
               {tags.map(({ label, icon: Icon }) => (
                 <span
                   key={label}
@@ -150,7 +154,7 @@ export const Hero = () => {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 mb-6">
+            <div className="flex flex-col sm:flex-row gap-3 mb-10 justify-center">
               <button
                 onClick={() => setOpen(true)}
                 className="group flex items-center justify-center gap-2 px-8 py-4 bg-orange-600 text-white text-sm font-bold rounded-xl hover:bg-orange-500 transition-all duration-300"
@@ -171,7 +175,7 @@ export const Hero = () => {
             </div>
 
             {/* Stats cards */}
-            <div className="flex gap-4 pt-8 border-t border-white/10">
+            <div className="flex gap-4 pt-8 border-t border-white/10 w-full max-w-xl mx-auto">
               {stats.map((s) => (
                 <div
                   key={s.label}
