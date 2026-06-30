@@ -7,6 +7,9 @@ import { ProjectModal } from './ProjectModal';
 const servicesData = [
   {
     icon: Code2,
+    image: './assets/cards/web.png',
+    imgClass: 'w-42',
+    imgPos: 'bottom-0 right-0',
     title: 'Desarrollo Web',
     description: 'Sitios web modernos, rápidos y escalables utilizando las últimas tecnologías como React y Next.js.',
     fullDescription: 'Construimos soluciones web de alto rendimiento usando React, Next.js, TypeScript y más. Desde landing pages de alto impacto hasta plataformas web complejas con arquitecturas escalables.',
@@ -23,6 +26,9 @@ const servicesData = [
   },
   {
     icon: Smartphone,
+    image: './assets/cards/mobile.png',
+    imgClass: 'w-32',
+    imgPos: 'bottom-0 right-0',
     title: 'Apps Móviles',
     description: 'Aplicaciones nativas e híbridas de alto rendimiento para iOS y Android con Flutter y React Native.',
     fullDescription: 'Desarrollamos aplicaciones móviles que tus usuarios amarán. Usamos Flutter y React Native para entregar apps nativas para iOS y Android desde un solo código base, reduciendo costos y tiempos sin sacrificar calidad.',
@@ -39,6 +45,9 @@ const servicesData = [
   },
   {
     icon: Palette,
+    image: './assets/cards/uiux.png',
+    imgClass: 'w-32',
+    imgPos: 'bottom-[-70px]  right-0',
     title: 'Diseño UI/UX',
     description: 'Interfaces intuitivas y experiencias de usuario memorables centradas en la conversión y el engagement.',
     fullDescription: 'El diseño no es solo estética, es estrategia. Creamos interfaces que guían al usuario de forma natural, reducen la fricción y aumentan las conversiones. Trabajamos con Design Thinking y metodologías centradas en el usuario.',
@@ -55,6 +64,9 @@ const servicesData = [
   },
   {
     icon: ShoppingCart,
+    image: './assets/cards/e-commerce.png',
+    imgClass: 'w-52',
+    imgPos: 'bottom-0 right-0',
     title: 'E-commerce',
     description: 'Tiendas online robustas con pasarelas de pago seguras y gestión de inventario optimizada.',
     fullDescription: 'Creamos plataformas de comercio electrónico que venden mientras duermes. Desde catálogos de productos hasta checkout optimizados, integramos las pasarelas de pago más populares de Latinoamérica y el mundo.',
@@ -71,6 +83,9 @@ const servicesData = [
   },
   {
     icon: Cpu,
+    image: './assets/cards/softwaremedida.png',
+    imgClass: 'w-35',
+    imgPos: 'bottom-0 right-3',
     title: 'Software a Medida',
     description: 'Soluciones de software personalizadas para resolver problemas específicos de tu flujo de trabajo.',
     fullDescription: 'Cuando las soluciones genéricas no son suficientes, creamos software personalizado exactamente para lo que necesitas. ERPs, CRMs, sistemas de gestión, automatizaciones y más.',
@@ -87,8 +102,11 @@ const servicesData = [
   },
   {
     icon: Bot,
+    image: './assets/cards/ia.png',
+    imgClass: 'w-32',
+    imgPos: 'bottom-[-30px] right-0',
     title: 'Automatización e IA',
-    description: 'Integramos inteligencia artificial y automatización para optimizar tus procesos y liberar a tu equipo de tareas repetitivas.',
+    description: 'Integramos de IA y automatización para optimizar tus procesos y liberar a tu equipo de tareas repetitivas.',
     fullDescription: 'Llevamos la inteligencia artificial a tu operación diaria. Desde chatbots y asistentes virtuales hasta automatización de procesos y modelos a medida, construimos soluciones que ahorran tiempo, reducen errores y escalan con tu negocio.',
     features: [
       'Chatbots y asistentes virtuales con IA',
@@ -165,7 +183,7 @@ const ServiceModal = ({ service, onClose, onRequest }: {
   );
 };
 
-const ServiceCard = ({ icon: Icon, title, description, index, onClick }: any) => (
+const ServiceCard = ({ icon: Icon, image, imgClass = 'w-32', imgPos = 'bottom-0 right-0', title, description, index, onClick }: any) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -199,9 +217,9 @@ const ServiceCard = ({ icon: Icon, title, description, index, onClick }: any) =>
 
     {/* Imagen en la esquina */}
     <img
-      src="./assets/cards/mobile.png"
+      src={image}
       alt=""
-      className="absolute bottom-0 right-0 w-32 object-contain pointer-events-none drop-shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1"
+      className={`absolute ${imgPos} ${imgClass} object-contain pointer-events-none drop-shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1`}
     />
 
     {/* Contenido */}
@@ -257,6 +275,9 @@ export const Services = () => {
             <ServiceCard
               key={s.title}
               icon={s.icon}
+              image={s.image}
+              imgClass={s.imgClass}
+              imgPos={s.imgPos}
               title={s.title}
               description={s.description}
               index={i}
