@@ -20,7 +20,7 @@ export const Navbar = () => {
     // para que el reajuste de layout no vuelva a cruzar el umbral y parpadee.
     const onScroll = () => {
       const y = window.scrollY;
-      setScrolled((prev) => (prev ? y > 30 : y > 160));
+      setScrolled((prev) => (prev ? y > 5 : y > 10));
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);

@@ -19,8 +19,16 @@ const legalItems = [
 export const WhyUs = () => (
   <>
     {/* ── ¿Por qué elegirnos? ── */}
-    <section id="nosotros" className="bg-white border-b border-gray-100 py-20 lg:py-28">
-      <div className="max-w-7xl mx-auto px-6">
+<section
+  id="nosotros"
+  className="relative border-b border-gray-100 py-20 lg:py-28 bg-cover bg-center overflow-hidden"
+  style={{ backgroundImage: "url(./assets/backgrounds/fondo02.jpg)" }}
+>
+  {/* Capa blanca */}
+  <div className="absolute inset-0 bg-white/30"></div>
+      {/* Capa para legibilidad */}
+      <div className="absolute inset-0 bg-white/85" />
+      <div className="relative max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Text */}
