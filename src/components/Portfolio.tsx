@@ -109,7 +109,7 @@ export const Portfolio = () => {
   const [projectOpen, setProjectOpen] = useState(false);
 
   return (
-    <section id="portafolio" className="bg-white border-b border-gray-100 py-20 lg:py-28">
+    <section id="portafolio" className="bg-white border-b border-gray-100 py-10">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}

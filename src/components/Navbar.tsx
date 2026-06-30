@@ -15,15 +15,24 @@ export const Navbar = () => {
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // Histéresis amplia (off<30, on>160). El navbar cambia de alto 150→64 al
-    // hacer scroll (−86px); el margen entre umbrales debe superar ese salto
-    // para que el reajuste de layout no vuelva a cruzar el umbral y parpadee.
+    // El header mantiene ALTURA CONSTANTE en ambos estados (no cambia de alto al
+    // scrollear), por lo que no hay reflujo que reintroduzca el cruce de umbral.
+    // Eso elimina por completo el parpadeo, y permite activar con scroll mínimo.
+    // rAF para coalescer múltiples eventos de scroll en un solo update por frame.
+    let raf = 0;
     const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled((prev) => (prev ? y > 5 : y > 10));
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const y = window.scrollY;
+        setScrolled((prev) => (prev ? y > 4 : y > 8));
+      });
     };
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   useEffect(() => {
@@ -62,7 +71,7 @@ export const Navbar = () => {
       {/* Main nav */}
       <nav
         className={`relative border-b transition-all duration-300 ${
-          scrolled ? 'border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.08)] pt-0' : 'border-white/5 pt-0 lg:pt-[30px]'
+          scrolled ? 'border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.08)]' : 'border-white/5'
         }`}
         style={{
           backgroundColor: scrolled ? '#ffffff' : 'transparent',

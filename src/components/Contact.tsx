@@ -38,7 +38,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contacto" className="bg-gray-50 border-b border-gray-100 py-20 lg:py-28">
+    <section id="contacto" className="bg-gray-50 border-b border-gray-100 py-10">
       <div className="max-w-7xl mx-auto px-6">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">

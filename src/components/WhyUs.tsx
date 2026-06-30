@@ -21,11 +21,11 @@ export const WhyUs = () => (
     {/* ── ¿Por qué elegirnos? ── */}
 <section
   id="nosotros"
-  className="relative border-b border-gray-100 py-20 lg:py-28 bg-cover bg-center overflow-hidden"
+  className="relative border-b border-gray-100 py-10 bg-cover bg-center overflow-hidden"
   style={{ backgroundImage: "url(./assets/backgrounds/fondo02.jpg)" }}
 >
   {/* Capa blanca */}
-  <div className="absolute inset-0 bg-white/30"></div>
+  <div className="absolute inset-0 bg-white/60"></div>
       {/* Capa para legibilidad */}
       <div className="absolute inset-0 bg-white/85" />
       <div className="relative max-w-7xl mx-auto px-6">
@@ -90,7 +90,7 @@ export const WhyUs = () => (
     </section>
 
     {/* ── ¿Quiénes somos? ── */}
-    <section className="bg-gray-50 border-b border-gray-100 py-20 lg:py-28">
+    <section className="bg-gray-50 border-b border-gray-100 py-10">
       <div className="max-w-7xl mx-auto px-6">
 
         <div className="mb-12 text-center">

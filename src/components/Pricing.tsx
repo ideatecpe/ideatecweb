@@ -50,7 +50,7 @@ export const Pricing = () => {
   return (
     <>
       {/* ═══ PROCESO ═══ */}
-      <section id="como-lo-hacemos" className="bg-gray-50 border-b border-gray-100 py-20 lg:py-28">
+      <section id="como-lo-hacemos" className="bg-gray-50 border-b border-gray-100 py-10">
         <div className="max-w-6xl mx-auto px-6">
 
           <motion.div
