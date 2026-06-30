@@ -15,7 +15,13 @@ export const Navbar = () => {
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    // Histéresis amplia (off<30, on>160). El navbar cambia de alto 150→64 al
+    // hacer scroll (−86px); el margen entre umbrales debe superar ese salto
+    // para que el reajuste de layout no vuelva a cruzar el umbral y parpadee.
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled((prev) => (prev ? y > 30 : y > 160));
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -59,9 +65,7 @@ export const Navbar = () => {
           scrolled ? 'border-gray-200 shadow-[0_4px_20px_rgba(0,0,0,0.08)] pt-0' : 'border-white/5 pt-0 lg:pt-[30px]'
         }`}
         style={{
-          backgroundColor: scrolled ? '#ffffff' : 'rgba(10,12,18,0.25)',
-          backdropFilter: scrolled ? 'none' : 'blur(16px) saturate(160%)',
-          WebkitBackdropFilter: scrolled ? 'none' : 'blur(16px) saturate(160%)',
+          backgroundColor: scrolled ? '#ffffff' : 'transparent',
         }}
       >
         {/* Línea naranja inferior visible al scrollear */}
@@ -77,7 +81,7 @@ export const Navbar = () => {
               onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="flex items-center gap-2.5 shrink-0"
             >
-              <img src="./assets/logo.png" alt="IDEATEC" className="w-9 h-9" />
+              <img src="./assets/brand/logo.png" alt="IDEATEC" className="w-9 h-9" />
               <span
                 className="text-[22px] leading-none tracking-wider"
                 style={{ fontFamily: "'Bebas Neue', sans-serif" }}

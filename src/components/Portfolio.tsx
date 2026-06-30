@@ -34,20 +34,20 @@ const projects = [
   {
     title: 'FactuFly',
     category: 'Software / Web',
-    image: './assets/alldispositivos-factufly.png',
+    image: './assets/portfolio/alldispositivos-factufly.png',
     images: [
       {
-        url: './assets/alldispositivos-factufly.png',
+        url: './assets/portfolio/alldispositivos-factufly.png',
         badge: 'Software / Web Multidispositivo',
         caption: 'Plataforma 100% responsiva y adaptativa, diseñada para funcionar perfectamente en PC, tablet y smartphones.'
       },
       {
-        url: './assets/ipad-pro-factufly.png',
+        url: './assets/portfolio/ipad-pro-factufly.png',
         badge: 'Software / Web (Emisión en iPad)',
         caption: 'Demostración de la interfaz intuitiva para emitir y gestionar boletas o facturas rápidamente desde una tablet.'
       },
       {
-        url: './assets/ticketerafactufly.png',
+        url: './assets/portfolio/ticketerafactufly.png',
         badge: 'Software / Web (Impresión Física)',
         caption: 'Compatibilidad e impresión optimizada de comprobantes de pago mediante ticketeras térmicas.'
       }

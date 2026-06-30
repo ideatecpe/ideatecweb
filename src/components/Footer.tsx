@@ -18,7 +18,7 @@ export const Footer = () => {
   return (
     <>
       <footer className="relative overflow-hidden" style={{
-        backgroundImage: 'url(./assets/bgfooter.jpg)',
+        backgroundImage: 'url(./assets/backgrounds/bgfooter.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}>
@@ -35,7 +35,7 @@ export const Footer = () => {
                 onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 className="flex items-center gap-2.5 mb-5"
               >
-                <img src="./assets/logo.png" alt="IDEATEC" className="w-9 h-9" />
+                <img src="./assets/brand/logo.png" alt="IDEATEC" className="w-9 h-9" />
                 <span
                   className="text-[22px] leading-none tracking-wider"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}

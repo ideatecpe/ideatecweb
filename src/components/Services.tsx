@@ -251,7 +251,7 @@ export const Services = () => {
   };
 
   return (
-    <section id="servicios" className="bg-gray-50 border-b border-gray-100 pt-20 lg:pt-20">
+    <section id="servicios" className="bg-gray-50 border-b border-gray-100 pt-10">
 
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6">
@@ -268,7 +268,7 @@ export const Services = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 mb-20 mt-10">
+      <div className="max-w-7xl mx-auto px-6 mb-10 mt-10">
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {servicesData.map((s, i) => (

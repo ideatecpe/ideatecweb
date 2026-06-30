@@ -72,7 +72,7 @@ export const WhyUs = () => (
               }}
             />
             <img
-              src="./assets/mascota.png"
+              src="./assets/brand/mascota.png"
               alt="Mascota IDEATEC"
               className="relative w-full max-w-sm object-contain drop-shadow-xl"
             />
@@ -117,10 +117,19 @@ export const WhyUs = () => (
           </div>
 
           {/* Legal card */}
-          <div className="lg:w-2/5 w-full rounded-xl border border-gray-200 bg-white p-7 space-y-4">
-            <h3 className="text-base font-bold text-gray-900 mb-2">Datos de la empresa</h3>
+          <div
+            className="relative lg:w-2/5 w-full rounded-xl border border-gray-200 overflow-hidden p-7 space-y-4"
+            style={{
+              backgroundImage: "url(./assets/backgrounds/fondoi.jpg)",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            {/* Capa para legibilidad */}
+            <div className="absolute inset-0 bg-white/85 backdrop-blur-[1px]" />
+            <h3 className="relative text-base font-bold text-gray-900 mb-2">Datos de la empresa</h3>
             {legalItems.map((item) => (
-              <div key={item.label} className="flex items-center gap-4 py-2 border-b border-gray-100 last:border-0">
+              <div key={item.label} className="relative flex items-center gap-4 py-2 border-b border-gray-100 last:border-0">
                 <div className="shrink-0 w-8 h-8 rounded-lg bg-orange-50 border border-orange-100 flex items-center justify-center">
                   <item.icon className="w-4 h-4 text-orange-600" />
                 </div>
@@ -130,7 +139,7 @@ export const WhyUs = () => (
                 </div>
               </div>
             ))}
-            <div className="pt-2 flex justify-between items-center">
+            <div className="relative pt-2 flex justify-between items-center">
               <span className="text-xs text-gray-400">Empresa 100% peruana</span>
               <span className="px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-700 text-xs font-semibold">Desde 2016</span>
             </div>
