@@ -96,9 +96,9 @@ export const Hero = () => {
             className="flex flex-col items-center"
           >
             {/* Pill badge */}
-            <div className="inline-flex items-center gap-2 mb-7 pl-1.5 pr-4 py-1.5  backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 mb-2 pl-1.5 pr-4 py-1.5  backdrop-blur-sm">
         <span
-  className="relative overflow-hidden inline-flex items-center justify-center rounded-full ring-1 ring-white/10 shrink-0"
+  className="relative overflow-hidden inline-flex items-center justify-center rounded-sm ring-1 ring-white/10 shrink-0"
   style={{
     width: "42px",
     height: "22px",
