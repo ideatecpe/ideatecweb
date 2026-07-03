@@ -47,12 +47,26 @@ export const Navbar = () => {
 
   useEffect(() => {
     const ids = ['inicio', 'servicios', 'nosotros', 'portafolio', 'como-lo-hacemos', 'contacto'];
+    const observed = new Set<string>();
     const obs = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
       { threshold: 0.35 }
     );
-    ids.forEach((id) => { const el = document.getElementById(id); if (el) obs.observe(el); });
-    return () => obs.disconnect();
+    // Observa las secciones ya presentes y las que aún faltan (las secciones
+    // bajo el pliegue se montan de forma diferida vía React.lazy, por lo que
+    // no existen en el DOM al montar el navbar).
+    const observePending = () => {
+      ids.forEach((id) => {
+        if (observed.has(id)) return;
+        const el = document.getElementById(id);
+        if (el) { obs.observe(el); observed.add(id); }
+      });
+    };
+    observePending();
+    // MutationObserver: reintenta observar cuando aparecen nuevas secciones.
+    const mo = new MutationObserver(observePending);
+    mo.observe(document.body, { childList: true, subtree: true });
+    return () => { obs.disconnect(); mo.disconnect(); };
   }, []);
 
   const go = (e: React.MouseEvent, id: string) => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Zap, Layers, Users, Headphones, MapPin, Calendar, Hash } from 'lucide-react';
+import { Reveal } from './Reveal';
 
 const features = [
   { icon: Zap,        title: 'Entregas Rápidas',  description: 'Metodologías ágiles para lanzar tu producto en tiempo récord sin sacrificar calidad.' },
@@ -82,6 +83,8 @@ export const WhyUs = () => (
             <img
               src="./assets/brand/mascota.png"
               alt="Mascota IDEATEC"
+              loading="lazy"
+              decoding="async"
               className="relative w-full max-w-sm object-contain drop-shadow-xl"
             />
           </motion.div>
@@ -93,20 +96,20 @@ export const WhyUs = () => (
     <section className="bg-gray-50 border-b border-gray-100 py-10">
       <div className="max-w-7xl mx-auto px-6">
 
-        <div className="mb-12 text-center">
+        <Reveal direction="up" className="mb-12 text-center">
           <span className="inline-block text-xs font-bold uppercase tracking-widest text-orange-600 border-l-4 border-orange-500 pl-3 mb-4">
             Nuestra empresa
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mt-2">
             ¿Quiénes <span className="text-orange-600">somos?</span>
           </h2>
-        </div>
+        </Reveal>
 
         {/* Content */}
         <div className="flex flex-col lg:flex-row gap-12 items-start mb-14">
 
           {/* Description */}
-          <div className="lg:w-3/5 space-y-4">
+          <Reveal direction="right" className="lg:w-3/5 space-y-4">
             <p className="text-gray-600 leading-relaxed">
               Somos <span className="text-gray-900 font-semibold">IDEATEC SAC</span>, una empresa de capitales 100% peruanos con más de 8 años en el mercado,
               especializada en el desarrollo de soluciones digitales a medida: plataformas web, aplicaciones móviles y
@@ -122,10 +125,12 @@ export const WhyUs = () => (
               enfoque estratégico, combinando innovación, buenas prácticas de desarrollo y un profundo entendimiento de las
               necesidades de cada cliente.
             </p>
-          </div>
+          </Reveal>
 
           {/* Legal card */}
-          <div
+          <Reveal
+            direction="left"
+            delay={0.1}
             className="relative lg:w-2/5 w-full rounded-xl border border-gray-200 overflow-hidden p-7 space-y-4"
             style={{
               backgroundImage: "url(./assets/backgrounds/fondoi.jpg)",
@@ -151,11 +156,11 @@ export const WhyUs = () => (
               <span className="text-xs text-gray-400">Empresa 100% peruana</span>
               <span className="px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-700 text-xs font-semibold">Desde 2016</span>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Misión / Visión */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <Reveal direction="up" className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {[
             {
               tag: 'Misión', title: '¿Para qué existimos?',
@@ -172,7 +177,7 @@ export const WhyUs = () => (
               <p className="text-gray-500 leading-relaxed text-sm">{item.text}</p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   </>

@@ -190,7 +190,7 @@ const ServiceCard = ({ icon: Icon, image, imgClass = 'w-32', imgPos = 'bottom-0 
     viewport={{ once: true }}
     transition={{ delay: index * 0.07, duration: 0.5 }}
     onClick={onClick}
-    className="group relative overflow-hidden bg-white border border-gray-200 rounded-xl p-5 cursor-pointer flex flex-col h-full min-h-[300px] transition-all duration-500 hover:border-orange-600 hover:shadow-[0_20px_50px_-12px_rgba(234,88,12,0.45)]"
+    className="group relative overflow-hidden bg-white border border-gray-200 rounded-xl p-5 cursor-pointer flex flex-col h-full min-h-[300px] transition-[border-color,box-shadow] duration-500 hover:border-orange-600 hover:shadow-[0_20px_50px_-12px_rgba(234,88,12,0.45)]"
   >
     {/* Capa de gradiente naranja (hover) */}
     <div className="absolute inset-0 bg-gradient-to-br from-orange-800 via-orange-600 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -219,6 +219,8 @@ const ServiceCard = ({ icon: Icon, image, imgClass = 'w-32', imgPos = 'bottom-0 
     <img
       src={image}
       alt=""
+      loading="lazy"
+      decoding="async"
       className={`absolute ${imgPos} ${imgClass} object-contain pointer-events-none drop-shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1`}
     />
 

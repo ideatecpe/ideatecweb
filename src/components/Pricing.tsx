@@ -84,7 +84,7 @@ export const Pricing = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: i * 0.05 }}
-                    className={`relative flex items-start gap-4 p-5 rounded-xl border border-gray-200 bg-white hover:border-orange-200 transition-all duration-300 ${
+                    className={`relative flex items-start gap-4 p-5 rounded-xl border border-gray-200 bg-white hover:border-orange-200 transition-colors duration-300 ${
                       isLeft ? 'lg:pr-10' : 'lg:pl-10'
                     }`}
                   >
@@ -141,7 +141,7 @@ export const Pricing = () => {
       </section>
 
       {/* ═══ SEO / PAGESPEED ═══ */}
-      <section className="bg-white border-b border-gray-100 py-20 lg:py-28">
+      <section className="bg-white border-b border-gray-100 py-10">
         <div className="max-w-6xl mx-auto px-6">
 
           <motion.div
@@ -230,7 +230,7 @@ export const Pricing = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: i * 0.06 }}
-                  className="p-6 rounded-xl border border-gray-200 bg-white hover:border-orange-200 transition-all duration-300 cursor-default"
+                  className="p-6 rounded-xl border border-gray-200 bg-white hover:border-orange-200 transition-colors duration-300 cursor-default"
                 >
                   <div
                     className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"

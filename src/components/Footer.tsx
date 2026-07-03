@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { PrivacyModal } from "./PrivacyModal";
 import { TermsModal } from "./TermsModal";
+import { Reveal } from "./Reveal";
 
 const navLinks = [
   { label: "Servicios",          href: "#servicios" },
@@ -26,7 +27,7 @@ export const Footer = () => {
         <div className="absolute inset-0 bg-gray-900/88 pointer-events-none" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 pb-12 border-b border-gray-800">
+          <Reveal direction="up" className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 pb-12 border-b border-gray-800">
 
             {/* Brand */}
             <div>
@@ -35,7 +36,7 @@ export const Footer = () => {
                 onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 className="flex items-center gap-2.5 mb-5"
               >
-                <img src="./assets/brand/logo.png" alt="IDEATEC" className="w-9 h-9" />
+                <img src="./assets/brand/logo.png" alt="IDEATEC" loading="lazy" decoding="async" className="w-9 h-9" />
                 <span
                   className="text-[22px] leading-none tracking-wider"
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
@@ -90,7 +91,7 @@ export const Footer = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-gray-400">

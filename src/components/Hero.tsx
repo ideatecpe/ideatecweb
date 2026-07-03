@@ -1,6 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, Code2, Smartphone, Cpu, Palette, ShoppingCart, BarChart3 } from "lucide-react";
+import {
+  ArrowRight,
+  Code2,
+  Smartphone,
+  Cpu,
+  Palette,
+  ShoppingCart,
+  BarChart3,
+} from "lucide-react";
 import { ProjectModal } from "./ProjectModal";
 
 const WhatsApp = () => (
@@ -12,18 +20,18 @@ const WhatsApp = () => (
 const BG = "./assets/backgrounds/fondoluna.jpg";
 
 const stats = [
-  { value: "+8",   suffix: " años", label: "en el mercado" },
-  { value: "+100", suffix: "",      label: "proyectos entregados" },
-  { value: "100",  suffix: "%",     label: "capital peruano" },
+  { value: "+8", suffix: " años", label: "en el mercado" },
+  { value: "+100", suffix: "", label: "proyectos entregados" },
+  { value: "100", suffix: "%", label: "capital peruano" },
 ];
 
 const tags = [
-  { label: "Desarrollo Web",    icon: Code2 },
-  { label: "Apps Móviles",      icon: Smartphone },
+  { label: "Desarrollo Web", icon: Code2 },
+  { label: "Apps Móviles", icon: Smartphone },
   { label: "Software a Medida", icon: Cpu },
-  { label: "UI/UX Design",      icon: Palette },
-  { label: "E-commerce",        icon: ShoppingCart },
-  { label: "Consultoría TI",    icon: BarChart3 },
+  { label: "UI/UX Design", icon: Palette },
+  { label: "E-commerce", icon: ShoppingCart },
+  { label: "Consultoría TI", icon: BarChart3 },
 ];
 
 export const Hero = () => {
@@ -39,7 +47,7 @@ export const Hero = () => {
   }, []);
 
   const waUrl = `https://wa.me/51912903330?text=${encodeURIComponent(
-    "Hola IDEATEC, me interesa desarrollar un proyecto con ustedes. ¿Podemos hablar?"
+    "Hola IDEATEC, me interesa desarrollar un proyecto con ustedes. ¿Podemos hablar?",
   )}`;
 
   const scrollDown = () => {
@@ -71,23 +79,23 @@ export const Hero = () => {
       />
 
       {/* ── Capa oscura extra solo en mobile ── */}
-   
+
       {/* ── Trama de puntos sobre el lado derecho ── */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)",
+          backgroundImage:
+            "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
           maskImage: "linear-gradient(to left, black 0%, transparent 55%)",
-          WebkitMaskImage: "linear-gradient(to left, black 0%, transparent 55%)",
+          WebkitMaskImage:
+            "linear-gradient(to left, black 0%, transparent 55%)",
         }}
       />
 
       {/* ── Contenido ── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 lg:py-10">
-
         <div className="max-w-3xl mx-auto text-center">
-
           {/* CENTER */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -96,38 +104,43 @@ export const Hero = () => {
             className="flex flex-col items-center"
           >
             {/* Pill badge */}
-            <div className="inline-flex items-center gap-2 mb-2 pl-1.5 pr-4 py-1.5  backdrop-blur-sm">
-        <span
-  className="relative overflow-hidden inline-flex items-center justify-center rounded-sm ring-1 ring-white/10 shrink-0"
-  style={{
-    width: "42px",
-    height: "22px",
-    background:
-      "linear-gradient(to right, #D91023 0%, #D91023 33.33%, #ffffff 33.33%, #ffffff 66.66%, #D91023 66.66%, #D91023 100%)",
-  }}
->
-  <span className="absolute inset-0 bg-black/15" />
-  <span
-    className="relative text-white text-[10px] font-bold uppercase tracking-wider"
-    style={{ textShadow: "0 1px 3px rgba(0,0,0,0.9)" }}
-  >
-  </span>
-</span>
-              <span className="text-xs font-medium text-white/80">Empresa 100% Peruana - Desde 2016</span>
-            </div>
+            {/* <div className="inline-flex items-center gap-2 mb-2 pl-1.5 pr-4 py-1.5  backdrop-blur-sm">
+              <span
+                className="relative overflow-hidden inline-flex items-center justify-center rounded-sm ring-1 ring-white/10 shrink-0"
+                style={{
+                  width: "42px",
+                  height: "22px",
+                  background:
+                    "linear-gradient(to right, #D91023 0%, #D91023 33.33%, #ffffff 33.33%, #ffffff 66.66%, #D91023 66.66%, #D91023 100%)",
+                }}
+              >
+                <span className="absolute inset-0 bg-black/15" />
+                <span
+                  className="relative text-white text-[10px] font-bold uppercase tracking-wider"
+                  style={{ textShadow: "0 1px 3px rgba(0,0,0,0.9)" }}
+                ></span>
+              </span>
+              <span className="text-xs font-medium text-white/80">
+                Empresa 100% Peruana - Desde 2016
+              </span>
+            </div> */}
 
             {/* Título */}
             <h1
               className="font-black leading-[1.04] tracking-[-0.04em] mb-5 text-white"
               style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}
             >
-              Software a medida para<br />
+              Software a medida para
+              <br />
               <span className="relative inline-block">
-                <span className="text-orange-500">empresas que van en serio</span>
+                <span className="text-orange-500">
+                  empresas que van en serio
+                </span>
                 <span
                   className="absolute left-0 -bottom-2 h-0.75 w-full rounded-full"
                   style={{
-                    background: "linear-gradient(90deg, transparent, #ea580c, #fb923c, #ea580c, transparent)",
+                    background:
+                      "linear-gradient(90deg, transparent, #ea580c, #fb923c, #ea580c, transparent)",
                   }}
                 />
               </span>
@@ -135,10 +148,9 @@ export const Hero = () => {
 
             {/* Descripción */}
             <p className="text-white/60 text-base leading-relaxed max-w-xl mx-auto mb-7">
-              En{" "}
-              <strong className="text-white font-semibold">IDEATEC</strong>{" "}
-              diseñamos y desarrollamos plataformas web, apps
-              móviles y sistemas de gestión que impulsan el crecimiento real de tu empresa.
+              En <strong className="text-white font-semibold">IDEATEC</strong>{" "}
+              diseñamos y desarrollamos plataformas web, apps móviles y sistemas
+              de gestión que impulsan el crecimiento real de tu empresa.
             </p>
 
             {/* Tags de servicios */}
@@ -186,7 +198,9 @@ export const Hero = () => {
                     {s.value}
                     <span className="text-orange-400">{s.suffix}</span>
                   </p>
-                  <p className="text-[11px] text-white/45 font-medium leading-snug">{s.label}</p>
+                  <p className="text-[11px] text-white/45 font-medium leading-snug">
+                    {s.label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -194,41 +208,51 @@ export const Hero = () => {
         </div>
       </div>
 
-
       {/* ── Sponsors bar ── */}
       <div
         ref={sponsorsRef}
         className="absolute bottom-0 left-0 w-full z-10 py-4 border-t border-white/5"
         style={{
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
         }}
       >
         <div
           className="max-w-7xl mx-auto px-6 overflow-hidden"
           style={{
-            maskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
           }}
         >
           <div className="flex w-max items-center hero-marquee">
             {[0, 1].map((group) => (
-              <div key={group} className="flex shrink-0" aria-hidden={group === 1}>
-                {Array(4).fill([
-                  "./assets/sponsors/sponsor01.png",
-                  "./assets/sponsors/sponsor02.png",
-                  "./assets/sponsors/sponsor03.png",
-                  "./assets/sponsors/sponsor04.png",
-                  "./assets/sponsors/sponsor05.png",
-                ]).flat().map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt="sponsor"
-                    className="h-7 w-auto object-contain shrink-0 mr-16"
-                    draggable={false}
-                  />
-                ))}
+              <div
+                key={group}
+                className="flex shrink-0"
+                aria-hidden={group === 1}
+              >
+                {Array(4)
+                  .fill([
+                    "./assets/sponsors/sponsor01.png",
+                    "./assets/sponsors/sponsor02.png",
+                    "./assets/sponsors/sponsor03.png",
+                    "./assets/sponsors/sponsor04.png",
+                    "./assets/sponsors/sponsor05.png",
+                  ])
+                  .flat()
+                  .map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt="sponsor"
+                      loading="lazy"
+                      decoding="async"
+                      className="h-7 w-auto object-contain shrink-0 mr-16"
+                      draggable={false}
+                    />
+                  ))}
               </div>
             ))}
           </div>

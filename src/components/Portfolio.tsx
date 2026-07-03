@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { Modal } from './Modal';
 import { ProjectModal } from './ProjectModal';
+import { Reveal } from './Reveal';
 
 const iconMap: Record<string, React.ReactNode> = {
   Search: <Search className="w-4.5 h-4.5" />,
@@ -113,17 +114,17 @@ export const Portfolio = () => {
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}
-        <div className="flex flex-col lg:flex-row justify-between items-end mb-14 gap-8">
+        <Reveal className="flex flex-col lg:flex-row justify-between items-end mb-14 gap-8">
           <div>
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-orange-600 border-l-4 border-orange-500 pl-3 mb-4">
               Casos de Éxito
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 leading-tight">Nuestros Proyectos.</h2>
           </div>
-        </div>
+        </Reveal>
 
         {/* Showcase Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+        <Reveal direction="up" delay={0.05} className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
           
           {/* Left Column: Image Viewer (lg:col-span-7) */}
           <div className="lg:col-span-7 space-y-5">
@@ -134,9 +135,11 @@ export const Portfolio = () => {
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3 }}
-                src={activeImage.url} 
-                alt={project.title} 
-                className="w-full h-full object-contain md:object-cover" 
+                src={activeImage.url}
+                alt={project.title}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-contain md:object-cover"
               />
             </div>
 
@@ -164,7 +167,7 @@ export const Portfolio = () => {
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                 >
-                  <img src={img.url} alt={`${project.title} vista ${idx + 1}`} className="w-full h-full object-cover" />
+                  <img src={img.url} alt={`${project.title} vista ${idx + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
@@ -220,10 +223,10 @@ export const Portfolio = () => {
               </button>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Section: Features Grid */}
-        <div className="border-t border-gray-100 pt-16 mb-16">
+        <Reveal direction="up" className="border-t border-gray-100 pt-16 mb-16">
           <div className="mb-10 text-center lg:text-left">
             <h4 className="text-lg font-bold text-gray-900 mb-2 flex items-center justify-center lg:justify-start gap-2">
               <Layers className="w-5 h-5 text-orange-500" /> Características Principales del Sistema
@@ -249,10 +252,10 @@ export const Portfolio = () => {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
 
         {/* Section: Technologies used */}
-        <div className="border-t border-gray-100 pt-10 flex flex-col sm:flex-row items-center gap-4 justify-between">
+        <Reveal direction="up" className="border-t border-gray-100 pt-10 flex flex-col sm:flex-row items-center gap-4 justify-between">
           <div className="flex items-center gap-2">
             <Tag className="w-4 h-4 text-gray-400" />
             <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Stack Tecnológico</span>
@@ -264,7 +267,7 @@ export const Portfolio = () => {
               </span>
             ))}
           </div>
-        </div>
+        </Reveal>
 
       </div>
 

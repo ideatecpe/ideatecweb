@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Phone, Send, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import emailjs from '@emailjs/browser';
+import { Reveal } from './Reveal';
 
 export const Contact = () => {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -44,7 +45,7 @@ export const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
           {/* LEFT */}
-          <div>
+          <Reveal direction="right">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-orange-600 border-l-4 border-orange-500 pl-3 mb-4">
               Contacto
             </span>
@@ -80,10 +81,10 @@ export const Contact = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* RIGHT: Form */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-8">
+          <Reveal direction="left" delay={0.1} className="bg-white rounded-2xl border border-gray-200 p-8">
             <AnimatePresence mode="wait">
               {status === 'success' ? (
                 <motion.div
@@ -164,7 +165,7 @@ export const Contact = () => {
                 </motion.form>
               )}
             </AnimatePresence>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

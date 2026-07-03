@@ -1,14 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
-import { WhyUs } from './components/WhyUs';
-import { Portfolio } from './components/Portfolio';
-// import { Testimonials } from './components/Testimonials';
-import { Pricing } from './components/Pricing';
-import { Contact } from './components/Contact';
-import { Footer } from './components/Footer';
-import { WhatsAppFloat } from './components/WhatsAppFloat';
+
+// Carga diferida (code-splitting) de las secciones bajo el pliegue:
+// solo se descargan cuando el usuario se acerca a ellas al hacer scroll.
+const WhyUs     = lazy(() => import('./components/WhyUs').then(m => ({ default: m.WhyUs })));
+const Portfolio = lazy(() => import('./components/Portfolio').then(m => ({ default: m.Portfolio })));
+const Pricing   = lazy(() => import('./components/Pricing').then(m => ({ default: m.Pricing })));
+const Contact   = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })));
+const Footer    = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
+const WhatsAppFloat = lazy(() => import('./components/WhatsAppFloat').then(m => ({ default: m.WhatsAppFloat })));
+
+// Reserva de espacio mientras carga el chunk (evita saltos de layout).
+const SectionFallback = () => <div className="min-h-[40vh]" aria-hidden />;
 
 export default function App() {
   useEffect(() => {
@@ -30,14 +35,17 @@ export default function App() {
       <main>
         <Hero />
         <Services />
-        <WhyUs />
-        <Portfolio />
-        {/* <Testimonials /> */}
-        <Pricing />
-        <Contact />
+        <Suspense fallback={<SectionFallback />}>
+          <WhyUs />
+          <Portfolio />
+          <Pricing />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
-      <WhatsAppFloat />
+      <Suspense fallback={null}>
+        <Footer />
+        <WhatsAppFloat />
+      </Suspense>
     </div>
   );
 }
