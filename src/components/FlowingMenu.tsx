@@ -187,6 +187,11 @@ function MenuItem({
       <a
         className="menu__item-link"
         href={link}
+        onClick={(e) => {
+          if (link === '#' || !link) {
+            e.preventDefault();
+          }
+        }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         style={{ color: textColor }}

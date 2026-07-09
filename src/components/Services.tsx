@@ -221,6 +221,8 @@ const ServiceCard = ({ icon: Icon, image, imgClass = 'w-32', imgPos = 'bottom-0 
       alt=""
       loading="lazy"
       decoding="async"
+      width="168"
+      height="168"
       className={`absolute ${imgPos} ${imgClass} object-contain pointer-events-none drop-shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1`}
     />
 

@@ -139,6 +139,8 @@ export const Portfolio = () => {
                 alt={project.title}
                 loading="lazy"
                 decoding="async"
+                width="640"
+                height="400"
                 className="w-full h-full object-contain md:object-cover"
               />
             </div>
@@ -167,7 +169,7 @@ export const Portfolio = () => {
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                 >
-                  <img src={img.url} alt={`${project.title} vista ${idx + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                  <img src={img.url} alt={`${project.title} vista ${idx + 1}`} loading="lazy" decoding="async" width="128" height="80" className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>

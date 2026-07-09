@@ -22,7 +22,7 @@ export const Testimonials = () => {
               </div>
               <p className="text-text-primary/70 italic mb-8 leading-relaxed">"{r.text}"</p>
               <div className="flex items-center gap-4">
-                <img src={r.avatar} alt={r.name} className="w-12 h-12 rounded-full border-2 border-accent" referrerPolicy="no-referrer" />
+                <img src={r.avatar} alt={r.name} width="48" height="48" className="w-12 h-12 rounded-full border-2 border-accent" referrerPolicy="no-referrer" />
                 <div>
                   <h5 className="font-sans font-bold text-text-primary">{r.name}</h5>
                   <p className="text-xs text-text-primary/40 uppercase tracking-wider">{r.role}</p>

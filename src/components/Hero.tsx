@@ -284,6 +284,7 @@ export const Hero = () => {
                       alt="sponsor"
                       loading="lazy"
                       decoding="async"
+                      height="28"
                       className="h-7 w-auto object-contain shrink-0 mr-16"
                       draggable={false}
                     />

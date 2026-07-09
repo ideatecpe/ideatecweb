@@ -45,6 +45,8 @@ export default function Pruebas() {
                 <img
                   src="/assets/brand/mascota.png"
                   alt="Mascota IDEATEC"
+                  width="96"
+                  height="96"
                   className="w-full h-full object-contain p-2 rounded-full"
                 />
               </div>
