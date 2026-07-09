@@ -17,7 +17,7 @@ const WhatsApp = () => (
   </svg>
 );
 
-const BG = "./assets/backgrounds/fondoluna.jpg";
+const BG = "./heroIdetec.mp4";
 
 const stats = [
   { value: "+8", suffix: " años", label: "en el mercado" },
@@ -37,6 +37,7 @@ const tags = [
 export const Hero = () => {
   const [open, setOpen] = useState(false);
   const sponsorsRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [sponsorsH, setSponsorsH] = useState(52);
 
   useEffect(() => {
@@ -44,6 +45,32 @@ export const Hero = () => {
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Set initial playback rate
+    video.playbackRate = 0.7;
+
+    const handleTimeUpdate = () => {
+      const time = video.currentTime;
+      if (time >= 3 && time < 6) {
+        if (video.playbackRate !== 0.5) {
+          video.playbackRate = 0.5;
+        }
+      } else {
+        if (video.playbackRate !== 0.7) {
+          video.playbackRate = 0.7;
+        }
+      }
+    };
+
+    video.addEventListener("timeupdate", handleTimeUpdate);
+    return () => {
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+    };
   }, []);
 
   const waUrl = `https://wa.me/51912903330?text=${encodeURIComponent(
@@ -65,16 +92,24 @@ export const Hero = () => {
         paddingTop: "var(--header-h, 104px)",
         paddingBottom: `${sponsorsH}px`,
         backgroundColor: "#0a0c12",
-        backgroundImage: `url(${BG})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
       }}
     >
+      {/* ── Video de fondo ── */}
+      <video
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover"
+        src={BG}
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+
       {/* ── Overlay principal ── */}
       <div
         className="absolute inset-0"
         style={{
-          background: "rgba(0, 0, 0, 0.78)",
+          background: "rgba(0, 0, 0, 0.85)",
         }}
       />
 

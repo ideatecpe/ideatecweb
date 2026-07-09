@@ -1,93 +1,166 @@
 import React from 'react';
-import { motion } from 'motion/react';
-import { Zap, Layers, Users, Headphones, MapPin, Calendar, Hash } from 'lucide-react';
+import { MapPin, Calendar, Hash } from 'lucide-react';
 import { Reveal } from './Reveal';
+import ScrollStack, { ScrollStackItem } from './ScrollStack';
 
-const features = [
-  { icon: Zap,        title: 'Entregas Rápidas',  description: 'Metodologías ágiles para lanzar tu producto en tiempo récord sin sacrificar calidad.' },
-  { icon: Layers,     title: 'Stack Moderno',      description: 'Utilizamos las tecnologías más vanguardistas para asegurar escalabilidad y futuro.' },
-  { icon: Users,      title: 'Equipo Dedicado',    description: 'Un equipo de expertos comprometidos al 100% con el éxito de tu proyecto.' },
-  { icon: Headphones, title: 'Soporte Continuo',   description: 'Acompañamiento post-lanzamiento para que nunca dejes de crecer.' },
-];
+import FlowingMenu, { MenuItemProp } from './FlowingMenu';
 
-const legalItems = [
-  { icon: Hash,     label: 'Razón Social',  value: 'IDEATEC SAC' },
-  { icon: Hash,     label: 'RUC',           value: '20601841038' },
-  { icon: Calendar, label: 'Constitución',  value: '12 de mayo, 2016' },
-  { icon: MapPin,   label: 'País',          value: 'Perú' },
+const demoItems: MenuItemProp[] = [
+  { link: '#', text: 'IDEATEC SAC', image: '/assets/datos/ideatecsac.png', label: 'Razón Social', icon: 'Hash' },
+  { link: '#', text: '20601841038', image: '/assets/datos/ruc.png', label: 'RUC', icon: 'Hash' },
+  { link: '#', text: '12 de mayo, 2016', image: '/assets/datos/fecha.png', label: 'Constitución', icon: 'Calendar' },
+  { link: '#', text: 'Perú', image: '/assets/datos/peru.png', label: 'País', icon: 'MapPin' }
 ];
 
 export const WhyUs = () => (
   <>
     {/* ── ¿Por qué elegirnos? ── */}
-<section
-  id="nosotros"
-  className="relative border-b border-gray-100 py-10 bg-cover bg-center overflow-hidden"
-  style={{ backgroundImage: "url(./assets/backgrounds/fondo02.jpg)" }}
->
-  {/* Capa blanca */}
-  <div className="absolute inset-0 bg-white/60"></div>
-      {/* Capa para legibilidad */}
+    <section
+      id="nosotros"
+      className="relative border-b border-gray-100 py-20 bg-cover bg-center"
+      style={{ backgroundImage: "url(./assets/backgrounds/fondo02.jpg)" }}
+    >
+      {/* Capas para legibilidad */}
+      <div className="absolute inset-0 bg-white/60"></div>
       <div className="absolute inset-0 bg-white/85" />
-      <div className="relative max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-          {/* Text */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-block text-xs font-bold uppercase tracking-widest text-orange-600 border-l-4 border-orange-500 pl-3 mb-4">
-              ¿Por qué elegirnos?
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 leading-tight">
-              ¿Por qué elegir a <span className="text-orange-600">IDEATEC</span>?
-            </h2>
-            <p className="text-gray-500 leading-relaxed mb-10 max-w-lg">
-              No somos solo programadores, somos tus socios tecnológicos. Entendemos tu negocio y
-              construimos herramientas que generan valor real.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {features.map((f) => (
-                <div key={f.title} className="flex gap-4 p-5 rounded-xl border border-gray-200 bg-white hover:border-orange-200 transition-colors">
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-orange-50 border border-orange-100 flex items-center justify-center">
-                    <f.icon className="w-5 h-5 text-orange-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-gray-900 mb-1">{f.title}</h4>
-                    <p className="text-sm text-gray-500 leading-relaxed">{f.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Mascota */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="relative flex items-center justify-center"
-          >
-            {/* Glow naranja */}
-            <div
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: "radial-gradient(ellipse at center, rgba(234,88,12,0.30) 0%, rgba(251,146,60,0.15) 45%, transparent 75%)",
-                filter: "blur(32px)",
+      
+      <div className="relative max-w-5xl mx-auto px-6 pt-16">
+        {/* Cards - Centered & Full Width underneath */}
+        <div className="w-full">
+          <ScrollStack>
+            {/* Tarjeta de Introducción */}
+            <ScrollStackItem 
+              className="!text-white relative overflow-visible mt-16 !border-orange-500/30 !shadow-[0_0_50px_rgba(234,88,12,0.2)] hover:!shadow-[0_0_60px_rgba(234,88,12,0.35)] hover:!border-orange-500/50 transition-all duration-300"
+              style={{ 
+                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.35), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/porqueideatec.jpeg)",
+                backgroundSize: "cover",
+                backgroundPosition: "center"
               }}
-            />
-            <img
-              src="./assets/brand/mascota.png"
-              alt="Mascota IDEATEC"
-              loading="lazy"
-              decoding="async"
-              className="relative w-full max-w-sm object-contain drop-shadow-xl"
-            />
-          </motion.div>
+            >
+              {/* Logo superpuesto */}
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 z-10">
+                <div className="absolute inset-0 rounded-full bg-orange-500/30 blur-md" />
+                <div className="relative w-24 h-24 rounded-full bg-[#0a0c12] border-4 border-orange-500/50 flex items-center justify-center shadow-2xl overflow-hidden">
+                  <img
+                    src="/assets/brand/mascota.png"
+                    alt="Mascota IDEATEC"
+                    className="w-full h-full object-contain p-2 rounded-full"
+                  />
+                </div>
+              </div>
+
+              {/* Contenido de la Card */}
+              <div className="flex flex-col items-center text-center pt-10 pb-6">
+                <div className="flex items-center justify-center gap-3 w-full mb-4">
+                  <div className="h-[1px] w-8 md:w-16 bg-white/40" />
+                  <span className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-white font-bold">VENTAJAS</span>
+                  <div className="h-[1px] w-8 md:w-16 bg-white/40" />
+                </div>
+                <h2 className="text-3xl md:text-5xl font-black mt-2 mb-6 text-white tracking-tight leading-tight drop-shadow-sm">
+                  ¿Por qué elegir a IDEATEC?
+                </h2>
+                <p className="text-white/80 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+                  No somos solo programadores, somos tus socios tecnológicos. Entendemos tu negocio y construimos herramientas que generan valor real.
+                </p>
+              </div>
+            </ScrollStackItem>
+
+            {/* Card 2: Entregas Rápidas */}
+            <ScrollStackItem 
+              className="!text-white !border-orange-500/30 !shadow-2xl hover:!shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-all duration-300"
+              style={{ 
+                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/rapido.jpeg)",
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+              }}
+            >
+              <div className="flex flex-col justify-between h-full min-h-[300px] p-6">
+                <div>
+                  <span className="text-xs uppercase tracking-widest text-orange-200 font-bold">Tarjeta 01</span>
+                  <h2 className="text-3xl md:text-5xl font-black mt-2 leading-tight text-white">Entregas Rápidas</h2>
+                </div>
+                <p className="text-orange-100 text-base md:text-lg max-w-md">
+                  Metodologías ágiles para lanzar tu producto en tiempo récord sin sacrificar calidad.
+                </p>
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-orange-200 font-bold uppercase tracking-wider">
+                  <span>Scrum · Entregas en 4-6 semanas</span>
+                  <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                </div>
+              </div>
+            </ScrollStackItem>
+
+            {/* Card 3: Stack Moderno */}
+            <ScrollStackItem 
+              className="!text-white !border-orange-500/30 !shadow-2xl hover:!shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-all duration-300"
+              style={{ 
+                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/stack.jpeg)",
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+              }}
+            >
+              <div className="flex flex-col justify-between h-full min-h-[300px] p-6">
+                <div>
+                  <span className="text-xs uppercase tracking-widest text-orange-200 font-bold">Tarjeta 02</span>
+                  <h2 className="text-3xl md:text-5xl font-black mt-2 leading-tight text-white">Stack Moderno</h2>
+                </div>
+                <p className="text-orange-100 text-base md:text-lg max-w-md">
+                  Utilizamos las tecnologías más vanguardistas para asegurar escalabilidad y futuro.
+                </p>
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-orange-200 font-bold uppercase tracking-wider">
+                  <span>React · Tailwind · TypeScript · Vite</span>
+                  <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                </div>
+              </div>
+            </ScrollStackItem>
+
+            {/* Card 4: Equipo Dedicado */}
+            <ScrollStackItem 
+              className="!text-white !border-orange-500/30 !shadow-2xl hover:!shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-all duration-300"
+              style={{ 
+                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/equipo.jpeg)",
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+              }}
+            >
+              <div className="flex flex-col justify-between h-full min-h-[300px] p-6">
+                <div>
+                  <span className="text-xs uppercase tracking-widest text-orange-200 font-bold">Tarjeta 03</span>
+                  <h2 className="text-3xl md:text-5xl font-black mt-2 leading-tight text-white">Equipo Dedicado</h2>
+                </div>
+                <p className="text-orange-100 text-base md:text-lg max-w-md">
+                  Un equipo de expertos comprometidos al 100% con el éxito de tu proyecto.
+                </p>
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-orange-200 font-bold uppercase tracking-wider">
+                  <span>PM · UX/UI Designers · Senior Devs</span>
+                  <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                </div>
+              </div>
+            </ScrollStackItem>
+
+            {/* Card 5: Soporte Continuo */}
+            <ScrollStackItem 
+              className="!text-white !border-orange-500/30 !shadow-2xl hover:!shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-all duration-300"
+              style={{ 
+                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/soporte.jpeg)",
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+              }}
+            >
+              <div className="flex flex-col justify-between h-full min-h-[300px] p-6">
+                <div>
+                  <span className="text-xs uppercase tracking-widest text-orange-200 font-bold">Tarjeta 04</span>
+                  <h2 className="text-3xl md:text-5xl font-black mt-2 leading-tight text-white">Soporte Continuo</h2>
+                </div>
+                <p className="text-orange-100 text-base md:text-lg max-w-md">
+                  Acompañamiento post-lanzamiento para que nunca dejes de crecer.
+                </p>
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-orange-200 font-bold uppercase tracking-wider">
+                  <span>SLA 99.9% · Soporte Continuo 24/7</span>
+                  <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                </div>
+              </div>
+            </ScrollStackItem>
+          </ScrollStack>
         </div>
       </div>
     </section>
@@ -131,30 +204,23 @@ export const WhyUs = () => (
           <Reveal
             direction="left"
             delay={0.1}
-            className="relative lg:w-2/5 w-full rounded-xl border border-gray-200 overflow-hidden p-7 space-y-4"
-            style={{
-              backgroundImage: "url(./assets/backgrounds/fondoi.jpg)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
+            className="relative lg:w-2/5 w-full rounded-2xl border border-gray-200 overflow-hidden shadow-lg flex flex-col h-[260px] bg-[#120F17]"
           >
-            {/* Capa para legibilidad */}
-            <div className="absolute inset-0 bg-white/85 backdrop-blur-[1px]" />
-            <h3 className="relative text-base font-bold text-gray-900 mb-2">Datos de la empresa</h3>
-            {legalItems.map((item) => (
-              <div key={item.label} className="relative flex items-center gap-4 py-2 border-b border-gray-100 last:border-0">
-                <div className="shrink-0 w-8 h-8 rounded-lg bg-orange-50 border border-orange-100 flex items-center justify-center">
-                  <item.icon className="w-4 h-4 text-orange-600" />
-                </div>
-                <div>
-                  <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">{item.label}</p>
-                  <p className="font-semibold text-gray-900 text-sm">{item.value}</p>
-                </div>
-              </div>
-            ))}
-            <div className="relative pt-2 flex justify-between items-center">
-              <span className="text-xs text-gray-400">Empresa 100% peruana</span>
-              <span className="px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-700 text-xs font-semibold">Desde 2016</span>
+            <div className="px-5 pt-4 pb-2 border-b border-gray-800 bg-[#0d0a12]/30 flex items-center justify-between">
+              <h3 className="text-[12px] font-bold text-gray-300 uppercase">
+                Datos de la empresa
+              </h3>
+            </div>
+            <div className="flex-grow">
+              <FlowingMenu 
+                items={demoItems}
+                speed={15}
+                textColor="#ffffff"
+                bgColor="transparent"
+                marqueeBgColor="#ffffff"
+                marqueeTextColor="#120F17"
+                borderColor="rgba(255,255,255,0.06)"
+              />
             </div>
           </Reveal>
         </div>
