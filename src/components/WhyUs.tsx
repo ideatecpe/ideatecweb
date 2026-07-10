@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { MapPin, Calendar, Hash } from 'lucide-react';
 import { Reveal } from './Reveal';
 import ScrollStack, { ScrollStackItem } from './ScrollStack';
+import { motion, useScroll, useTransform } from 'motion/react';
 
 import FlowingMenu, { MenuItemProp } from './FlowingMenu';
 
@@ -11,6 +12,105 @@ const demoItems: MenuItemProp[] = [
   { link: '#', text: '12 de mayo, 2016', image: '/assets/datos/fecha.png', label: 'Constitución', icon: 'Calendar' },
   { link: '#', text: 'Perú', image: '/assets/datos/peru.png', label: 'País', icon: 'MapPin' }
 ];
+
+const MissionVision3D = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const mY = useTransform(scrollYProgress, [0.35, 0.52], [0, -40]);
+  const mRotateX = useTransform(scrollYProgress, [0.35, 0.52], [0, -45]);
+  const mOpacity = useTransform(scrollYProgress, [0.35, 0.52], [1, 0]);
+  const mScale = useTransform(scrollYProgress, [0.35, 0.52], [1, 0.9]);
+  const mPointerEvents = useTransform(mOpacity, (o) => o > 0.1 ? 'auto' : 'none');
+
+  const vY = useTransform(scrollYProgress, [0.42, 0.58], [40, 0]);
+  const vRotateX = useTransform(scrollYProgress, [0.42, 0.58], [45, 0]);
+  const vOpacity = useTransform(scrollYProgress, [0.42, 0.58], [0, 1]);
+  const vScale = useTransform(scrollYProgress, [0.42, 0.58], [0.9, 1]);
+  const vPointerEvents = useTransform(vOpacity, (o) => o > 0.1 ? 'auto' : 'none');
+
+  return (
+    <div ref={containerRef} className="relative w-full min-h-[130vh] flex flex-col items-center justify-start py-10">
+      <div className="sticky top-[20vh] w-full max-w-3xl h-[340px] md:h-[360px] flex items-center justify-center" style={{ perspective: 1200 }}>
+        
+        {/* Card 1: Misión */}
+        <motion.div 
+          style={{
+            y: mY,
+            rotateX: mRotateX,
+            opacity: mOpacity,
+            scale: mScale,
+            transformStyle: 'preserve-3d',
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+            pointerEvents: mPointerEvents,
+            zIndex: 10,
+            backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/cards/vision.jpeg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+          }}
+          className="absolute w-full h-full rounded-[32px] p-8 md:p-12 border border-orange-500/30 shadow-2xl hover:shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-shadow duration-300 flex flex-col justify-between overflow-hidden will-change-[opacity,transform]"
+        >
+          <div>
+            <span className="inline-block text-xl md:text-3xl font-black text-orange-200 uppercase tracking-[0.2em] mb-2">
+              Misión
+            </span>
+            <h3 className="text-2xl md:text-4xl font-black text-white mb-4 tracking-tight">
+              ¿Para qué existimos?
+            </h3>
+            <p className="text-orange-100 leading-relaxed text-sm md:text-base max-w-2xl">
+              Brindar soluciones tecnológicas integrales de desarrollo web y mobile a medida, con calidad y servicio continuo, según las necesidades reales de cada cliente.
+            </p>
+          </div>
+          <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-orange-200 font-bold uppercase tracking-wider">
+            <span>IDEATEC · Misión</span>
+            <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+          </div>
+        </motion.div>
+
+        {/* Card 2: Visión */}
+        <motion.div 
+          style={{
+            y: vY,
+            rotateX: vRotateX,
+            opacity: vOpacity,
+            scale: vScale,
+            transformStyle: 'preserve-3d',
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+            pointerEvents: vPointerEvents,
+            zIndex: 5,
+            backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/cards/mision.jpeg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+          }}
+          className="absolute w-full h-full rounded-[32px] p-8 md:p-12 border border-orange-500/30 shadow-2xl hover:shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-shadow duration-300 flex flex-col justify-between overflow-hidden will-change-[opacity,transform]"
+        >
+          <div>
+            <span className="inline-block text-xl md:text-3xl font-black text-orange-200 uppercase tracking-[0.2em] mb-2">
+              Visión
+            </span>
+            <h3 className="text-2xl md:text-4xl font-black text-white mb-4 tracking-tight">
+              ¿A dónde vamos?
+            </h3>
+            <p className="text-orange-100 leading-relaxed text-sm md:text-base max-w-2xl">
+              Ser el socio tecnológico de referencia en Perú, reconocidos por transformar ideas digitales en productos que generan valor real y sostenible para las empresas.
+            </p>
+          </div>
+          <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-orange-200 font-bold uppercase tracking-wider">
+            <span>IDEATEC · Visión</span>
+            <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+          </div>
+        </motion.div>
+
+      </div>
+    </div>
+  );
+};
 
 export const WhyUs = () => (
   <>
@@ -206,7 +306,7 @@ export const WhyUs = () => (
           <Reveal
             direction="left"
             delay={0.1}
-            className="relative lg:w-2/5 w-full rounded-2xl border border-gray-200 overflow-hidden shadow-lg flex flex-col h-[260px] bg-[#120F17]"
+            className="relative lg:w-2/5 w-full rounded-2xl border border-gray-800 overflow-hidden shadow-lg flex flex-col h-[260px] bg-[#120F17]"
           >
             <div className="px-5 pt-4 pb-2 border-b border-gray-800 bg-[#0d0a12]/30 flex items-center justify-between">
               <h3 className="text-[12px] font-bold text-gray-300 uppercase">
@@ -228,24 +328,7 @@ export const WhyUs = () => (
         </div>
 
         {/* Misión / Visión */}
-        <Reveal direction="up" className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {[
-            {
-              tag: 'Misión', title: '¿Para qué existimos?',
-              text: 'Brindar soluciones tecnológicas integrales de desarrollo web y mobile a medida, con calidad y servicio continuo, según las necesidades reales de cada cliente.',
-            },
-            {
-              tag: 'Visión', title: '¿A dónde vamos?',
-              text: 'Ser el socio tecnológico de referencia en Perú, reconocidos por transformar ideas digitales en productos que generan valor real y sostenible para las empresas.',
-            },
-          ].map((item) => (
-            <div key={item.tag} className="pl-6 border-l-4 border-orange-500">
-              <p className="text-xs text-orange-600 font-bold tracking-widest uppercase mb-2">{item.tag}</p>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h4>
-              <p className="text-gray-500 leading-relaxed text-sm">{item.text}</p>
-            </div>
-          ))}
-        </Reveal>
+        <MissionVision3D />
       </div>
     </section>
   </>
