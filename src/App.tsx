@@ -3,6 +3,7 @@ import Lenis from 'lenis';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
+import SplashCursor from './components/SplashCursor';
 
 // Cargas diferidas (code-splitting)
 const WhyUs     = lazy(() => import('./components/WhyUs').then(m => ({ default: m.WhyUs })));
@@ -63,6 +64,18 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
+      <SplashCursor
+        DENSITY_DISSIPATION={3.5}
+        VELOCITY_DISSIPATION={2}
+        PRESSURE={0.1}
+        CURL={3}
+        SPLAT_RADIUS={0.2}
+        SPLAT_FORCE={6000}
+        COLOR_UPDATE_SPEED={10}
+        SHADING={true}
+        RAINBOW_MODE={false}
+        COLOR="#f97316"
+      />
       <Navbar />
       <main>
         <Hero />

@@ -23,7 +23,7 @@ export default function Pruebas() {
         COLOR_UPDATE_SPEED={10}
         SHADING={true}
         RAINBOW_MODE={false}
-        COLOR="#A855F7"
+        COLOR="#f97316"
       />
       {/* Top Banner / Navigation */}
       <header className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-md sticky top-0 z-50 px-8 py-4 flex items-center justify-between">
