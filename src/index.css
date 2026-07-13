@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
+/* Fonts: Using self-hosted Geist Variable only (no external @import) */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -7,9 +7,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: "Inter", system-ui, -apple-system, Arial, sans-serif;
-  --font-display: "Outfit", var(--font-sans);
-  --font-accent: "Bebas Neue", sans-serif;
+  --font-sans: "Geist Variable", system-ui, -apple-system, Arial, sans-serif;
+  --font-display: "Geist Variable", system-ui, sans-serif;
+  --font-accent: "Geist Variable", system-ui, sans-serif;
 }
 
 @layer base {
@@ -29,7 +29,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Outfit", system-ui, sans-serif;
+    font-family: "Geist Variable", system-ui, sans-serif;
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.03em;
@@ -58,6 +58,20 @@
     50% { transform: translateY(-10px); }
   }
   .animate-float { animation: float 6s ease-in-out infinite; }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
 }
 
 @theme inline {

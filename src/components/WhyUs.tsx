@@ -1,25 +1,53 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { MapPin, Calendar, Hash } from 'lucide-react';
 import { Reveal } from './Reveal';
 import ScrollStack, { ScrollStackItem } from './ScrollStack';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useMotionValue, useTransform } from 'motion/react';
 
 import FlowingMenu, { MenuItemProp } from './FlowingMenu';
 
 const demoItems: MenuItemProp[] = [
-  { link: '#', text: 'IDEATEC SAC', image: '/assets/datos/ideatecsac.png', label: 'Razón Social', icon: 'Hash' },
-  { link: '#', text: '20601841038', image: '/assets/datos/ruc.png', label: 'RUC', icon: 'Hash' },
-  { link: '#', text: '12 de mayo, 2016', image: '/assets/datos/fecha.png', label: 'Constitución', icon: 'Calendar' },
-  { link: '#', text: 'Perú', image: '/assets/datos/peru.png', label: 'País', icon: 'MapPin' }
+  { link: '#', text: 'IDEATEC SAC', image: '/assets/datos/ideatecsac.webp', label: 'Razón Social', icon: 'Hash' },
+  { link: '#', text: '20601841038', image: '/assets/datos/ruc.webp', label: 'RUC', icon: 'Hash' },
+  { link: '#', text: '12 de mayo, 2016', image: '/assets/datos/fecha.webp', label: 'Constitución', icon: 'Calendar' },
+  { link: '#', text: 'Perú', image: '/assets/datos/peru.webp', label: 'País', icon: 'MapPin' }
 ];
 
 const MissionVision3D = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
+  const scrollYProgress = useMotionValue(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const el = containerRef.current;
+      if (!el) return;
+      
+      const rect = el.getBoundingClientRect();
+      const viewHeight = window.innerHeight;
+      
+      // Start position (element top reaches bottom of viewport)
+      const start = rect.top - viewHeight;
+      // End position (element bottom reaches top of viewport)
+      const totalDist = rect.height + viewHeight;
+      
+      const current = -start;
+      const pct = Math.max(0, Math.min(1, current / totalDist));
+      
+      scrollYProgress.set(pct);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+    
+    // Defer initial calculation to avoid forced reflows on mount
+    const timer = setTimeout(handleScroll, 100);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+      clearTimeout(timer);
+    };
+  }, []);
 
   const mY = useTransform(scrollYProgress, [0.35, 0.52], [0, -40]);
   const mRotateX = useTransform(scrollYProgress, [0.35, 0.52], [0, -45]);
@@ -49,7 +77,7 @@ const MissionVision3D = () => {
             WebkitBackfaceVisibility: 'hidden',
             pointerEvents: mPointerEvents,
             zIndex: 10,
-            backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/cards/vision.jpeg)",
+            backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/cards/vision.webp)",
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}
@@ -84,7 +112,7 @@ const MissionVision3D = () => {
             WebkitBackfaceVisibility: 'hidden',
             pointerEvents: vPointerEvents,
             zIndex: 5,
-            backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/cards/mision.jpeg)",
+            backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/cards/mision.webp)",
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}
@@ -118,7 +146,7 @@ export const WhyUs = () => (
     <section
       id="nosotros"
       className="relative border-b border-gray-100 py-20 bg-cover bg-center"
-      style={{ backgroundImage: "url(./assets/backgrounds/fondo02.jpg)" }}
+      style={{ backgroundImage: "url(./assets/backgrounds/fondo02.webp)" }}
     >
       {/* Capas para legibilidad */}
       <div className="absolute inset-0 bg-white/60"></div>
@@ -132,7 +160,7 @@ export const WhyUs = () => (
             <ScrollStackItem 
               className="!text-white relative overflow-visible mt-16 !border-orange-500/30 !shadow-[0_0_50px_rgba(234,88,12,0.2)] hover:!shadow-[0_0_60px_rgba(234,88,12,0.35)] hover:!border-orange-500/50 transition-all duration-300"
               style={{ 
-                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.35), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/porqueideatec.jpeg)",
+                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.35), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/porqueideatec.webp)",
                 backgroundSize: "cover",
                 backgroundPosition: "center"
               }}
@@ -142,7 +170,7 @@ export const WhyUs = () => (
                 <div className="absolute inset-0 rounded-full bg-orange-500/30 blur-md" />
                 <div className="relative w-24 h-24 rounded-full bg-[#0a0c12] border-4 border-orange-500/50 flex items-center justify-center shadow-2xl overflow-hidden">
                   <img
-                    src="/assets/brand/mascota.png"
+                    src="/assets/brand/mascota.webp"
                     alt="Mascota IDEATEC"
                     width="96"
                     height="96"
@@ -171,7 +199,7 @@ export const WhyUs = () => (
             <ScrollStackItem 
               className="!text-white !border-orange-500/30 !shadow-2xl hover:!shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-all duration-300"
               style={{ 
-                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/rapido.jpeg)",
+                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/rapido.webp)",
                 backgroundSize: "cover",
                 backgroundPosition: "center"
               }}
@@ -195,7 +223,7 @@ export const WhyUs = () => (
             <ScrollStackItem 
               className="!text-white !border-orange-500/30 !shadow-2xl hover:!shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-all duration-300"
               style={{ 
-                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/stack.jpeg)",
+                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/stack.webp)",
                 backgroundSize: "cover",
                 backgroundPosition: "center"
               }}
@@ -219,7 +247,7 @@ export const WhyUs = () => (
             <ScrollStackItem 
               className="!text-white !border-orange-500/30 !shadow-2xl hover:!shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-all duration-300"
               style={{ 
-                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/equipo.jpeg)",
+                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/equipo.webp)",
                 backgroundSize: "cover",
                 backgroundPosition: "center"
               }}
@@ -243,7 +271,7 @@ export const WhyUs = () => (
             <ScrollStackItem 
               className="!text-white !border-orange-500/30 !shadow-2xl hover:!shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-all duration-300"
               style={{ 
-                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/soporte.jpeg)",
+                backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/soporte.webp)",
                 backgroundSize: "cover",
                 backgroundPosition: "center"
               }}

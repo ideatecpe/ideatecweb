@@ -7,7 +7,7 @@ import { ProjectModal } from './ProjectModal';
 const servicesData = [
   {
     icon: Code2,
-    image: './assets/cards/web.png',
+    image: './assets/cards/web.webp',
     imgClass: 'w-42',
     imgPos: 'bottom-0 right-0',
     title: 'Desarrollo Web',
@@ -26,7 +26,7 @@ const servicesData = [
   },
   {
     icon: Smartphone,
-    image: './assets/cards/mobile.png',
+    image: './assets/cards/mobile.webp',
     imgClass: 'w-32',
     imgPos: 'bottom-0 right-0',
     title: 'Apps Móviles',
@@ -45,7 +45,7 @@ const servicesData = [
   },
   {
     icon: Palette,
-    image: './assets/cards/uiux.png',
+    image: './assets/cards/uiux.webp',
     imgClass: 'w-32',
     imgPos: 'bottom-[-70px]  right-0',
     title: 'Diseño UI/UX',
@@ -64,7 +64,7 @@ const servicesData = [
   },
   {
     icon: ShoppingCart,
-    image: './assets/cards/e-commerce.png',
+    image: './assets/cards/e-commerce.webp',
     imgClass: 'w-52',
     imgPos: 'bottom-0 right-0',
     title: 'E-commerce',
@@ -83,7 +83,7 @@ const servicesData = [
   },
   {
     icon: Cpu,
-    image: './assets/cards/softwaremedida.png',
+    image: './assets/cards/softwaremedida.webp',
     imgClass: 'w-35',
     imgPos: 'bottom-0 right-3',
     title: 'Software a Medida',
@@ -102,7 +102,7 @@ const servicesData = [
   },
   {
     icon: Bot,
-    image: './assets/cards/ia.png',
+    image: './assets/cards/ia.webp',
     imgClass: 'w-32',
     imgPos: 'bottom-[-30px] right-0',
     title: 'Automatización e IA',

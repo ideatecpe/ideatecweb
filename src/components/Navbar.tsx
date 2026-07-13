@@ -104,10 +104,9 @@ export const Navbar = () => {
               onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="flex items-center gap-2.5 shrink-0"
             >
-              <img src="./assets/brand/logo.png" alt="IDEATEC" width="36" height="36" className="w-9 h-9" />
+              <img src="./assets/brand/logo.webp" alt="IDEATEC" width="36" height="36" className="w-9 h-9" />
               <span
-                className="text-[22px] leading-none tracking-wider"
-                style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                className="text-[22px] font-black leading-none tracking-tight"
               >
                 <span className="text-orange-500">IDEA</span>
                 <span className={scrolled ? 'text-gray-900' : 'text-white'}>TEC</span>

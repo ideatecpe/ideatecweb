@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
-import { motion } from "motion/react";
+import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
 import {
   ArrowRight,
   Code2,
@@ -9,7 +8,8 @@ import {
   ShoppingCart,
   BarChart3,
 } from "lucide-react";
-import { ProjectModal } from "./ProjectModal";
+
+const ProjectModal = lazy(() => import("./ProjectModal").then(m => ({ default: m.ProjectModal })));
 
 const WhatsApp = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 shrink-0">
@@ -39,12 +39,21 @@ export const Hero = () => {
   const sponsorsRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [sponsorsH, setSponsorsH] = useState(52);
+  const [videoSrc, setVideoSrc] = useState<string>("");
 
   useEffect(() => {
     const measure = () => setSponsorsH(sponsorsRef.current?.offsetHeight ?? 52);
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  useEffect(() => {
+    // Only load the video on desktop devices to save massive mobile bandwidth
+    const isMobileDevice = window.innerWidth < 768 || navigator.maxTouchPoints > 0 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
+    if (!isMobileDevice) {
+      setVideoSrc(BG);
+    }
   }, []);
 
   useEffect(() => {
@@ -71,7 +80,7 @@ export const Hero = () => {
     return () => {
       video.removeEventListener("timeupdate", handleTimeUpdate);
     };
-  }, []);
+  }, [videoSrc]);
 
   const waUrl = `https://wa.me/51912903330?text=${encodeURIComponent(
     "Hola IDEATEC, me interesa desarrollar un proyecto con ustedes. ¿Podemos hablar?",
@@ -94,16 +103,28 @@ export const Hero = () => {
         backgroundColor: "#0a0c12",
       }}
     >
-      {/* ── Video de fondo ── */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
-        src={BG}
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
+      {/* ── Video de fondo o imagen fallback ── */}
+      {videoSrc ? (
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover"
+          src={videoSrc}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/assets/backgrounds/fondoluna.webp"
+        />
+      ) : (
+        <img
+          src="/assets/backgrounds/fondoluna.webp"
+          className="absolute inset-0 w-full h-full object-cover"
+          alt=""
+          loading="eager"
+          width="1920"
+          height="1080"
+        />
+      )}
 
       {/* ── Overlay principal ── */}
       <div
@@ -132,12 +153,7 @@ export const Hero = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 lg:py-10">
         <div className="max-w-3xl mx-auto text-center">
           {/* CENTER */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="flex flex-col items-center"
-          >
+          <div className="flex flex-col items-center animate-fade-in-up">
             {/* Pill badge */}
             {/* <div className="inline-flex items-center gap-2 mb-2 pl-1.5 pr-4 py-1.5  backdrop-blur-sm">
               <span
@@ -239,7 +255,7 @@ export const Hero = () => {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
@@ -270,11 +286,11 @@ export const Hero = () => {
               >
                 {Array(4)
                   .fill([
-                    "./assets/sponsors/sponsor01.png",
-                    "./assets/sponsors/sponsor02.png",
-                    "./assets/sponsors/sponsor03.png",
-                    "./assets/sponsors/sponsor04.png",
-                    "./assets/sponsors/sponsor05.png",
+                    "./assets/sponsors/sponsor01.webp",
+                    "./assets/sponsors/sponsor02.webp",
+                    "./assets/sponsors/sponsor03.webp",
+                    "./assets/sponsors/sponsor04.webp",
+                    "./assets/sponsors/sponsor05.webp",
                   ])
                   .flat()
                   .map((src, i) => (
@@ -307,7 +323,11 @@ export const Hero = () => {
         `}</style>
       </div>
 
-      <ProjectModal isOpen={open} onClose={() => setOpen(false)} />
+      {open && (
+        <Suspense fallback={null}>
+          <ProjectModal isOpen={open} onClose={() => setOpen(false)} />
+        </Suspense>
+      )}
     </section>
   );
 };

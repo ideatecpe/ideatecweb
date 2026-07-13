@@ -19,7 +19,7 @@ export const Footer = () => {
   return (
     <>
       <footer className="relative overflow-hidden" style={{
-        backgroundImage: 'url(./assets/backgrounds/bgfooter.jpg)',
+        backgroundImage: 'url(./assets/backgrounds/bgfooter.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}>
@@ -36,10 +36,9 @@ export const Footer = () => {
                 onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 className="flex items-center gap-2.5 mb-5"
               >
-                <img src="./assets/brand/logo.png" alt="IDEATEC" loading="lazy" decoding="async" width="36" height="36" className="w-9 h-9" />
+                <img src="./assets/brand/logo.webp" alt="IDEATEC" loading="lazy" decoding="async" width="36" height="36" className="w-9 h-9" />
                 <span
-                  className="text-[22px] leading-none tracking-wider"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                  className="text-[22px] font-black leading-none tracking-tight"
                 >
                   <span className="text-orange-500">IDEA</span>
                   <span className="text-white">TEC</span>

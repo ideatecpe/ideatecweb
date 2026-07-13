@@ -4,10 +4,10 @@ import FlowingMenu from './FlowingMenu';
 import SplashCursor from './SplashCursor';
 
 const demoItems = [
-  { link: '#', text: 'IDEATEC SAC', image: '/assets/datos/ideatecsac.png' },
-  { link: '#', text: 'RUC 20601841038', image: '/assets/datos/ruc.png' },
-  { link: '#', text: 'Desde el 2016', image: '/assets/datos/fecha.png' },
-  { link: '#', text: 'Hecho en Perú', image: '/assets/datos/peru.png' }
+  { link: '#', text: 'IDEATEC SAC', image: '/assets/datos/ideatecsac.webp' },
+  { link: '#', text: 'RUC 20601841038', image: '/assets/datos/ruc.webp' },
+  { link: '#', text: 'Desde el 2016', image: '/assets/datos/fecha.webp' },
+  { link: '#', text: 'Hecho en Perú', image: '/assets/datos/peru.webp' }
 ];
 
 export default function Pruebas() {
@@ -46,7 +46,7 @@ export default function Pruebas() {
           <ScrollStackItem 
             className="!text-white relative overflow-visible mt-16 !border-orange-500/30 !shadow-[0_0_50px_rgba(234,88,12,0.2)] hover:!shadow-[0_0_60px_rgba(234,88,12,0.35)] hover:!border-orange-500/50 transition-all duration-300"
             style={{ 
-              backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.35), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/porqueideatec.jpeg)",
+              backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.35), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/porqueideatec.webp)",
               backgroundSize: "cover",
               backgroundPosition: "center"
             }}
@@ -56,7 +56,7 @@ export default function Pruebas() {
               <div className="absolute inset-0 rounded-full bg-orange-500/30 blur-md" />
               <div className="relative w-24 h-24 rounded-full bg-[#0a0c12] border-4 border-orange-500/50 flex items-center justify-center shadow-2xl overflow-hidden">
                 <img
-                  src="/assets/brand/mascota.png"
+                  src="/assets/brand/mascota.webp"
                   alt="Mascota IDEATEC"
                   width="96"
                   height="96"
@@ -85,7 +85,7 @@ export default function Pruebas() {
           <ScrollStackItem 
             className="!text-white !border-orange-500/30 !shadow-2xl hover:!shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-all duration-300"
             style={{ 
-              backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/rapido.jpeg)",
+              backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/rapido.webp)",
               backgroundSize: "cover",
               backgroundPosition: "center"
             }}
@@ -109,7 +109,7 @@ export default function Pruebas() {
           <ScrollStackItem 
             className="!text-white !border-orange-500/30 !shadow-2xl hover:!shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-all duration-300"
             style={{ 
-              backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/stack.jpeg)",
+              backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/stack.webp)",
               backgroundSize: "cover",
               backgroundPosition: "center"
             }}
@@ -133,7 +133,7 @@ export default function Pruebas() {
           <ScrollStackItem 
             className="!text-white !border-orange-500/30 !shadow-2xl hover:!shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-all duration-300"
             style={{ 
-              backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/equipo.jpeg)",
+              backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/equipo.webp)",
               backgroundSize: "cover",
               backgroundPosition: "center"
             }}
@@ -157,7 +157,7 @@ export default function Pruebas() {
           <ScrollStackItem 
             className="!text-white !border-orange-500/30 !shadow-2xl hover:!shadow-[0_0_40px_rgba(234,88,12,0.25)] transition-all duration-300"
             style={{ 
-              backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/soporte.jpeg)",
+              backgroundImage: "linear-gradient(to bottom, rgba(234, 88, 12, 0.45), rgba(10, 12, 18, 0.95)), url(/assets/flowcard/soporte.webp)",
               backgroundSize: "cover",
               backgroundPosition: "center"
             }}

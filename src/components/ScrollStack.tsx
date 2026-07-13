@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import React, { useRef, useEffect } from 'react';
+import { motion, useMotionValue, useTransform } from 'motion/react';
 
 interface ScrollStackProps {
   children: React.ReactNode;
@@ -36,13 +36,36 @@ interface ScrollStackItemWrapperProps {
 
 const ScrollStackItemWrapper: React.FC<ScrollStackItemWrapperProps> = ({ children, index, total }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  
-  // Track scroll progress of the wrapper relative to the viewport
-  // offset ["start start", "end start"] tracks the element after it hits the top of the viewport
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
+  const scrollYProgress = useMotionValue(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const el = containerRef.current;
+      if (!el) return;
+
+      const rect = el.getBoundingClientRect();
+      
+      // "start start": top of element reaches top of viewport
+      // "end start": bottom of element reaches top of viewport
+      const start = rect.top;
+      const totalDist = rect.height;
+      
+      const pct = Math.max(0, Math.min(1, -start / totalDist));
+      scrollYProgress.set(pct);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+    
+    // Defer initial calculation to avoid forced reflows on mount
+    const timer = setTimeout(handleScroll, 100);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+      clearTimeout(timer);
+    };
+  }, []);
 
   // Scale down the card as we scroll past its sticky point
   // Earlier cards in the stack scale down slightly more

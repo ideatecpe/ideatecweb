@@ -1,6 +1,6 @@
 import React from "react";
 
-const logos = Array(10).fill("./assets/spotufy.png");
+const logos = Array(10).fill("./assets/spotufy.webp");
 
 export const SponsorsBar = () => (
   <div className="bg-black py-6 overflow-hidden">

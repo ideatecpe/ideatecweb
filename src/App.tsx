@@ -1,11 +1,11 @@
-import React, { useEffect, lazy, Suspense } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import Lenis from 'lenis';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Services } from './components/Services';
-import SplashCursor from './components/SplashCursor';
 
 // Cargas diferidas (code-splitting)
+const Services     = lazy(() => import('./components/Services').then(m => ({ default: m.Services })));
+const SplashCursor = lazy(() => import('./components/SplashCursor'));
 const WhyUs     = lazy(() => import('./components/WhyUs').then(m => ({ default: m.WhyUs })));
 const Portfolio = lazy(() => import('./components/Portfolio').then(m => ({ default: m.Portfolio })));
 const Pricing   = lazy(() => import('./components/Pricing').then(m => ({ default: m.Pricing })));
@@ -19,44 +19,65 @@ const SectionFallback = () => <div className="min-h-[40vh]" aria-hidden />;
 
 export default function App() {
   const isPruebas = window.location.pathname === '/pruebas';
+  const [isMobile, setIsMobile] = useState(true); // Default to true to avoid initial layout shifts or flash on mobile
 
   useEffect(() => {
-    // Inicializar Lenis para scroll suave global
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-    });
+    // Detect mobile / touch devices
+    setIsMobile(
+      window.innerWidth < 768 ||
+      navigator.maxTouchPoints > 0 ||
+      /Mobi|Android|iPhone/i.test(navigator.userAgent)
+    );
+  }, []);
 
-    const raf = (time: number) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
+  useEffect(() => {
+    let lenisInstance: Lenis | null = null;
+    let rafId: number | null = null;
 
-    requestAnimationFrame(raf);
+    const timer = setTimeout(() => {
+      // Inicializar Lenis para scroll suave global después de que el layout inicial se asiente
+      lenisInstance = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+      });
 
-    // Navegar suavemente a la sección correspondiente si la URL contiene una ruta válida
-    if (!isPruebas) {
-      const path = window.location.pathname.substring(1);
-      const validSections = ['servicios', 'nosotros', 'portafolio', 'como-lo-hacemos', 'contacto'];
-      if (validSections.includes(path)) {
-        setTimeout(() => {
-          const element = document.getElementById(path);
-          if (element) {
-            lenis.scrollTo(element, { immediate: true });
-          }
-        }, 100);
+      const raf = (time: number) => {
+        lenisInstance?.raf(time);
+        rafId = requestAnimationFrame(raf);
+      };
+
+      rafId = requestAnimationFrame(raf);
+
+      // Navegar suavemente a la sección correspondiente si la URL contiene una ruta válida
+      if (!isPruebas) {
+        const path = window.location.pathname.substring(1);
+        const validSections = ['servicios', 'nosotros', 'portafolio', 'como-lo-hacemos', 'contacto'];
+        if (validSections.includes(path)) {
+          setTimeout(() => {
+            const element = document.getElementById(path);
+            if (element && lenisInstance) {
+              lenisInstance.scrollTo(element, { immediate: true });
+            }
+          }, 100);
+        }
       }
-    }
+    }, 150);
 
     return () => {
-      lenis.destroy();
+      clearTimeout(timer);
+      if (lenisInstance) {
+        lenisInstance.destroy();
+      }
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
     };
   }, [isPruebas]);
 
   // Reducir opacidad del SplashCursor al pasar el Hero (~100vh)
   useEffect(() => {
-    if (isPruebas) return;
+    if (isPruebas || isMobile) return;
 
     const handleScroll = () => {
       const el = document.getElementById('splash-cursor');
@@ -74,7 +95,7 @@ export default function App() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Run once on mount
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isPruebas]);
+  }, [isPruebas, isMobile]);
 
   if (isPruebas) {
     return (
@@ -86,23 +107,27 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
-      <SplashCursor
-        DENSITY_DISSIPATION={3.5}
-        VELOCITY_DISSIPATION={2}
-        PRESSURE={0.1}
-        CURL={3}
-        SPLAT_RADIUS={0.2}
-        SPLAT_FORCE={6000}
-        COLOR_UPDATE_SPEED={10}
-        SHADING={true}
-        RAINBOW_MODE={false}
-        COLOR="#f97316"
-      />
+      {!isMobile && (
+        <Suspense fallback={null}>
+          <SplashCursor
+            DENSITY_DISSIPATION={3.5}
+            VELOCITY_DISSIPATION={2}
+            PRESSURE={0.1}
+            CURL={3}
+            SPLAT_RADIUS={0.2}
+            SPLAT_FORCE={6000}
+            COLOR_UPDATE_SPEED={10}
+            SHADING={true}
+            RAINBOW_MODE={false}
+            COLOR="#f97316"
+          />
+        </Suspense>
+      )}
       <Navbar />
       <main>
         <Hero />
-        <Services />
         <Suspense fallback={<SectionFallback />}>
+          <Services />
           <WhyUs />
           <Portfolio />
           <Pricing />
