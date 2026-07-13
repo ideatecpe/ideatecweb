@@ -54,6 +54,28 @@ export default function App() {
     };
   }, [isPruebas]);
 
+  // Reducir opacidad del SplashCursor al pasar el Hero (~100vh)
+  useEffect(() => {
+    if (isPruebas) return;
+
+    const handleScroll = () => {
+      const el = document.getElementById('splash-cursor');
+      if (!el) return;
+      const fadeStart = window.innerHeight * 0.5; // Start fading halfway through hero
+      const scrollY = window.scrollY;
+      if (scrollY <= fadeStart) {
+        el.style.opacity = '1';
+      } else {
+        const fade = Math.max(0.15, 1 - (scrollY - fadeStart) / 300);
+        el.style.opacity = String(fade);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Run once on mount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isPruebas]);
+
   if (isPruebas) {
     return (
       <Suspense fallback={<SectionFallback />}>
