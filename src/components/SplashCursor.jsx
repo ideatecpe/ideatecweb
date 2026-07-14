@@ -677,9 +677,26 @@ function SplashCursor({
     initFramebuffers();
     let lastUpdateTime = Date.now();
     let colorUpdateTimer = 0.0;
+    let lastActivityTime = Date.now();
+
+    function recordActivity() {
+      lastActivityTime = Date.now();
+    }
 
     function updateFrame() {
       if (!isActive) return;
+
+      const isScrollActive = window.scrollY < window.innerHeight;
+      const isPointerActive = (Date.now() - lastActivityTime) < 3000; // 3 seconds idle time
+
+      if (!isScrollActive || !isPointerActive) {
+        // Skip physics and render updates when off-screen or idle.
+        // Update lastUpdateTime to avoid huge dt spike when resuming.
+        lastUpdateTime = Date.now();
+        animationFrameId.current = requestAnimationFrame(updateFrame);
+        return;
+      }
+
       const dt = calcDeltaTime();
       if (resizeCanvas()) initFramebuffers();
       updateColors(dt);
@@ -980,11 +997,12 @@ function SplashCursor({
 
     // Named event handlers for proper cleanup
     function handleMouseDown(e) {
-      // Disabled click splat to prevent accumulation on click
+      recordActivity();
     }
 
     let firstMouseMoveHandled = false;
     function handleMouseMove(e) {
+      recordActivity();
       let pointer = pointers[0];
       let posX = scaleByPixelRatio(e.clientX);
       let posY = scaleByPixelRatio(e.clientY);
@@ -998,10 +1016,11 @@ function SplashCursor({
     }
 
     function handleTouchStart(e) {
-      // Disabled touch splat to prevent accumulation on tap
+      recordActivity();
     }
 
     function handleTouchMove(e) {
+      recordActivity();
       const touches = e.targetTouches;
       let pointer = pointers[0];
       for (let i = 0; i < touches.length; i++) {
@@ -1012,6 +1031,7 @@ function SplashCursor({
     }
 
     function handleTouchEnd(e) {
+      recordActivity();
       const touches = e.changedTouches;
       let pointer = pointers[0];
       for (let i = 0; i < touches.length; i++) {
