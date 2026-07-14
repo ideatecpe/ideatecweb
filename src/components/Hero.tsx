@@ -291,6 +291,8 @@ export const Hero = () => {
                     "./assets/sponsors/sponsor03.webp",
                     "./assets/sponsors/sponsor04.webp",
                     "./assets/sponsors/sponsor05.webp",
+                    "./assets/sponsors/sponsor06.webp",
+                    "./assets/sponsors/sponsor07.webp",
                   ])
                   .flat()
                   .map((src, i) => (
