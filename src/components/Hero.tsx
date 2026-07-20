@@ -317,7 +317,7 @@ export const Hero = () => {
             to   { transform: translateX(-50%); }
           }
           .hero-marquee {
-            animation: hero-marquee 55s linear infinite;
+            animation: hero-marquee 110s linear infinite;
             will-change: transform;
             backface-visibility: hidden;
             transform: translateZ(0);

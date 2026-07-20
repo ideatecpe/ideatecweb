@@ -75,21 +75,28 @@ export default function App() {
     };
   }, [isPruebas]);
 
-  // Reducir opacidad del SplashCursor al pasar el Hero (~100vh)
+  // El SplashCursor solo se ve dentro del Hero: se desvanece y se oculta al salir
   useEffect(() => {
     if (isPruebas || isMobile) return;
 
     const handleScroll = () => {
       const el = document.getElementById('splash-cursor');
       if (!el) return;
-      const fadeStart = window.innerHeight * 0.5; // Start fading halfway through hero
+      const hero = document.getElementById('inicio');
+      const heroBottom = hero ? hero.offsetTop + hero.offsetHeight : window.innerHeight;
       const scrollY = window.scrollY;
-      if (scrollY <= fadeStart) {
-        el.style.opacity = '1';
-      } else {
-        const fade = Math.max(0.15, 1 - (scrollY - fadeStart) / 300);
-        el.style.opacity = String(fade);
+      const fadeEnd = heroBottom;
+      const fadeStart = Math.max(0, heroBottom - 300); // Se desvanece en los últimos 300px del Hero
+
+      let opacity = 1;
+      if (scrollY >= fadeEnd) {
+        opacity = 0;
+      } else if (scrollY > fadeStart) {
+        opacity = 1 - (scrollY - fadeStart) / (fadeEnd - fadeStart || 1);
       }
+
+      el.style.opacity = String(opacity);
+      el.style.visibility = opacity === 0 ? 'hidden' : 'visible';
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

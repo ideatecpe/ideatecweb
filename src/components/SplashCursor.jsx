@@ -683,10 +683,17 @@ function SplashCursor({
       lastActivityTime = Date.now();
     }
 
+    // El efecto solo vive dentro del Hero
+    function isInsideHero() {
+      const hero = document.getElementById('inicio');
+      const heroBottom = hero ? hero.offsetTop + hero.offsetHeight : window.innerHeight;
+      return window.scrollY < heroBottom;
+    }
+
     function updateFrame() {
       if (!isActive) return;
 
-      const isScrollActive = window.scrollY < window.innerHeight;
+      const isScrollActive = isInsideHero();
       const isPointerActive = (Date.now() - lastActivityTime) < 3000; // 3 seconds idle time
 
       if (!isScrollActive || !isPointerActive) {
@@ -1006,6 +1013,16 @@ function SplashCursor({
       let pointer = pointers[0];
       let posX = scaleByPixelRatio(e.clientX);
       let posY = scaleByPixelRatio(e.clientY);
+      if (!isInsideHero()) {
+        // Fuera del Hero solo seguimos la posición, sin generar estelas,
+        // para que al volver no aparezca un trazo desde la última posición.
+        pointer.texcoordX = pointer.prevTexcoordX = posX / canvas.width;
+        pointer.texcoordY = pointer.prevTexcoordY = 1.0 - posY / canvas.height;
+        pointer.deltaX = 0;
+        pointer.deltaY = 0;
+        pointer.moved = false;
+        return;
+      }
       if (!firstMouseMoveHandled) {
         let color = generateColor();
         updatePointerMoveData(pointer, posX, posY, color);
