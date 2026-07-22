@@ -49,20 +49,20 @@ const MissionVision3D = () => {
     };
   }, []);
 
-  const mY = useTransform(scrollYProgress, [0.35, 0.52], [0, -40]);
-  const mRotateX = useTransform(scrollYProgress, [0.35, 0.52], [0, -45]);
-  const mOpacity = useTransform(scrollYProgress, [0.35, 0.52], [1, 0]);
-  const mScale = useTransform(scrollYProgress, [0.35, 0.52], [1, 0.9]);
+  const mY = useTransform(scrollYProgress, [0.30, 0.44], [0, -40]);
+  const mRotateX = useTransform(scrollYProgress, [0.30, 0.44], [0, -45]);
+  const mOpacity = useTransform(scrollYProgress, [0.30, 0.44], [1, 0]);
+  const mScale = useTransform(scrollYProgress, [0.30, 0.44], [1, 0.9]);
   const mPointerEvents = useTransform(mOpacity, (o) => o > 0.1 ? 'auto' : 'none');
 
-  const vY = useTransform(scrollYProgress, [0.42, 0.58], [40, 0]);
-  const vRotateX = useTransform(scrollYProgress, [0.42, 0.58], [45, 0]);
-  const vOpacity = useTransform(scrollYProgress, [0.42, 0.58], [0, 1]);
-  const vScale = useTransform(scrollYProgress, [0.42, 0.58], [0.9, 1]);
+  const vY = useTransform(scrollYProgress, [0.36, 0.50], [40, 0]);
+  const vRotateX = useTransform(scrollYProgress, [0.36, 0.50], [45, 0]);
+  const vOpacity = useTransform(scrollYProgress, [0.36, 0.50], [0, 1]);
+  const vScale = useTransform(scrollYProgress, [0.36, 0.50], [0.9, 1]);
   const vPointerEvents = useTransform(vOpacity, (o) => o > 0.1 ? 'auto' : 'none');
 
   return (
-    <div ref={containerRef} className="relative w-full min-h-[130vh] flex flex-col items-center justify-start py-10">
+    <div ref={containerRef} className="relative w-full min-h-[85vh] flex flex-col items-center justify-start py-10">
       <div className="sticky top-[20vh] w-full max-w-3xl h-[340px] md:h-[360px] flex items-center justify-center" style={{ perspective: 1200 }}>
         
         {/* Card 1: Misión */}
