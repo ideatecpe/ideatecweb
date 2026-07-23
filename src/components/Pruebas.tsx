@@ -1,8 +1,6 @@
 import React from 'react';
 import ScrollStack, { ScrollStackItem } from './ScrollStack';
 import FlowingMenu from './FlowingMenu';
-import SplashCursor from './SplashCursor';
-
 const demoItems = [
   { link: '#', text: 'IDEATEC SAC', image: '/assets/datos/ideatecsac.webp' },
   { link: '#', text: 'RUC 20601841038', image: '/assets/datos/ruc.webp' },
@@ -13,18 +11,6 @@ const demoItems = [
 export default function Pruebas() {
   return (
     <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-orange-500 selection:text-white pb-32">
-      <SplashCursor
-        DENSITY_DISSIPATION={3.5}
-        VELOCITY_DISSIPATION={2}
-        PRESSURE={0.1}
-        CURL={3}
-        SPLAT_RADIUS={0.2}
-        SPLAT_FORCE={6000}
-        COLOR_UPDATE_SPEED={10}
-        SHADING={true}
-        RAINBOW_MODE={false}
-        COLOR="#f97316"
-      />
       {/* Top Banner / Navigation */}
       <header className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-md sticky top-0 z-50 px-8 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
